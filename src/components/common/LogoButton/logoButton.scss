@@ -1,0 +1,17 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img::after {
+    content: '';
+    display: inline-block;
+    width: 0.06rem;
+    height: 2.7rem;
+    background-color: #000;
+    margin: 0 0.5rem;
+}
+
+.logo-text {
+    font-family: 'Unique';
+}
