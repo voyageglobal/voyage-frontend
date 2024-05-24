@@ -1,0 +1,8 @@
+.gitignore
+.prettierignore
+package-lock.json
+dist
+coverage
+argo/*.yaml
+.github/workflows/*.yaml
+

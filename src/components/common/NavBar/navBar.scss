@@ -4,6 +4,8 @@ nav {
     align-items: center;
     gap: 1rem;
     font-family: "SeoulHangangCB";
+    font-size: 1.06rem;
+    color: #171717;
 }
 
 ul {
@@ -42,16 +44,3 @@ ul {
     justify-self: end;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img::after {
-    content: '';
-    display: inline-block;
-    width: 1px;
-    height: 2.7rem;
-    background-color: #000;
-    margin: 0 0.5rem;
-}
