@@ -1,7 +1,5 @@
-@import './assets/styles/variables.scss'; 
-
 @import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap'); /* third-font */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap'); /* fourth-font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');/* fourth-font */
 
 :root {
   color-scheme: light dark;
@@ -13,6 +11,7 @@
 
 body {
   margin: 0;
+  background-color: $light-color;
 }
 
 @font-face { /* main-font */

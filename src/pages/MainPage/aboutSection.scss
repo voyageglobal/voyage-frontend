@@ -1,0 +1,46 @@
+.about{
+    min-height: 31.25rem;
+    &-wrapper{
+        max-width: 73.13rem;
+        margin: 0 auto;
+        padding-top: 4.63rem;
+        display: flex;
+        justify-content: space-between;
+
+    }
+    &-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 20.38rem;
+        width: 42.5rem;
+    }
+    &-title{
+        margin: 0;
+        font-family: $fourth-font;
+        font-size: 1.94rem;
+        font-weight: 400;
+        font-style: normal;
+
+    }
+    &-text{
+        font-family: $primary-font;
+        font-size: 1.25rem;
+        margin-top: 1.88rem;
+        margin-bottom: 0;
+    }
+    &-img{
+        display: block;
+        width: 26.56rem;
+        height: 17.25rem;
+    }
+    &-link{
+        text-decoration: underline;
+        color: $dark-color;
+        font-family: $fourth-font;
+        font-size: 1.06rem;
+        font-weight: 500;
+        font-style: normal;
+        margin-top: 3.81rem;
+    }
+}

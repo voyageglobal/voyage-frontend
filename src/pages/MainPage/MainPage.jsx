@@ -1,5 +1,7 @@
 import NavBar from '../../components/common/NavBar/NavBar';
 import HeroSection from './HeroSection';
+import AboutSection from './AboutSection';
+import CitiesSection from './CitiesSection';
 
 const MainPage = () => {
   return (
@@ -7,7 +9,11 @@ const MainPage = () => {
       <header>
         <NavBar />
       </header>
-      <HeroSection />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <CitiesSection />
+      </main>
     </>
   );
 };

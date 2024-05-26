@@ -1,0 +1,9 @@
+.cities{
+    display: flex;
+    justify-content: center;
+    &-wrapper{
+        max-width: 73.13rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
