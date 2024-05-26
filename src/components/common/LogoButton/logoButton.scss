@@ -6,12 +6,13 @@
 .logo-img::after {
     content: '';
     display: inline-block;
-    width: 0.06rem;
+    width: 0.0625rem;
     height: 2.7rem;
-    background-color: #000;
+    background-color: $dark-color;
     margin: 0 0.5rem;
 }
 
 .logo-text {
-    font-family: 'Unique';
+    font-family: $secondary-font;
+    font-size: 1.31rem;
 }

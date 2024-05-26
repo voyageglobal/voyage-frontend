@@ -1,11 +1,20 @@
+.nav-wrapper {
+    background-color: rgba($light-color, 0.9);
+    min-height: 4.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav {
+    max-width: 73.13rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
     gap: 1rem;
-    font-family: "SeoulHangangCB";
+    font-family: $primary-font;
     font-size: 1.06rem;
-    color: #171717;
+    color: $dark-color;
 }
 
 ul {
@@ -30,6 +39,7 @@ ul {
 
 .menu-item:nth-child(4) {
     grid-column: 4;
+    width: 6rem;
 }
 
 .center-item {
