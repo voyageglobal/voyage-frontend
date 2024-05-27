@@ -1,9 +1,58 @@
-.cities{
-    display: flex;
-    justify-content: center;
-    &-wrapper{
+.cities {
+    padding-top: 6.31rem;
+
+    &-container {
         max-width: 73.13rem;
+        margin: 0 auto;
+    }
+
+    &-title {
+        margin: 0;
+        font-family: $fourth-font;
+        font-size: 1.94rem;
+        font-weight: 400;
+    }
+
+    &-info {
+        margin-top: 1.38rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-subtitle {
+        margin: 0;
+        font-family: $fourth-font;
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+
+    &-link-viewAll {
+        display: inline-block;
+        width: 5rem;
+        height: 2.06rem;
+        line-height: 2.1rem;
+        text-align: center;
+        border: 0.0625rem solid $dark-color;
+        border-radius: 0.625rem;
+        color: $dark-color;
+        text-decoration: none;
+        font-family: $fourth-font;
+        font-weight: 400;
+        font-size: 1.125rem;
+
+        &:hover {
+            background-color: rgba($dark-color, 0.1);
+        }
+    }
+
+    &-cards-wrapper {
         display: flex;
         flex-wrap: wrap;
+        gap: 1.875rem 3.1275rem;
+        margin: 1.875rem 0 0 0;
+        padding: 0;
+        list-style: none;
+        justify-content: space-between;
     }
 }
