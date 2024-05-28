@@ -1,5 +1,6 @@
 .cities {
     padding-top: 6.31rem;
+    min-height: 48.13rem;
 
     &-container {
         max-width: 73.13rem;
@@ -40,10 +41,6 @@
         font-family: $fourth-font;
         font-weight: 400;
         font-size: 1.125rem;
-
-        &:hover {
-            background-color: rgba($dark-color, 0.1);
-        }
     }
 
     &-cards-wrapper {
