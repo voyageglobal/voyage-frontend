@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-wrapper">
         <div className="hero-info">
-          <h1 className="hero-info-header">
+          <h1 className="hero-info-title">
             Discover and share travel guides from around the world
           </h1>
           <div className="hero-info-search">
