@@ -5,6 +5,7 @@ import CitiesSection from './CitiesSection';
 import Footer from './Footer';
 import BecomeGuide from './BecomeGuide';
 import OurGuidesSection from './OurGuidesSection';
+import ContactsSection from './ContactsSection';
 
 const MainPage = () => {
   return (
@@ -17,6 +18,7 @@ const MainPage = () => {
         <AboutSection />
         <CitiesSection />
         <BecomeGuide />
+        <ContactsSection />
         <OurGuidesSection />
       </main>
       <footer>
