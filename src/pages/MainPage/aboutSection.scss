@@ -1,6 +1,7 @@
-.about{
-    min-height: 31.25rem;
-    &-wrapper{
+.about {
+    min-height: 25.25rem;
+
+    &-wrapper {
         max-width: 73.13rem;
         margin: 0 auto;
         padding-top: 4.63rem;
@@ -8,14 +9,16 @@
         justify-content: space-between;
 
     }
-    &-info{
+
+    &-info {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 20.38rem;
         width: 42.5rem;
     }
-    &-title{
+
+    &-title {
         margin: 0;
         font-family: $fourth-font;
         font-size: 1.94rem;
@@ -23,18 +26,21 @@
         font-style: normal;
 
     }
-    &-text{
+
+    &-text {
         font-family: $primary-font;
         font-size: 1.25rem;
         margin-top: 1.88rem;
         margin-bottom: 0;
     }
-    &-img{
+
+    &-img {
         display: block;
         width: 26.56rem;
         height: 17.25rem;
     }
-    &-link{
+
+    &-link {
         text-decoration: underline;
         color: $dark-color;
         font-family: $fourth-font;
