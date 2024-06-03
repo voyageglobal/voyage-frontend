@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap'); /* third-font */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');/* fourth-font */
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+/* third-font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+/* fourth-font */
+
+* {
+  box-sizing: border-box;
+}
 
 :root {
   color-scheme: light dark;
@@ -14,14 +20,16 @@ body {
   background-color: $light-color;
 }
 
-@font-face { /* main-font */
+@font-face {
+  /* main-font */
   font-family: 'SeoulHangangCB';
   src: url('./assets/fonts/SeoulHangangCondensed/SeoulHangang.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face { /* secondary-font */
+@font-face {
+  /* secondary-font */
   font-family: 'Unique';
   src: url('./assets/fonts/Unique/Unique.woff') format('woff');
   font-weight: normal;
