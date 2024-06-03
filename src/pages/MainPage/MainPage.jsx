@@ -3,6 +3,7 @@ import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
 import CitiesSection from './CitiesSection';
 import BecomeGuide from './BecomeGuide';
+import OurGuidesSection from './OurGuidesSection';
 
 const MainPage = () => {
   return (
@@ -15,6 +16,7 @@ const MainPage = () => {
         <AboutSection />
         <CitiesSection />
         <BecomeGuide />
+        <OurGuidesSection />
       </main>
     </>
   );

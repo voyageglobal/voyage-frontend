@@ -1,0 +1,54 @@
+.our-guides-section {
+    min-height: 35.19rem;
+    padding: 6.06rem 0 7.19rem 0;
+
+    &__wrapper {
+        max-width: 73.13rem;
+        height: 35.19rem;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: rgba($dark-color, 0.1);
+        background: url(../../assets/img/mainPage/map.png);
+        background-size: cover;
+    }
+
+    &__content {
+        max-width: 17.75rem;
+        max-height: 19.88rem;
+        height: 100%;
+        padding: 10.19rem 0 0 5.88rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: $third-font;
+        font-size: 2.5rem;
+        text-shadow: 0px 4px 4px rgba($dark-color, 0.25);
+    }
+
+    &__text {
+        margin: 0;
+        font-family: $fourth-font;
+        font-size: 1.25rem;
+    }
+
+    &__button {
+        width: 12.5rem;
+        height: 2.95rem;
+        text-align: center;
+        background-color: rgb(239, 130, 0); // After merging the branches I will change to $third-color
+        border: none;
+        border-radius: 0.625rem;
+        color: #fff;
+        text-decoration: none;
+        font-family: $fourth-font;
+        font-size: 1.06rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

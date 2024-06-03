@@ -19,7 +19,7 @@ module.exports = {
   },
   settings: { react: { version: '18.2' } },
   env: { browser: true, jest: true },
-  plugins: ['react-refresh', 'jest-dom', 'jsx-a11y'],
+  plugins: ['jest-dom', 'jsx-a11y'],
   rules: {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -30,9 +30,5 @@ module.exports = {
       },
     ],
     'react/jsx-no-target-blank': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
   },
 };
