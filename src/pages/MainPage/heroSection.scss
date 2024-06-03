@@ -2,7 +2,7 @@
     min-height: 40.75rem;
     background: url(../../assets/img/mainPage/hero.png) center center/cover no-repeat;
 
-    &-wrapper{
+    &-wrapper {
         max-width: 73.13rem;
         margin: 0 auto;
         padding-top: 6.13rem;
@@ -13,27 +13,29 @@
     &-info {
         max-width: 39.88rem;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         position: relative;
 
-        &-header{
+        &-title {
             margin: 0 0 10.31rem 0;
             align-self: flex-end;
             font-family: $third-font, serif;
             font-weight: 400;
             font-style: normal;
-            font-size:3.13rem;
+            font-size: 3.13rem;
             color: $light-color;
             text-align: right;
         }
-        &-search{
+
+        &-search {
             margin: 0;
             position: absolute;
-            right: 3.5rem; 
+            right: 3.5rem;
             top: 68%;
             transform: translateY(-50%);
 
         }
+
         &-slogan {
             width: 19.5rem;
             height: 3.75rem;

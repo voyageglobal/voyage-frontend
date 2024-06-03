@@ -13,8 +13,9 @@ nav {
     align-items: center;
     gap: 1rem;
     font-family: $primary-font;
-    font-size: 1.06rem;
+    font-size: 1.125rem;
     color: $dark-color;
+    text-align: center;
 }
 
 ul {
@@ -53,4 +54,3 @@ ul {
     grid-column: 12;
     justify-self: end;
 }
-
