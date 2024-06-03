@@ -3,7 +3,8 @@ import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
 import CitiesSection from './CitiesSection';
 import Footer from './Footer';
-/* import OurGuidesSection from './OurGuidesSection'; */
+import BecomeGuide from './BecomeGuide';
+import OurGuidesSection from './OurGuidesSection';
 
 const MainPage = () => {
   return (
@@ -15,7 +16,8 @@ const MainPage = () => {
         <HeroSection />
         <AboutSection />
         <CitiesSection />
-        {/*         <OurGuidesSection /> */}
+        <BecomeGuide />
+        <OurGuidesSection />
       </main>
       <footer>
         <Footer />
