@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './ourGuidesSection.scss';
 
 const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
@@ -23,4 +24,4 @@ const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
   );
 };
 
-export default OurGuidesSection;
+export default memo(OurGuidesSection);
