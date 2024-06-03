@@ -3,10 +3,10 @@
     flex-direction: column;
     height: 19.81rem;
     width: 11.25rem;
-    background-color: rgba(white, 0.3);
+    background-color: rgba($white-color, 0.3);
     border-radius: 0.625rem;
     font-family: $primary-font;
-    box-shadow: 0px 4px 4px 0px rgba(black, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba($dark-color, 0.25);
 }
 
 .card-city {
