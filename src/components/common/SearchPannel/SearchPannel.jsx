@@ -1,4 +1,5 @@
 import './searchPannel.scss';
+import SearchIcon from '../../../assets/img/searchIcon.svg';
 
 const SearchPannel = () => {
   return (
@@ -14,7 +15,7 @@ const SearchPannel = () => {
         type="submit"
         aria-label="Open search results"
       >
-        <img src="../../../src/assets/img/search-icon.png" alt="Search icon" />
+        <SearchIcon />
       </button>
     </form>
   );
