@@ -5,9 +5,9 @@ const LogoButton = () => {
     <div className="flex items-center">
       <div className="flex items-center">
         <img src={logo} alt="The logotype of Voyage" className="block" />
-        <div className="w-[1px] h-[2.7rem] bg-dark-color mx-2"></div>
+        <div className="mx-2 h-11 w-px bg-dark-color"></div>
       </div>
-      <div className="font-secondary text-[1.31rem]">VOYAGE</div>
+      <div className="font-secondary text-xl">VOYAGE</div>
     </div>
   );
 };

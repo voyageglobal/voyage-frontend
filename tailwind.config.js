@@ -11,6 +11,18 @@ export default {
         primary: ['BakerSignetStd', 'sans-serif'],
         secondary: ['Unique', 'sans-serif'],
       },
+      container: {
+        maxWidth: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1170px',
+          '2xl': '1170px',
+        },
+        padding: {
+          '2xl': '183px',
+        },
+      },
     },
   },
   plugins: [],
