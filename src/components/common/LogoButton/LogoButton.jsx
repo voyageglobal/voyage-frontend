@@ -1,13 +1,13 @@
 import logo from '../../../assets/img/logo.png';
-import './logoButton.scss';
 
 const LogoButton = () => {
   return (
-    <div className="logo-container">
-      <div className="logo-img">
-        <img src={logo} alt="The logotype of Voyage" />
+    <div className="flex items-center">
+      <div className="flex items-center">
+        <img src={logo} alt="The logotype of Voyage" className="block" />
+        <div className="mx-2 h-11 w-px bg-dark-color"></div>
       </div>
-      <div className="logo-text">VOYAGE</div>
+      <div className="font-secondary text-xl">VOYAGE</div>
     </div>
   );
 };
