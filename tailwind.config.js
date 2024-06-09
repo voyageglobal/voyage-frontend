@@ -12,14 +12,8 @@ export default {
         secondary: ['Unique', 'sans-serif'],
       },
       container: {
-        maxWidth: {
-          sm: '640px',
-          md: '768px',
-          lg: '1024px',
-          xl: '1170px',
-          '2xl': '1170px',
-        },
         padding: {
+          xl: '55px',
           '2xl': '183px',
         },
       },
