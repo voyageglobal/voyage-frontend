@@ -1,7 +1,7 @@
-import './searchPannel.scss';
+import './searchPanel.scss';
 import SearchIcon from '../../../assets/img/searchIcon.svg';
 
-const SearchPannel = () => {
+const SearchPanel = () => {
   return (
     <form className="search-container" action="/search" method="GET">
       <input
@@ -21,4 +21,4 @@ const SearchPannel = () => {
   );
 };
 
-export default SearchPannel;
+export default SearchPanel;
