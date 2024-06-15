@@ -19,6 +19,9 @@ export default {
           '2xl': '183px',
         },
       },
+      borderRadius: {
+        '10px': '10px',
+      },
     },
   },
   plugins: [],
