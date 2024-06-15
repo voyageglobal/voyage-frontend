@@ -17,6 +17,9 @@ export default {
           '2xl': '183px',
         },
       },
+      fontSize: {
+        '2rem': '2rem',
+      },
     },
   },
   plugins: [],
