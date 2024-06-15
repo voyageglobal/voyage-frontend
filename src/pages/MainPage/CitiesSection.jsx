@@ -1,4 +1,3 @@
-import './citiesSection.scss';
 import CityCard from '../../components/common/CityCard/CityCard';
 import Paris from '../../assets/img/cities/Paris.png';
 import Prague from '../../assets/img/cities/Prague.png';
@@ -76,18 +75,21 @@ const CitiesSection = () => {
   ];
 
   return (
-    <section className="cities">
-      <div className="cities-container">
-        <h2 className="cities-title">Popular Cities</h2>
-        <div className="cities-info">
-          <h3 className="cities-subtitle">
+    <section className="min-h-[48.13rem] pt-28">
+      <div className="container mx-auto">
+        <h2 className="text-2rem font-fourth font-normal">Popular Cities</h2>
+        <div className="mt-6 flex items-center justify-between">
+          <h3 className="font-fourth text-xl font-normal">
             Explore city guides for your next adventure
           </h3>
-          <a href="#" className="cities-link-viewAll">
+          <a
+            href="#"
+            className="rounded-10px inline-block h-8 w-20 border border-dark-color text-center font-fourth text-lg/7 font-normal text-dark-color"
+          >
             View all
           </a>
         </div>
-        <ul className="cities-cards-wrapper">
+        <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">
           {cities.map(city => (
             <li key={city.key}>
               <CityCard
