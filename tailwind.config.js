@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         primary: ['BakerSignetStd', 'sans-serif'],
         secondary: ['Unique', 'sans-serif'],
+        inherit: ['inherit'],
       },
       container: {
         padding: {
