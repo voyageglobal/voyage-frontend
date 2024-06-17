@@ -10,12 +10,17 @@ export default {
       fontFamily: {
         primary: ['BakerSignetStd', 'sans-serif'],
         secondary: ['Unique', 'sans-serif'],
+        third: ['Ultra', 'sans-serif'],
+        fourth: ['Josefin Sans', 'sans-serif'],
       },
       container: {
         padding: {
           xl: '55px',
           '2xl': '183px',
         },
+      },
+      borderRadius: {
+        '10px': '10px',
       },
     },
   },
