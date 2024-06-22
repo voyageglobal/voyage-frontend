@@ -7,8 +7,8 @@ const BecomeGuide = () => {
       style={{ backgroundImage: `url(${BackgroundBecomeGuide})` }}
     >
       <div className="container mx-auto text-center">
-        <h2 className="text-2rem text-fourth font-normal">BECOME A GUIDE!</h2>
-        <div className="text-primary mx-auto mt-8 text-xl">
+        <h2 className="text-2rem font-fourth font-normal">BECOME A GUIDE!</h2>
+        <div className="mx-auto mt-8 font-primary text-xl">
           <p>
             Contribute to our community by adding your own guide! Share insights
             about your favorite spots in the city or country. <br /> Upload
@@ -22,7 +22,7 @@ const BecomeGuide = () => {
             Voyage into the unknown, discover the extraordinary!
           </p>
         </div>
-        <button className="rounded-10px text-fourth bg-third-color mt-8 h-12 w-60 text-center text-base text-light-color">
+        <button className="rounded-10px font-fourth bg-third-color mt-8 h-12 w-60 text-center text-base text-light-color">
           SIGN IN AND CREATE
         </button>
       </div>
