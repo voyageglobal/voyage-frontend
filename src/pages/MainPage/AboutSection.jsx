@@ -1,13 +1,12 @@
 import about from '../../assets/img/mainPage/about.png';
-import './aboutSection.scss';
 
 const AboutSection = () => {
   return (
-    <section className="about">
-      <div className="about-wrapper">
-        <div className="about-info">
-          <h2 className="about-title">About VOYAGE</h2>
-          <p className="about-text">
+    <section className="min-h-96">
+      <div className="container mx-auto flex justify-between pt-24">
+        <div className="flex h-80 max-w-2xl flex-col justify-between">
+          <h2 className="text-2rem font-fourth font-normal">About VOYAGE</h2>
+          <p className="mt-8 font-primary text-xl/6">
             We are an independent community of travelers and city experts.
             <br />
             We believe that the best guides are those created by travelers
@@ -24,12 +23,15 @@ const AboutSection = () => {
             Join our community right now, post your guide, and help others
             discover the world!
           </p>
-          <a className="about-link" href="">
+          <a
+            className="mt-10 font-fourth text-base font-medium text-dark-color underline"
+            href=""
+          >
             LEARN MORE
           </a>
         </div>
         <img
-          className="about-img"
+          className="block h-fit"
           src={about}
           alt="The introductory picture of travelers"
         />
