@@ -1,4 +1,4 @@
-import LogoButton from '../../components/common/LogoButton/LogoButton';
+import LogoButton from '../LogoButton/LogoButton';
 
 const Footer = () => {
   return (
