@@ -7,6 +7,7 @@ import BecomeGuide from './BecomeGuide';
 import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
 import TravelTips from './TravelTips';
+import MenuBottom from './MenuBottom';
 
 const MainPage = () => {
   return (
@@ -22,6 +23,7 @@ const MainPage = () => {
         <ContactsSection />
         <OurGuidesSection />
         <TravelTips />
+        <MenuBottom />
       </main>
       <footer>
         <Footer />

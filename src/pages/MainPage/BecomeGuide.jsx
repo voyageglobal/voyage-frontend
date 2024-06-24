@@ -3,11 +3,11 @@ import BackgroundBecomeGuide from '../../assets/img/mainPage/BecomeGuideBackgrou
 const BecomeGuide = () => {
   return (
     <section
-      className="mt-14 min-h-[31.44rem] bg-cover bg-center bg-no-repeat pt-24 contrast-[.95] drop-shadow-[1px_0px_1px_rgba(23,23,23,0.3)]"
+      className="mt-14 min-h-[35rem] bg-cover bg-center bg-no-repeat pt-28 contrast-[.95] drop-shadow-[1px_0px_1px_rgba(23,23,23,0.3)]"
       style={{ backgroundImage: `url(${BackgroundBecomeGuide})` }}
     >
       <div className="container mx-auto text-center">
-        <h2 className="text-2rem font-fourth font-normal">BECOME A GUIDE!</h2>
+        <h2 className="font-fourth text-2rem font-normal">BECOME A GUIDE!</h2>
         <div className="mx-auto mt-8 font-primary text-xl">
           <p>
             Contribute to our community by adding your own guide! Share insights
@@ -22,7 +22,7 @@ const BecomeGuide = () => {
             Voyage into the unknown, discover the extraordinary!
           </p>
         </div>
-        <button className="rounded-10px font-fourth bg-third-color mt-8 h-12 w-60 text-center text-base text-light-color">
+        <button className="mt-8 h-12 w-60 rounded-10px bg-orange-color text-center font-fourth text-base text-light-color">
           SIGN IN AND CREATE
         </button>
       </div>
