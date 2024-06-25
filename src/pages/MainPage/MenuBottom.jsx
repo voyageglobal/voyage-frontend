@@ -1,8 +1,6 @@
-import LogoButton from '../../components/common/LogoButton/LogoButton';
-
-const Footer = () => {
+const MenuBottom = () => {
   return (
-    <section className="min-h-96 pt-8">
+    <section className="min-h-80 py-16">
       <div className="container mx-auto">
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
@@ -127,14 +125,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto flex items-center justify-between pb-4 pt-7">
-        <LogoButton />
-        <p className="w-48 text-right font-fourth">
-          &copy; {new Date().getFullYear()} VOYAGE.COM ALL RIGHTS RESERVED
-        </p>
-      </div>
     </section>
   );
 };
 
-export default Footer;
+export default MenuBottom;
