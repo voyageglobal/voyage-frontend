@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const MenuBottom = () => {
   return (
     <section className="min-h-80 py-16">
@@ -5,121 +7,121 @@ const MenuBottom = () => {
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
+              <Link to="/cities-guides" className="text-dark-color">
                 Popular Guides
-              </a>
+              </Link>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light text-dark-color">
               <li className="mt-3.5">
-                <a href="#">Paris</a>
+                <Link to="/cities-guides/id">Paris</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Prague</a>
+                <Link to="/cities-guides/id">Prague</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">New York</a>
+                <Link to="/cities-guides/id">New York</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Rome</a>
+                <Link to="/cities-guides/id">Rome</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Tel Aviv</a>
+                <Link to="/cities-guides/id">Tel Aviv</Link>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
+              <Link to="/travel-tips" className="text-dark-color">
                 Travel Tips
-              </a>
+              </Link>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light text-dark-color">
               <li className="mt-3.5">
-                <a href="#">Packing</a>
+                <Link to="/travel-tips">Packing</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Transportation</a>
+                <Link to="/travel-tips">Transportation</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Accommodation</a>
+                <Link to="/travel-tips">Accommodation</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Local Cuisine</a>
+                <Link to="/travel-tips">Local Cuisine</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Cheap Trip</a>
+                <Link to="/travel-tips">Cheap Trip</Link>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
+              <Link to="/about-us" className="text-dark-color">
                 About Us
-              </a>
+              </Link>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light text-dark-color">
               <li className="mt-3.5">
-                <a href="#">Contact</a>
+                <Link to="/contacts">Contact</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Terms</a>
+                <Link to="/about-us">Terms</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Privacy Policy</a>
+                <Link to="/about-us">Privacy Policy</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">FAQ</a>
+                <Link to="/about-us">FAQ</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Blog</a>
+                <Link to="/about-us">Blog</Link>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
+              <Link to="/contacts" className="text-dark-color">
                 Follow Us
-              </a>
+              </Link>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light text-dark-color">
               <li className="mt-3.5">
-                <a href="#">Facebook</a>
+                <Link to="/contacts">Facebook</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Instagram</a>
+                <Link to="/contacts">Instagram</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Twitter</a>
+                <Link to="/contacts">Twitter</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Pinterest</a>
+                <Link to="/contacts">Pinterest</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">YouTube</a>
+                <Link to="/contacts">YouTube</Link>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
+              <Link to="#" className="text-dark-color">
                 Legal
-              </a>
+              </Link>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light text-dark-color">
               <li className="mt-3.5">
-                <a href="#">Terms of Use</a>
+                <Link to="#">Terms of Use</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Cookie Policy</a>
+                <Link to="#">Cookie Policy</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Disclaimer</a>
+                <Link to="#">Disclaimer</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">DMCA Policy</a>
+                <Link to="#">DMCA Policy</Link>
               </li>
               <li className="mt-3.5">
-                <a href="#">Sitemap</a>
+                <Link to="#">Sitemap</Link>
               </li>
             </ul>
           </div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LogoButton from '../LogoButton/LogoButton';
 const NavBar = () => {
   return (
@@ -5,22 +6,22 @@ const NavBar = () => {
       <nav className="container mx-auto text-center font-primary text-lg text-dark-color">
         <ul className="flex items-center justify-between">
           <li className="mr-7 list-none">
-            <a href="#">Destinations</a>
+            <Link to="/cities-guides">Destinations</Link>
           </li>
           <li className="mr-7 list-none">
-            <a href="#">About us</a>
+            <Link to="/about-us">About us</Link>
           </li>
           <li className="mr-7 list-none">
-            <a href="#">Contacts</a>
+            <Link to="/contacts">Contacts</Link>
           </li>
           <li className="mr-36 w-24 list-none">
-            <a href="#">Travel Tips</a>
+            <Link to="/travel-tips">Travel Tips</Link>
           </li>
           <li className="list-none">
             <LogoButton />
           </li>
           <li className="ml-auto list-none">
-            <a href="#">Sign In</a>
+            <Link to="/sign-in">Sign In</Link>
           </li>
         </ul>
       </nav>

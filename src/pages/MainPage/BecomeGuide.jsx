@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import BackgroundBecomeGuide from '../../assets/img/mainPage/BecomeGuideBackground2560.png';
 
 const BecomeGuide = () => {
@@ -22,9 +24,12 @@ const BecomeGuide = () => {
             Voyage into the unknown, discover the extraordinary!
           </p>
         </div>
-        <button className="mt-8 h-12 w-60 rounded-10px bg-orange-color text-center font-fourth text-base text-light-color">
+        <Link
+          to="/sign-in"
+          className="mx-auto mt-8 block h-12 w-60 rounded-10px bg-orange-color pt-3 text-center font-fourth text-base text-light-color"
+        >
           SIGN IN AND CREATE
-        </button>
+        </Link>
       </div>
     </section>
   );

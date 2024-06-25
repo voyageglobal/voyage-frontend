@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import MailIcon from '../../assets/img/mailIcon.svg';
 import FacebookIcon from '../../assets/img/facebookIcon.svg';
 import InstaIcon from '../../assets/img/instaIcon.svg';
@@ -23,12 +25,12 @@ const ContactsSection = () => {
             <div className="mt-11 h-32 w-full rounded-10px text-center shadow-[6px_6px_6px_rgba(0,0,0,0.25)]">
               <MailIcon className="mt-5 inline-block" />
               <p className="mt-3 font-fourth text-base">EMAIL</p>
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="mt-6 inline-block font-fourth text-lg text-dark-color"
               >
                 voyage@gmail.com
-              </a>
+              </Link>
             </div>
             <div className="mt-32 w-full text-center">
               <h3 className="text-center font-fourth text-xl font-normal">
@@ -36,29 +38,29 @@ const ContactsSection = () => {
               </h3>
               <ul className="mt-5 flex list-none justify-between">
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <FacebookIcon />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <InstaIcon />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <TwitterIcon />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <PinterestIcon />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <YoutubeIcon />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

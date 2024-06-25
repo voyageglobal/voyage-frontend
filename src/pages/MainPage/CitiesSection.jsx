@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import CityCard from '../../components/common/CityCard/CityCard';
 import Paris from '../../assets/img/cities/Paris.png';
 import Prague from '../../assets/img/cities/Prague.png';
@@ -82,12 +84,12 @@ const CitiesSection = () => {
           <h3 className="font-fourth text-xl font-normal">
             Explore city guides for your next adventure
           </h3>
-          <a
-            href="#"
+          <Link
+            to="/cities-guides"
             className="inline-block h-8 w-20 rounded-10px border border-dark-color text-center font-fourth text-lg/8 font-normal text-dark-color"
           >
             View all
-          </a>
+          </Link>
         </div>
         <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">
           {cities.map(city => (
