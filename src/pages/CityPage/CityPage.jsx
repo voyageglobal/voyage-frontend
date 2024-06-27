@@ -1,7 +1,7 @@
 import NavBar from '../../components/common/NavBar/NavBar';
 import Footer from '../../components/common/Footer/Footer';
 
-const SingleCityPage = () => {
+const CityPage = () => {
   return (
     <>
       <header>
@@ -15,4 +15,4 @@ const SingleCityPage = () => {
   );
 };
 
-export default SingleCityPage;
+export default CityPage;

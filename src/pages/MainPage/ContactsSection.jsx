@@ -26,7 +26,7 @@ const ContactsSection = () => {
               <MailIcon className="mt-5 inline-block" />
               <p className="mt-3 font-fourth text-base">EMAIL</p>
               <Link
-                to="#"
+                to="mailto:voyage@gmail.com"
                 className="mt-6 inline-block font-fourth text-lg text-dark-color"
               >
                 voyage@gmail.com
