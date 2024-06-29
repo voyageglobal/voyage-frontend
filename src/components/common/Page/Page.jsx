@@ -1,9 +1,17 @@
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
+import { Helmet } from 'react-helmet';
+import { memo } from 'react';
 
-const Page = ({ children }) => {
+const Page = ({ children, title, titlePrefix = 'Voyage', description }) => {
+  const pageTitle =
+    title && title !== titlePrefix ? `${titlePrefix} | ${title}` : titlePrefix;
   return (
     <div className="flex min-h-screen flex-col">
+      <Helmet>
+        <meta name="description" content={description} />
+        <title>{pageTitle}</title>
+      </Helmet>
       <header>
         <NavBar />
       </header>
@@ -15,4 +23,4 @@ const Page = ({ children }) => {
   );
 };
 
-export default Page;
+export default memo(Page);
