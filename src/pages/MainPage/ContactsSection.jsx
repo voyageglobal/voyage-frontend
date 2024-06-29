@@ -25,12 +25,12 @@ const ContactsSection = () => {
             <div className="mt-11 h-32 w-full rounded-10px text-center shadow-[6px_6px_6px_rgba(0,0,0,0.25)]">
               <MailIcon className="mt-5 inline-block" />
               <p className="mt-3 font-fourth text-base">EMAIL</p>
-              <Link
-                to="mailto:voyage@gmail.com"
+              <a
+                href="mailto:voyage@gmail.com"
                 className="mt-6 inline-block font-fourth text-lg text-dark-color"
               >
                 voyage@gmail.com
-              </Link>
+              </a>
             </div>
             <div className="mt-32 w-full text-center">
               <h3 className="text-center font-fourth text-xl font-normal">

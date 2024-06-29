@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
 
+export function MenuBottomLink(props) {
+  return (
+    <Link {...props} className={`text-dark-color visited:text-purple-900`} />
+  );
+}
+
 const MenuBottom = () => {
   return (
     <section className="min-h-80 py-16">
@@ -7,198 +13,115 @@ const MenuBottom = () => {
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <Link
-                to="/cities-guides"
-                className="text-dark-color visited:text-purple-900"
-              >
+              <MenuBottomLink to="/cities-guides">
                 Popular Guides
-              </Link>
+              </MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <Link
-                  className="visited:text-purple-900"
-                  to="/cities-guides/id"
-                >
-                  Paris
-                </Link>
+                <MenuBottomLink to="/cities-guides/id">Paris</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link
-                  className="visited:text-purple-900"
-                  to="/cities-guides/id"
-                >
-                  Prague
-                </Link>
+                <MenuBottomLink to="/cities-guides/id">Prague</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link
-                  className="visited:text-purple-900"
-                  to="/cities-guides/id"
-                >
-                  New York
-                </Link>
+                <MenuBottomLink to="/cities-guides/id">New York</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link
-                  className="visited:text-purple-900"
-                  to="/cities-guides/id"
-                >
-                  Rome
-                </Link>
+                <MenuBottomLink to="/cities-guides/id">Rome</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link
-                  className="visited:text-purple-900"
-                  to="/cities-guides/id"
-                >
-                  Tel Aviv
-                </Link>
+                <MenuBottomLink to="/cities-guides/id">Tel Aviv</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <Link
-                to="/travel-tips"
-                className="text-dark-color visited:text-purple-900"
-              >
-                Travel Tips
-              </Link>
+              <MenuBottomLink to="/travel-tips">Travel Tips</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/travel-tips">
-                  Packing
-                </Link>
+                <MenuBottomLink to="/travel-tips">Packing</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/travel-tips">
+                <MenuBottomLink to="/travel-tips">
                   Transportation
-                </Link>
+                </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/travel-tips">
-                  Accommodation
-                </Link>
+                <MenuBottomLink to="/travel-tips">Accommodation</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/travel-tips">
-                  Local Cuisine
-                </Link>
+                <MenuBottomLink to="/travel-tips">Local Cuisine</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/travel-tips">
-                  Cheap Trip
-                </Link>
+                <MenuBottomLink to="/travel-tips">Cheap Trip</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <Link
-                to="/about-us"
-                className="text-dark-color visited:text-purple-900"
-              >
-                About Us
-              </Link>
+              <MenuBottomLink to="/about-us">About Us</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  Contact
-                </Link>
+                <MenuBottomLink to="/contacts">Contact</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/about-us">
-                  Terms
-                </Link>
+                <MenuBottomLink to="/about-us">Terms</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/about-us">
-                  Privacy Policy
-                </Link>
+                <MenuBottomLink to="/about-us">Privacy Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/about-us">
-                  FAQ
-                </Link>
+                <MenuBottomLink to="/about-us">FAQ</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/about-us">
-                  Blog
-                </Link>
+                <MenuBottomLink to="/about-us">Blog</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <Link
-                to="/contacts"
-                className="text-dark-color visited:text-purple-900"
-              >
-                Follow Us
-              </Link>
+              <MenuBottomLink to="/contacts">Follow Us</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  Facebook
-                </Link>
+                <MenuBottomLink to="/contacts">Facebook</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  Instagram
-                </Link>
+                <MenuBottomLink to="/contacts">Instagram</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  Twitter
-                </Link>
+                <MenuBottomLink to="/contacts">Twitter</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  Pinterest
-                </Link>
+                <MenuBottomLink to="/contacts">Pinterest</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="/contacts">
-                  YouTube
-                </Link>
+                <MenuBottomLink to="/contacts">YouTube</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <Link to="#" className="text-dark-color visited:text-purple-900">
-                Legal
-              </Link>
+              <MenuBottomLink>Legal</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="#">
-                  Terms of Use
-                </Link>
+                <MenuBottomLink to="#">Terms of Use</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="#">
-                  Cookie Policy
-                </Link>
+                <MenuBottomLink to="#">Cookie Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="#">
-                  Disclaimer
-                </Link>
+                <MenuBottomLink to="#">Disclaimer</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="#">
-                  DMCA Policy
-                </Link>
+                <MenuBottomLink to="#">DMCA Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <Link className="visited:text-purple-900" to="#">
-                  Sitemap
-                </Link>
+                <MenuBottomLink to="#">Sitemap</MenuBottomLink>
               </li>
             </ul>
           </div>
