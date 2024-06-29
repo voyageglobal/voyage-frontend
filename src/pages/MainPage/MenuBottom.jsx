@@ -13,25 +13,23 @@ const MenuBottom = () => {
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <MenuBottomLink to="/cities-guides">
-                Popular Guides
-              </MenuBottomLink>
+              <MenuBottomLink to="/cities">Popular Guides</MenuBottomLink>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities-guides/id">Paris</MenuBottomLink>
+                <MenuBottomLink to="/cities/id">Paris</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities-guides/id">Prague</MenuBottomLink>
+                <MenuBottomLink to="/cities/id">Prague</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities-guides/id">New York</MenuBottomLink>
+                <MenuBottomLink to="/cities/id">New York</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities-guides/id">Rome</MenuBottomLink>
+                <MenuBottomLink to="/cities/id">Rome</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities-guides/id">Tel Aviv</MenuBottomLink>
+                <MenuBottomLink to="/cities/id">Tel Aviv</MenuBottomLink>
               </li>
             </ul>
           </div>

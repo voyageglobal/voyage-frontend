@@ -6,7 +6,7 @@ const NavBar = () => {
       <nav className="container mx-auto text-center font-primary text-lg text-dark-color">
         <ul className="flex items-center justify-between">
           <li className="mr-7 list-none">
-            <Link to="/cities-guides">Destinations</Link>
+            <Link to="/cities">Destinations</Link>
           </li>
           <li className="mr-7 list-none">
             <Link to="/about-us">About us</Link>
