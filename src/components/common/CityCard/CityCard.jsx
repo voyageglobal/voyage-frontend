@@ -1,3 +1,5 @@
+
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 const CityCard = ({ cityName, countryName, image }) => {
@@ -12,4 +14,4 @@ const CityCard = ({ cityName, countryName, image }) => {
   );
 };
 
-export default CityCard;
+export default memo(CityCard);
