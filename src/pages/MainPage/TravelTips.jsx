@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import BackgroundTravelTips from '../../assets/img/mainPage/travelTips.png';
 
 const TravelTips = () => {
@@ -16,12 +17,13 @@ const TravelTips = () => {
             planning to packing. <br /> Learn how to make the most of your
             adventures and create unforgettable memories.
           </p>
-          <button
-            className="mt-10 h-12 w-48 rounded-10px border-2 border-light-color bg-transparent text-center font-fourth text-base text-light-color"
+          <Link
+            to="/travel-tips"
+            className="mt-10 h-12 w-48 rounded-10px border-2 border-light-color bg-transparent pt-3 text-center font-fourth text-base text-light-color"
             aria-label="A button leading to a page with all travel tips."
           >
             GET INSPIRED
-          </button>
+          </Link>
         </div>
       </div>
     </section>

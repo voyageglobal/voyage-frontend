@@ -1,3 +1,11 @@
+import { Link } from 'react-router-dom';
+
+export function MenuBottomLink(props) {
+  return (
+    <Link {...props} className={`text-dark-color visited:text-purple-900`} />
+  );
+}
+
 const MenuBottom = () => {
   return (
     <section className="min-h-80 py-16">
@@ -5,121 +13,113 @@ const MenuBottom = () => {
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
-                Popular Guides
-              </a>
+              <MenuBottomLink to="/cities">Popular Guides</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <a href="#">Paris</a>
+                <MenuBottomLink to="/cities/id">Paris</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Prague</a>
+                <MenuBottomLink to="/cities/id">Prague</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">New York</a>
+                <MenuBottomLink to="/cities/id">New York</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Rome</a>
+                <MenuBottomLink to="/cities/id">Rome</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Tel Aviv</a>
+                <MenuBottomLink to="/cities/id">Tel Aviv</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
-                Travel Tips
-              </a>
+              <MenuBottomLink to="/travel-tips">Travel Tips</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <a href="#">Packing</a>
+                <MenuBottomLink to="/travel-tips">Packing</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Transportation</a>
+                <MenuBottomLink to="/travel-tips">
+                  Transportation
+                </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Accommodation</a>
+                <MenuBottomLink to="/travel-tips">Accommodation</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Local Cuisine</a>
+                <MenuBottomLink to="/travel-tips">Local Cuisine</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Cheap Trip</a>
+                <MenuBottomLink to="/travel-tips">Cheap Trip</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
-                About Us
-              </a>
+              <MenuBottomLink to="/about-us">About Us</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <a href="#">Contact</a>
+                <MenuBottomLink to="/contacts">Contact</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Terms</a>
+                <MenuBottomLink to="/about-us">Terms</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Privacy Policy</a>
+                <MenuBottomLink to="/about-us">Privacy Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">FAQ</a>
+                <MenuBottomLink to="/about-us">FAQ</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Blog</a>
+                <MenuBottomLink to="/about-us">Blog</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
-                Follow Us
-              </a>
+              <MenuBottomLink to="/contacts">Follow Us</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <a href="#">Facebook</a>
+                <MenuBottomLink to="/contacts">Facebook</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Instagram</a>
+                <MenuBottomLink to="/contacts">Instagram</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Twitter</a>
+                <MenuBottomLink to="/contacts">Twitter</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Pinterest</a>
+                <MenuBottomLink to="/contacts">Pinterest</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">YouTube</a>
+                <MenuBottomLink to="/contacts">YouTube</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <a href="#" className="text-dark-color">
-                Legal
-              </a>
+              <MenuBottomLink>Legal</MenuBottomLink>
             </h3>
-            <ul className="mt-4 inline-block text-xl font-light text-dark-color">
+            <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <a href="#">Terms of Use</a>
+                <MenuBottomLink to="#">Terms of Use</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Cookie Policy</a>
+                <MenuBottomLink to="#">Cookie Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Disclaimer</a>
+                <MenuBottomLink to="#">Disclaimer</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">DMCA Policy</a>
+                <MenuBottomLink to="#">DMCA Policy</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <a href="#">Sitemap</a>
+                <MenuBottomLink to="#">Sitemap</MenuBottomLink>
               </li>
             </ul>
           </div>
