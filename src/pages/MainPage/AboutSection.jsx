@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import about from '../../assets/img/mainPage/about.png';
 
 const AboutSection = () => {
@@ -5,7 +6,7 @@ const AboutSection = () => {
     <section className="min-h-96">
       <div className="container mx-auto flex justify-between pt-24">
         <div className="flex h-80 max-w-2xl flex-col justify-between">
-          <h2 className="text-2rem font-fourth font-normal">About VOYAGE</h2>
+          <h2 className="font-fourth text-2rem font-normal">About VOYAGE</h2>
           <p className="mt-8 font-primary text-xl/6">
             We are an independent community of travelers and city experts.
             <br />
@@ -23,12 +24,12 @@ const AboutSection = () => {
             Join our community right now, post your guide, and help others
             discover the world!
           </p>
-          <a
+          <Link
             className="mt-10 font-fourth text-base font-medium text-dark-color underline"
-            href=""
+            to="/about-us"
           >
             LEARN MORE
-          </a>
+          </Link>
         </div>
         <img
           className="block h-fit"
