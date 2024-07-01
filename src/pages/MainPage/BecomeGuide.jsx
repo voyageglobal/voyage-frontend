@@ -5,7 +5,7 @@ import BackgroundBecomeGuide from '../../assets/img/mainPage/BecomeGuideBackgrou
 const BecomeGuide = () => {
   return (
     <section
-      className="mt-14 min-h-[35rem] bg-cover bg-center bg-no-repeat pt-28 contrast-[.95] drop-shadow-[1px_0px_1px_rgba(23,23,23,0.3)]"
+      className="mt-14 min-h-[40rem] bg-cover bg-top bg-no-repeat pt-40 contrast-[.95] drop-shadow-[1px_0px_1px_rgba(23,23,23,0.3)]"
       style={{ backgroundImage: `url(${BackgroundBecomeGuide})` }}
     >
       <div className="container mx-auto text-center">
