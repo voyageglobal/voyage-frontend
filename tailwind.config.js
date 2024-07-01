@@ -28,7 +28,7 @@ export default {
         '10px': '10px',
       },
       textShadow: {
-        header: '0px 4px 4px rgba(23, 23, 23, 0.25)',
+        header: '0px 4px 4px rgba(23, 23, 23, 0.4)',
       },
     },
   },

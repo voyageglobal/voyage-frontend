@@ -1,14 +1,14 @@
 import SearchIcon from '../../../assets/img/searchIcon.svg';
 
-const SearchPanel = () => {
+const SearchPanelPrimary = () => {
   return (
     <form
-      className="rounded-10px flex w-96 items-center bg-light-color p-4"
+      className="flex w-96 items-center rounded-10px bg-light-color p-4"
       action="/search"
       method="GET"
     >
       <input
-        className="text-base/2 flex-grow bg-transparent font-primary text-dark-color placeholder-dark-color outline-none"
+        className="flex-grow bg-transparent font-primary text-lg/3 text-dark-color placeholder-dark-color outline-none"
         type="search"
         name="query"
         placeholder="Where are we going today?"
@@ -24,4 +24,4 @@ const SearchPanel = () => {
   );
 };
 
-export default SearchPanel;
+export default SearchPanelPrimary;
