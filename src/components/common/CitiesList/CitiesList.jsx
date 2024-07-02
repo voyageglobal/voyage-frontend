@@ -1,9 +1,9 @@
 import CityCard from '../CityCard/CityCard';
 import { memo } from 'react';
 
-const CitiesList = ({ cities, limit = 10 }) => {
-  const displayedCities =
-    limit && limit <= cities.length ? cities.slice(0, limit) : cities;
+const CitiesList = ({ cities, limit }) => {
+  const citiesLimit = limit || 10;
+  const displayedCities = cities.slice(0, citiesLimit);
 
   return (
     <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">

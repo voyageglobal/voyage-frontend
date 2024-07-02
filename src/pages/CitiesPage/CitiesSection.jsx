@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CitiesList from '../../components/common/CitiesList/CitiesList';
-import { cities } from '../../components/common/CitiesData/CitiesData';
+import { cities } from '../сitiesData';
 
 const CitiesSection = () => {
   const [limit, setLimit] = useState(20);
@@ -29,7 +29,7 @@ const CitiesSection = () => {
         <CitiesList cities={cities} limit={limit} />
         {!allCitiesDisplayed && (
           <button
-            className="mx-auto mt-14 block h-10 w-44 cursor-pointer rounded-10px border-none bg-[rgba(23,23,23,0.82)] text-center font-fourth text-base uppercase text-light-color"
+            className="mx-auto mt-14 block h-10 w-56 cursor-pointer rounded-10px border-none bg-[rgba(23,23,23,0.82)] text-center font-fourth text-base uppercase text-light-color"
             onClick={loadMoreCities}
           >
             LOAD MORE CITIES

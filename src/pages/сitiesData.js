@@ -1,15 +1,14 @@
-import Paris from '../../../assets/img/cities/Paris.png';
-import Prague from '../../../assets/img/cities/Prague.png';
-import NewYork from '../../../assets/img/cities/NewYork.png';
-import Rome from '../../../assets/img/cities/Rome.png';
-import TelAviv from '../../../assets/img/cities/TelAviv.png';
-import Berlin from '../../../assets/img/cities/Berlin.png';
-import Vilnius from '../../../assets/img/cities/Vilnius.png';
-import Warsaw from '../../../assets/img/cities/Warsaw.png';
-import Madrid from '../../../assets/img/cities/Madrid.png';
-import London from '../../../assets/img/cities/London.png';
-import Stub from '../../../assets/img/cities/Stub.png'; // заглушка
-
+import Paris from '../assets/img/cities/Paris.png';
+import Prague from '../assets/img/cities/Prague.png';
+import NewYork from '../assets/img/cities/NewYork.png';
+import Rome from '../assets/img/cities/Rome.png';
+import TelAviv from '../assets/img/cities/TelAviv.png';
+import Berlin from '../assets/img/cities/Berlin.png';
+import Vilnius from '../assets/img/cities/Vilnius.png';
+import Warsaw from '../assets/img/cities/Warsaw.png';
+import Madrid from '../assets/img/cities/Madrid.png';
+import London from '../assets/img/cities/London.png';
+import Stub from '../assets/img/cities/Stub.png';
 export const cities = [
   {
     key: 1,

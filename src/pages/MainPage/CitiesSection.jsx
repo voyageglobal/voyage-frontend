@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import CitiesList from '../../components/common/CitiesList/CitiesList';
-import { cities } from '../../components/common/CitiesData/CitiesData';
+import { cities } from '../сitiesData';
 
 const CitiesSection = () => {
   return (
