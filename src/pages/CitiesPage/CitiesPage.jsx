@@ -1,6 +1,7 @@
 import Page from '../../components/common/Page/Page';
-import CitiesSection from './CitiesSection';
 import HeroSection from './HeroSection';
+import CitiesSection from './CitiesSection';
+import NotFoundSection from './NotFoundSection';
 
 const CitiesPage = () => {
   return (
@@ -10,6 +11,7 @@ const CitiesPage = () => {
     >
       <HeroSection />
       <CitiesSection />
+      <NotFoundSection />
     </Page>
   );
 };
