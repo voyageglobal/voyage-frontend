@@ -4,12 +4,13 @@ import CitiesList from '../../components/common/CitiesList/CitiesList';
 import { cities } from '../сitiesData';
 
 const CitiesSection = () => {
-  const [limit, setLimit] = useState(20);
+  const initialLimit = 20;
+  const limitStep = 10;
+  const [limit, setLimit] = useState(initialLimit);
 
-  const loadMoreCities = () => {
-    setLimit(prevLimit => prevLimit + 10);
+  const increaseLimit = () => {
+    setLimit(prevLimit => prevLimit + limitStep);
   };
-  const allCitiesDisplayed = limit >= cities.length;
 
   return (
     <section className="min-h-[48.13rem] pb-14 pt-28">
@@ -26,15 +27,12 @@ const CitiesSection = () => {
             CREATE GUIDE
           </Link>
         </div>
-        <CitiesList cities={cities} limit={limit} />
-        {!allCitiesDisplayed && (
-          <button
-            className="mx-auto mt-14 block h-10 w-56 cursor-pointer rounded-10px border-none bg-[rgba(23,23,23,0.82)] text-center font-fourth text-base uppercase text-light-color"
-            onClick={loadMoreCities}
-          >
-            LOAD MORE CITIES
-          </button>
-        )}
+        <CitiesList
+          cities={cities}
+          limit={limit}
+          increaseLimit={increaseLimit}
+          showLoadMoreButton
+        />
       </div>
     </section>
   );
