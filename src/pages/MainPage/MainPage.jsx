@@ -7,7 +7,7 @@ import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
 import TravelTips from './TravelTips';
 import MenuBottom from './MenuBottom';
-
+ 
 const MainPage = () => {
   return (
     <Page
