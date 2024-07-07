@@ -23,7 +23,7 @@ const AboutUsSection = () => {
         <img
           className="block h-fit pt-8"
           src={aboutUs}
-          alt="The introductory picture of travelers"
+          alt="The introductory picture of map for about us section."
         />
       </div>
     </section>
