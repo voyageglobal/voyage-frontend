@@ -11,7 +11,7 @@ const CitiesPage = () => {
     >
       <HeroSection />
       <CitiesSection />
-      <NotFoundSection />
+      {false && <NotFoundSection />}
     </Page>
   );
 };

@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import CitiesList from '../../components/common/CitiesList/CitiesList';
 import { cities } from '../сitiesData';
 
+const INITIAL_LIMIT = 20;
+const LIMIT_STEP = 10;
 const CitiesSection = () => {
-  const initialLimit = 20;
-  const limitStep = 10;
-  const [limit, setLimit] = useState(initialLimit);
+  const [limit, setLimit] = useState(INITIAL_LIMIT);
 
-  const increaseLimit = () => {
-    setLimit(prevLimit => prevLimit + limitStep);
-  };
+  const increaseLimit = useCallback(() => {
+    setLimit(prevLimit => prevLimit + LIMIT_STEP);
+  }, []);
 
   return (
     <section className="min-h-[48.13rem] pb-14 pt-28">
