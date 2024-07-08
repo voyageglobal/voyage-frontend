@@ -1,18 +1,7 @@
-import NavBar from '../../components/common/NavBar/NavBar';
-import Footer from '../../components/common/Footer/Footer';
+import Page from '../../components/common/Page/Page';
 
 const CityPage = () => {
-  return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main></main>
-      <footer>
-        <Footer />
-      </footer>
-    </>
-  );
+  return <Page></Page>;
 };
 
 export default CityPage;
