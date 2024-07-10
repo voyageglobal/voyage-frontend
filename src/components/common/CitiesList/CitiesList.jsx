@@ -1,21 +1,32 @@
 import CityCard from '../CityCard/CityCard';
 import { memo } from 'react';
+import usePopularCities from '../../../hooks/usePopularCities';
 
-const CitiesList = ({ cities, limit, increaseLimit, showLoadMoreButton }) => {
+const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
+  const { data: cities, error, isLoading } = usePopularCities();
+
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;
-  const displayedCities = cities.slice(0, citiesLimit);
-  const allCitiesDisplayed = citiesLimit >= cities.length;
+  const displayedCities = cities?.slice(0, citiesLimit) || [];
+  const allCitiesDisplayed = citiesLimit >= (cities?.length || 0);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error loading cities: {error.message}</p>;
+  }
 
   return (
     <>
       <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">
         {displayedCities.map(city => (
-          <li key={city.key}>
+          <li key={city.id}>
             <CityCard
-              cityName={city.cityName}
-              countryName={city.countryName}
-              image={city.image}
+              cityName={city.name}
+              countryName={city.country}
+              image={city.imageUrl}
             />
           </li>
         ))}

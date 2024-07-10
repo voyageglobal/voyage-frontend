@@ -11,6 +11,9 @@
     "prettier": "prettier"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.50.1",
+    "@tanstack/react-query-devtools": "^5.50.1",
+    "axios": "^1.7.2",
     "normalize-scss": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,6 +22,7 @@
     "sass": "^1.77.2"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.50.1",
     "@testing-library/dom": "^10.1.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
