@@ -6,7 +6,7 @@ const popularCitiesQueryKey = 'popularCities';
 
 const usePopularCities = () => {
   const { data, error, isLoading } = useQuery({
-    queryKey: popularCitiesQueryKey,
+    queryKey: [popularCitiesQueryKey],
     queryFn: fetchPopularCities,
   });
 

@@ -1,6 +1,8 @@
 import CityCard from '../CityCard/CityCard';
 import { memo } from 'react';
 import usePopularCities from '../../../hooks/usePopularCities';
+import NotFoundSection from '../../../pages/CitiesPage/NotFoundSection';
+import CitiesListSkeleton from './CitiesListSkeleton';
 
 const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
   const { data: cities, error, isLoading } = usePopularCities();
@@ -11,11 +13,11 @@ const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
   const allCitiesDisplayed = citiesLimit >= (cities?.length || 0);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <CitiesListSkeleton />;
   }
 
   if (error) {
-    return <p>Error loading cities: {error.message}</p>;
+    return <NotFoundSection />;
   }
 
   return (
