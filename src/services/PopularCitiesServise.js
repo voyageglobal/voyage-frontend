@@ -1,26 +1,35 @@
-import axios from 'axios';
+import instance from '../utilities/axios/axios';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-const CITIES_ENDPOINT = import.meta.env.VITE_CITIES_ENDPOINT;
-const DEFAULT_PAGE = import.meta.env.VITE_DEFAULT_PAGE;
-const DEFAULT_PAGE_SIZE = import.meta.env.VITE_DEFAULT_PAGE_SIZE;
-const DEFAULT_SORT_ORDER = import.meta.env.VITE_DEFAULT_SORT_ORDER;
+const DEFAULT_PAGE = 1;
+const DEFAULT_PAGE_SIZE = 10;
+const DEFAULT_SORT_ORDER = 'POPULARITY_DESC';
+const DEFAULT_ENDPOINT = '/cities';
 
 async function fetchPopularCities({
+  endpoint = DEFAULT_ENDPOINT,
   page = DEFAULT_PAGE,
   pageSize = DEFAULT_PAGE_SIZE,
   sortOrder = DEFAULT_SORT_ORDER,
+  onlyWithGuides = false,
 } = {}) {
-  const url = `${BASE_URL}${CITIES_ENDPOINT}`;
   const params = {
     page,
     pageSize,
     sortOrder,
+    onlyWithGuides,
   };
 
-  const { data } = await axios.get(url, { params });
-
-  return data.items;
+  try {
+    const response = await instance.get(endpoint, { params });
+    if (response.data && response.data[0].items) {
+      return response.data[0].items;
+    } else {
+      throw new Error('No data found');
+    }
+  } catch (error) {
+    console.error('Error fetching popular cities:', error);
+    throw error;
+  }
 }
 
 export default fetchPopularCities;
