@@ -21,8 +21,8 @@ async function fetchPopularCities({
 
   try {
     const response = await instance.get(endpoint, { params });
-    if (response.data && response.data[0].items) {
-      return response.data[0].items;
+    if (response.data && response.data.data.items) {
+      return response.data.data.items;
     } else {
       throw new Error('No data found');
     }

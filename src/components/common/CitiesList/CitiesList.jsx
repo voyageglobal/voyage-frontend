@@ -22,7 +22,7 @@ const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
 
   return (
     <>
-      <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">
+      <ul className="mt-8 grid list-none gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
         {displayedCities.map(city => (
           <li key={city.id}>
             <CityCard
