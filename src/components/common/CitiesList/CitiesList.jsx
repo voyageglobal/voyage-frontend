@@ -1,15 +1,19 @@
-import CityCard from '../CityCard/CityCard';
+import { useMemo } from 'react';
 import { memo } from 'react';
+import CityCard from '../CityCard/CityCard';
 import usePopularCities from '../../../hooks/usePopularCities';
 import NotFoundSection from '../../../pages/CitiesPage/NotFoundSection';
 import CitiesListSkeleton from './CitiesListSkeleton';
 
 const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
-  const { data: cities, error, isLoading } = usePopularCities();
+  const { data: cities = [], error, isLoading } = usePopularCities();
 
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;
-  const displayedCities = cities?.slice(0, citiesLimit) || [];
+  const displayedCities = useMemo(
+    () => cities?.slice(0, citiesLimit) || [],
+    [cities, citiesLimit],
+  );
   const allCitiesDisplayed = citiesLimit >= (cities?.length || 0);
 
   if (isLoading) {
@@ -22,7 +26,7 @@ const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
 
   return (
     <>
-      <ul className="mt-8 grid list-none gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
+      <ul className="mt-8 grid list-none gap-x-16 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
         {displayedCities.map(city => (
           <li key={city.id}>
             <CityCard

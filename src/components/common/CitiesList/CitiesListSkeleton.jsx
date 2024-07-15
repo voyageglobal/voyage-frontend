@@ -1,3 +1,4 @@
+import { memo } from 'react';
 const CitiesListSkeleton = () => {
   const skeletons = Array.from({ length: 10 });
 
@@ -16,4 +17,4 @@ const CitiesListSkeleton = () => {
   );
 };
 
-export default CitiesListSkeleton;
+export default memo(CitiesListSkeleton);
