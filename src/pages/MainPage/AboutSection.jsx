@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <section className="min-h-96">
       <div className="container mx-auto flex justify-between pt-24">
-        <div className="flex h-96 max-w-2xl flex-col justify-between">
+        <div className="flex min-h-96 max-w-2xl flex-col justify-between">
           <h2 className="font-fourth text-2rem font-normal">About VOYAGE</h2>
           <p className="mt-8 font-primary text-xl/6">
             We are an independent community of travelers and city experts.
