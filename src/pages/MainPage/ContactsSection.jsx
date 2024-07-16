@@ -17,7 +17,7 @@ const ContactsSection = () => {
           suggestions, or just want to share your thoughts about our website,
           feel free to contact us. We are ready to answer all your inquiries.
         </p>
-        <div className="mt-16 grid grid-cols-[20.4rem_39.3rem] gap-20 px-16">
+        <div className="mt-16 grid gap-20 px-16 sm:grid-cols-1 xl:grid-cols-[20.4rem_39.3rem]">
           <div className="flex flex-col items-center pt-5">
             <h3 className="text-center font-fourth text-xl font-normal">
               Get in touch with us!
@@ -36,7 +36,7 @@ const ContactsSection = () => {
               <h3 className="text-center font-fourth text-xl font-normal">
                 Connect with us
               </h3>
-              <ul className="mt-5 flex list-none justify-between">
+              <ul className="mx-auto mt-5 flex w-80 list-none justify-between">
                 <li>
                   <Link to="#">
                     <FacebookIcon />

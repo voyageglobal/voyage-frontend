@@ -6,7 +6,7 @@ const CityCard = ({ cityName, countryName, image }) => {
     <Link className="flex h-full" to="/cities/id">
       <div className="flex min-h-80 w-44 flex-1 flex-col rounded-10px bg-white/30 font-primary shadow-md">
         <img
-          className="h-64 w-full rounded-10px"
+          className="h-64 w-full rounded-10px object-cover"
           src={image}
           alt={`The picture of ${cityName}`}
         />

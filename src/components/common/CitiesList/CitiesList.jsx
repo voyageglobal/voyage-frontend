@@ -11,7 +11,7 @@ const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;
   const displayedCities = useMemo(
-    () => cities?.slice(0, citiesLimit) || [],
+    () => cities.slice(0, citiesLimit) || [],
     [cities, citiesLimit],
   );
   const allCitiesDisplayed = citiesLimit >= (cities?.length || 0);
