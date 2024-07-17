@@ -1,12 +1,15 @@
-import { useMemo } from 'react';
-import { memo } from 'react';
+import { useMemo, memo } from 'react';
 import CityCard from '../CityCard/CityCard';
-import usePopularCities from '../../../hooks/usePopularCities';
 import NotFoundSection from '../../../pages/CitiesPage/NotFoundSection';
 import CitiesListSkeleton from './CitiesListSkeleton';
 
-const CitiesList = ({ limit, increaseLimit, showLoadMoreButton }) => {
-  const { data: cities = [], error, isLoading } = usePopularCities();
+const CitiesList = ({
+  limit,
+  increaseLimit,
+  showLoadMoreButton,
+  useCitiesHook,
+}) => {
+  const { data: cities = [], error, isLoading } = useCitiesHook();
 
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;

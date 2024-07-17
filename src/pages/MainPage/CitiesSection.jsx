@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CitiesList from '../../components/common/CitiesList/CitiesList';
+import PopularCitiesList from '../../components/common/CitiesList/PopularCitiesList';
 
 const CitiesSection = () => {
   return (
@@ -17,7 +17,7 @@ const CitiesSection = () => {
             View all
           </Link>
         </div>
-        <CitiesList />
+        <PopularCitiesList />
       </div>
     </section>
   );

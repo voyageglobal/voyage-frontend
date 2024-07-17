@@ -4,7 +4,7 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_SIZE = 10;
 const DEFAULT_SORT_ORDER = 'POPULARITY_DESC';
 
-async function fetchPopularCities({
+async function fetchCities({
   page = DEFAULT_PAGE,
   pageSize = DEFAULT_PAGE_SIZE,
   sortOrder = DEFAULT_SORT_ORDER,
@@ -32,4 +32,4 @@ async function fetchPopularCities({
   }
 }
 
-export default fetchPopularCities;
+export default fetchCities;

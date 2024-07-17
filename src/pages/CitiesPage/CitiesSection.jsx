@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import CitiesList from '../../components/common/CitiesList/CitiesList';
+import AllCitiesList from '../../components/common/CitiesList/AllCitiesList';
 
 const INITIAL_LIMIT = 20;
 const LIMIT_STEP = 10;
@@ -26,7 +26,7 @@ const CitiesSection = () => {
             CREATE GUIDE
           </Link>
         </div>
-        <CitiesList
+        <AllCitiesList
           limit={limit}
           increaseLimit={increaseLimit}
           showLoadMoreButton
