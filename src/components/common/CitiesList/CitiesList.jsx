@@ -7,17 +7,19 @@ const CitiesList = ({
   limit,
   increaseLimit,
   showLoadMoreButton,
-  useCitiesHook,
+  data: cities = [],
+  error,
+  isLoading,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
 }) => {
-  const { data: cities = [], error, isLoading } = useCitiesHook();
-
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;
   const displayedCities = useMemo(
     () => cities.slice(0, citiesLimit) || [],
     [cities, citiesLimit],
   );
-  const allCitiesDisplayed = citiesLimit >= (cities?.length || 0);
 
   if (isLoading) {
     return <CitiesListSkeleton />;
@@ -40,7 +42,7 @@ const CitiesList = ({
           </li>
         ))}
       </ul>
-      {showLoadMoreButton && !allCitiesDisplayed && (
+      {showLoadMoreButton && hasNextPage && !isFetchingNextPage && (
         <button
           className="mx-auto mt-14 block h-10 w-56 cursor-pointer rounded-10px border-none bg-[rgba(23,23,23,0.82)] text-center font-fourth text-base uppercase text-light-color"
           onClick={increaseLimit}

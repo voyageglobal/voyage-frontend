@@ -19,7 +19,8 @@ async function fetchCities({
 
   try {
     const response = await instance.get('/cities', { params });
-    const items = response?.data?.data?.items ?? [];
+    const data = response?.data?.data;
+    const items = data.items ?? [];
 
     if (items.length > 0) {
       return items;
