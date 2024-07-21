@@ -1,5 +1,7 @@
+import { memo } from 'react';
 import useAllCities from '../../../hooks/useAllCities';
 import CitiesList from './CitiesList';
+import { FETCH_SETTINGS } from '../../../services/CitiesServise';
 
 const AllCitiesList = ({ limit, increaseLimit }) => {
   const {
@@ -9,7 +11,11 @@ const AllCitiesList = ({ limit, increaseLimit }) => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useAllCities();
+    total,
+  } = useAllCities({
+    pageSize: 50,
+    sortOrder: FETCH_SETTINGS.SORT.NAME_ASC,
+  });
 
   return (
     <CitiesList
@@ -22,8 +28,9 @@ const AllCitiesList = ({ limit, increaseLimit }) => {
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
       isFetchingNextPage={isFetchingNextPage}
+      total={total}
     />
   );
 };
 
-export default AllCitiesList;
+export default memo(AllCitiesList);

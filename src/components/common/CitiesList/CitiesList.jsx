@@ -13,6 +13,7 @@ const CitiesList = ({
   fetchNextPage,
   hasNextPage,
   isFetchingNextPage,
+  total,
 }) => {
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;

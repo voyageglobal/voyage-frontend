@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import usePopularCities from '../../../hooks/usePopularCities';
 import CitiesList from './CitiesList';
 
@@ -26,4 +27,4 @@ const PopularCitiesList = ({ limit, increaseLimit }) => {
   );
 };
 
-export default PopularCitiesList;
+export default memo(PopularCitiesList);
