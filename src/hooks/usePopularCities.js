@@ -12,7 +12,7 @@ const usePopularCities = () => {
   });
 
   const transformedData = useMemo(
-    () => data?.map(transformCityItem) ?? [],
+    () => data?.items?.map(transformCityItem) ?? [],
     [data],
   );
 

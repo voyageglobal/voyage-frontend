@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import fetchCities from '../services/CitiesServise';
 import transformCityItem from '../data/transformCityItem';
@@ -48,4 +48,4 @@ const useAllCities = ({ pageSize, sortOrder }) => {
   };
 };
 
-export default memo(useAllCities);
+export default useAllCities;

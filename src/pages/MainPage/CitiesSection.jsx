@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PopularCitiesList from '../../components/common/CitiesList/PopularCitiesList';
+import PopularCitiesList from '../../features/PopularCitiesList';
 
 const CitiesSection = () => {
   return (

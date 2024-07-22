@@ -3,18 +3,7 @@ import CityCard from '../CityCard/CityCard';
 import NotFoundSection from '../../../pages/CitiesPage/NotFoundSection';
 import CitiesListSkeleton from './CitiesListSkeleton';
 
-const CitiesList = ({
-  limit,
-  increaseLimit,
-  showLoadMoreButton,
-  data: cities = [],
-  error,
-  isLoading,
-  fetchNextPage,
-  hasNextPage,
-  isFetchingNextPage,
-  total,
-}) => {
+const CitiesList = ({ limit, data: cities = [], error, isLoading }) => {
   const defaultLimit = 10;
   const citiesLimit = limit || defaultLimit;
   const displayedCities = useMemo(
@@ -43,14 +32,6 @@ const CitiesList = ({
           </li>
         ))}
       </ul>
-      {showLoadMoreButton && hasNextPage && !isFetchingNextPage && (
-        <button
-          className="mx-auto mt-14 block h-10 w-56 cursor-pointer rounded-10px border-none bg-[rgba(23,23,23,0.82)] text-center font-fourth text-base uppercase text-light-color"
-          onClick={increaseLimit}
-        >
-          LOAD MORE CITIES
-        </button>
-      )}
     </>
   );
 };
