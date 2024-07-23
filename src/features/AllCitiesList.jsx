@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import useAllCities from '../hooks/useAllCities';
 import CitiesList from '../components/common/CitiesList/CitiesList';
-import { FETCH_SETTINGS } from '../services/CitiesServise';
+import { FETCH_SETTINGS } from '../services/CitiesService';
 
 const AllCitiesList = ({ initialLimit = 10 }) => {
   const [limit, setLimit] = useState(initialLimit);
@@ -22,7 +22,6 @@ const AllCitiesList = ({ initialLimit = 10 }) => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    total,
   } = useAllCities({
     pageSize: 50,
     sortOrder: FETCH_SETTINGS.SORT.NAME_ASC,
@@ -37,10 +36,6 @@ const AllCitiesList = ({ initialLimit = 10 }) => {
         data={data}
         error={error}
         isLoading={isLoading}
-        fetchNextPage={fetchNextPage}
-        hasNextPage={hasNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-        total={total}
       />
       {hasNextPage && (
         <button

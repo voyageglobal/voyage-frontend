@@ -1,15 +1,9 @@
+import { memo } from 'react';
 import usePopularCities from '../hooks/usePopularCities';
 import CitiesList from '../components/common/CitiesList/CitiesList';
 
 const PopularCitiesList = ({ limit, increaseLimit }) => {
-  const {
-    data,
-    error,
-    isLoading,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = usePopularCities();
+  const { data, error, isLoading } = usePopularCities();
 
   return (
     <CitiesList
@@ -19,11 +13,8 @@ const PopularCitiesList = ({ limit, increaseLimit }) => {
       data={data}
       error={error}
       isLoading={isLoading}
-      fetchNextPage={fetchNextPage}
-      hasNextPage={hasNextPage}
-      isFetchingNextPage={isFetchingNextPage}
     />
   );
 };
 
-export default PopularCitiesList;
+export default memo(PopularCitiesList);

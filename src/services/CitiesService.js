@@ -30,19 +30,22 @@ async function fetchCities({
 
   try {
     const response = await instance.get('/cities', { params });
-    const data = response?.data?.data;
-    const items = data.items ?? [];
-    const hasMore = data.hasMore ?? false;
-    const total = data.total ?? 0;
-    console.log(data);
 
-    if (items.length > 0) {
-      return { items, hasMore, total };
-    } else {
-      throw new Error('Unable to retrieve popular cities');
+    if (response?.data?.errors) {
+      throw new Error(
+        'Error fetching data: ' + JSON.stringify(response.data.errors),
+      );
     }
+
+    const {
+      items = [],
+      hasMore = false,
+      total = 0,
+    } = response?.data?.data ?? {};
+
+    return { items, hasMore, total };
   } catch (error) {
-    console.error('Error fetching popular cities:', error);
+    console.error('Error fetching cities:', error);
     throw error;
   }
 }

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import fetchCities from '../services/CitiesServise';
+import fetchCities from '../services/CitiesService';
 import transformCityItem from '../data/transformCityItem';
 
 const ALL_CITIES_QUERY_KEY = 'allCities';
@@ -13,7 +13,6 @@ const useAllCities = ({ pageSize, sortOrder }) => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    ...result
   } = useInfiniteQuery({
     queryKey: [ALL_CITIES_QUERY_KEY],
     queryFn: ({ pageParam = 1 }) =>
@@ -29,12 +28,13 @@ const useAllCities = ({ pageSize, sortOrder }) => {
     },
   });
 
-  const transformedData = useMemo(() => {
-    return (
-      data?.pages?.flatMap(page => page.items.map(transformCityItem)) ?? []
-    );
+  const { transformedData, total } = useMemo(() => {
+    const pages = data?.pages ?? [];
+    const items = pages.flatMap(page => page.items.map(transformCityItem));
+    const total = pages[0]?.total ?? 0;
+
+    return { transformedData: items, total };
   }, [data]);
-  const total = useMemo(() => data?.pages[0]?.total ?? 0, [data]);
 
   return {
     data: transformedData,
@@ -44,7 +44,6 @@ const useAllCities = ({ pageSize, sortOrder }) => {
     hasNextPage,
     isFetchingNextPage,
     total,
-    ...result,
   };
 };
 

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import fetchCities from '../services/CitiesServise';
+import fetchCities from '../services/CitiesService';
 import transformCityItem from '../data/transformCityItem';
 
 const POPULAR_CITIES_QUERY_KEY = 'popularCities';
