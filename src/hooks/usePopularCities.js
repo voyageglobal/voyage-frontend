@@ -9,6 +9,7 @@ const usePopularCities = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: [POPULAR_CITIES_QUERY_KEY],
     queryFn: fetchCities,
+    staleTime: 1000 * 60 * 2,
   });
 
   const transformedData = useMemo(
