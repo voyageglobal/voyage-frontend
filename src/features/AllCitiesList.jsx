@@ -25,7 +25,7 @@ const AllCitiesList = () => {
           onClick={fetchNextPage}
           disabled={isFetchingNextPage}
         >
-          {isFetchingNextPage ? 'Loading more...' : 'Load more cities'}
+          {isFetchingNextPage ? 'Loading more....' : 'Load more cities'}
         </button>
       )}
     </div>
