@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import useAllCities from '../hooks/useAllCities';
-import CitiesList from '../components/common/CitiesList/CitiesList';
-import { FETCH_SETTINGS } from '../services/CitiesService';
+import useAllCities from '../../hooks/useAllCities';
+import CitiesList from '../common/CitiesList/CitiesList';
+import { FETCH_SETTINGS } from '../../services/CitiesService';
 
 const AllCitiesList = () => {
   const {
@@ -25,7 +25,7 @@ const AllCitiesList = () => {
           onClick={fetchNextPage}
           disabled={isFetchingNextPage}
         >
-          {isFetchingNextPage ? 'Loading more....' : 'Load more cities'}
+          {isFetchingNextPage ? 'Loading more...' : 'Load more cities'}
         </button>
       )}
     </div>

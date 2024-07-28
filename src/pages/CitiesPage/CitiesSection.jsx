@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import AllCitiesList from '../../features/AllCitiesList';
+import AllCitiesList from '../../components/features/AllCitiesList';
 
 const INITIAL_LIMIT = 20;
 const LIMIT_STEP = 10;
