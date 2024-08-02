@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import { memo } from 'react';
 import useAllCities from '../../hooks/useAllCities';
 import CitiesList from '../common/CitiesList/CitiesList';
 import { FETCH_SETTINGS } from '../../services/CitiesService';
+import { useData } from '../../context/DataContext';
 
-const AllCitiesList = () => {
+const AllCitiesList = ({ initialLimit }) => {
   const {
     data,
     error,
@@ -12,9 +14,16 @@ const AllCitiesList = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useAllCities({
-    pageSize: 10,
+    pageSize: initialLimit,
     sortOrder: FETCH_SETTINGS.SORT.NAME_ASC,
   });
+  const { updateCitiesData } = useData();
+
+  useEffect(() => {
+    if (data) {
+      updateCitiesData(data);
+    }
+  }, [data, updateCitiesData]);
 
   return (
     <div>
