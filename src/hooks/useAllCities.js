@@ -2,13 +2,10 @@ import { useEffect, useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import fetchCities from '../services/CitiesService';
 import transformCityItem from '../data/transformCityItem';
-import { useSearch } from '../context/SearchContext';
 
 const ALL_CITIES_QUERY_KEY = 'allCities';
 
-const useAllCities = ({ pageSize, sortOrder }) => {
-  const { searchQuery } = useSearch();
-
+const useAllCities = ({ pageSize, sortOrder, searchQuery }) => {
   const {
     data,
     error,
@@ -18,7 +15,7 @@ const useAllCities = ({ pageSize, sortOrder }) => {
     isFetchingNextPage,
     refetch,
   } = useInfiniteQuery({
-    queryKey: [ALL_CITIES_QUERY_KEY],
+    queryKey: [ALL_CITIES_QUERY_KEY, searchQuery],
     queryFn: ({ pageParam = 1 }) =>
       fetchCities({
         page: pageParam,
@@ -41,9 +38,11 @@ const useAllCities = ({ pageSize, sortOrder }) => {
     return { transformedData: items, total };
   }, [data]);
 
-  useEffect(() => {
+  const handleSearchQueryChange = () => {
     refetch();
-  }, [searchQuery, refetch]);
+  };
+
+  useEffect(handleSearchQueryChange, [searchQuery, refetch]);
 
   return {
     data: transformedData,

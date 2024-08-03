@@ -1,8 +1,8 @@
 import SearchIcon from '../../../assets/img/searchIcon.svg';
-import { useSearch } from '../../../context/SearchContext';
+import { useCitySearch } from '../../../context/CitySearchContext';
 
 const SearchPanelSecondary = () => {
-  const { setSearchQuery } = useSearch();
+  const { setSearchQuery } = useCitySearch();
 
   const handleSearch = event => {
     event.preventDefault();

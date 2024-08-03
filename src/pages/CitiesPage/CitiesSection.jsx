@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useSearch } from '../../context/SearchContext';
-import { useData } from '../../context/DataContext';
+import { useCitySearch } from '../../context/CitySearchContext';
+import { useCitiesData } from '../../context/CitiesDataContext';
 import AllCitiesList from '../../components/features/AllCitiesList';
 
 const CitiesSection = () => {
-  const { searchQuery } = useSearch();
-  const { citiesData, isDataLoaded } = useData();
+  const { searchQuery } = useCitySearch();
+  const { citiesData, isDataLoaded } = useCitiesData();
 
   const displayText = searchQuery
     ? `City Guides: ${searchQuery}`
