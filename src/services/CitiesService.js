@@ -19,12 +19,14 @@ async function fetchCities({
   page = FETCH_SETTINGS.DEFAULT_PAGE,
   pageSize = FETCH_SETTINGS.DEFAULT_PAGE_SIZE,
   sortOrder = FETCH_SETTINGS.SORT.POPULARITY_DESC,
+  searchString = '',
   onlyWithGuides = FETCH_SETTINGS.ONLY_WITH_GUIDES.FALSE,
 } = {}) {
   const params = {
     page,
     pageSize,
     sortOrder,
+    ...(searchString && { searchString }),
     onlyWithGuides,
   };
 
