@@ -9,7 +9,7 @@ import YoutubeIcon from '../../assets/img/youtubeIcon.svg';
 
 const ContactsSection = () => {
   return (
-    <section className="min-h-[41.81rem] pt-20">
+    <section id="contacts" className="min-h-[41.81rem] pt-20">
       <div className="container mx-auto font-fourth">
         <h2 className="font-fourth text-2rem font-normal">CONTACT US </h2>
         <p className="mt-6 font-primary text-xl">
