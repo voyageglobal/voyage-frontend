@@ -1,18 +1,17 @@
-import NavBar from '../../components/common/NavBar/NavBar';
-import Footer from '../../components/common/Footer/Footer';
+import Page from '../../components/common/Page/Page';
+import TravelTipsHeroSection from '../../pages/TravelTipsPage/TravelTipsHeroSection';
+import TravelTipsAllCards from './TravelTipsAllCards';
 
-const TravelTips = () => {
+const TravelTipsPage = () => {
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main></main>
-      <footer>
-        <Footer />
-      </footer>
-    </>
+    <Page
+      title="TravelTips"
+      description="Welcome to Voyage's Travel Tips page. Here you'll find helpful tips to help you save time and money, make your trip convenient and unforgettable. Check out planning tips, saving tips, and helpful life hacks from seasoned travelers."
+    >
+      <TravelTipsHeroSection />
+      <TravelTipsAllCards />
+    </Page>
   );
 };
 
-export default TravelTips;
+export default TravelTipsPage;
