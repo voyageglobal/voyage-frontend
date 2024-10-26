@@ -1,3 +1,4 @@
+import ScrollToTopOrHash from './hooks/ScrollToTopOrHash';
 import { Routes, Route } from 'react-router-dom';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import CitiesPage from './pages/CitiesPage/CitiesPage';
@@ -12,6 +13,7 @@ import CreateGuidePage from './pages/CreateGuidePage/CreateGuidePage';
 function App() {
   return (
     <>
+      <ScrollToTopOrHash />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
