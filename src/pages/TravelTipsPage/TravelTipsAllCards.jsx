@@ -1,102 +1,74 @@
 import TravelTipsBtn from '../../components/common/Buttons/TravelTipsButtons/TravelTipsBtn';
 import SearchPanelTravelTips from '../../components/common/SearchPanels/SearchPanelTravelTips';
 import TravelTipsCard from '../../components/common/TravelTipsCard/TravelTipsCard';
-import { useState } from 'react';
+import tipsData from '../../data/tipsData';
+import { useState, memo } from 'react';
 
 const TravelTipsAllCards = () => {
   const [activeButtons, setActiveButtons] = useState([]);
 
+  const travelTipsButtons = [
+    { text: 'Packing' },
+    { text: 'Transportation' },
+    { text: 'Accommodation' },
+    { text: 'Local Cuisine' },
+    { text: 'Cheap Trip' },
+    { text: 'All Tips' },
+  ];
+
   const handleButtonClick = buttonName => {
-    setActiveButtons(prevActiveButtons =>
-      prevActiveButtons.includes(buttonName)
-        ? prevActiveButtons.filter(name => name !== buttonName)
-        : [...prevActiveButtons, buttonName],
-    );
+    setActiveButtons(prevActiveButtons => {
+      if (buttonName === 'All Tips') {
+        return prevActiveButtons.includes(buttonName)
+          ? []
+          : travelTipsButtons.map(button => button.text);
+      }
+
+      const isActive = prevActiveButtons.includes(buttonName);
+      if (isActive) {
+        const updatedButtons = prevActiveButtons.filter(
+          name => name !== buttonName,
+        );
+        return updatedButtons.length === 0 ? [] : updatedButtons;
+      } else {
+        return [...prevActiveButtons, buttonName];
+      }
+    });
   };
+
+  const filteredTips =
+    activeButtons.length === 0
+      ? tipsData
+      : tipsData.filter(tip => activeButtons.includes(tip.category));
 
   return (
     <section className="min-h-96 pt-16">
       <div className="container mx-auto flex justify-between">
         <div className="flex w-[47rem] justify-between">
-          <TravelTipsBtn
-            text="Packing"
-            isActive={activeButtons.includes('Packing')}
-            onClick={() => handleButtonClick('Packing')}
-          />
-          <TravelTipsBtn
-            text="Transportation"
-            isActive={activeButtons.includes('Transportation')}
-            onClick={() => handleButtonClick('Transportation')}
-          />
-          <TravelTipsBtn
-            text="Accommodation"
-            isActive={activeButtons.includes('Accommodation')}
-            onClick={() => handleButtonClick('Accommodation')}
-          />
-          <TravelTipsBtn
-            text="Local Cuisine"
-            isActive={activeButtons.includes('Local Cuisine')}
-            onClick={() => handleButtonClick('Local Cuisine')}
-          />
-          <TravelTipsBtn
-            text="Cheap Trip"
-            isActive={activeButtons.includes('Cheap Trip')}
-            onClick={() => handleButtonClick('Cheap Trip')}
-          />
-          <TravelTipsBtn
-            text="All Tips"
-            isActive={activeButtons.includes('All Tips')}
-            onClick={() => handleButtonClick('All Tips')}
-          />
+          {travelTipsButtons.map(({ text }) => (
+            <TravelTipsBtn
+              key={text}
+              text={text}
+              isActive={activeButtons.includes(text)}
+              onClick={() => handleButtonClick(text)}
+            />
+          ))}
         </div>
         <SearchPanelTravelTips />
       </div>
       <div className="container mx-auto mt-12 flex flex-wrap justify-start gap-5">
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
-        <TravelTipsCard
-          tipHeader="Write your first guide"
-          tipText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue a erat semper elementum.Quisque eget risus ornare velit aliquet cursus. Quisque eget mollis diam..."
-          date="05 JULY 2023"
-          image=""
-        />
+        {filteredTips.map(tip => (
+          <TravelTipsCard
+            key={tip.id}
+            tipHeader={tip.tipHeader}
+            tipText={tip.tipText}
+            date={tip.date}
+            image={tip.image}
+          />
+        ))}
       </div>
     </section>
   );
 };
 
-export default TravelTipsAllCards;
+export default memo(TravelTipsAllCards);

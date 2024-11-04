@@ -20,12 +20,12 @@ const SearchPanelSecondary = () => {
         type="search"
         name="query"
         placeholder="India | Deli"
-        aria-label="Search input"
+        aria-label="Search for guides by city or country name"
       />
       <button
         className="flex h-full w-28 items-center justify-center rounded-r-10px bg-dark-color/30 pl-4 pr-5"
         type="submit"
-        aria-label="Open search results"
+        aria-label="Submit search for travel guides and open search results"
       >
         <SearchIcon className="mr-3" aria-hidden="true" />
         <span className="font-primary text-xl">Search</span>

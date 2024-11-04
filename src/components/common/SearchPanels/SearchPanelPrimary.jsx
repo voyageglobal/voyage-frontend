@@ -12,13 +12,14 @@ const SearchPanelPrimary = () => {
         type="search"
         name="query"
         placeholder="Where are we going today?"
+        aria-label="Search for guides by city or country name"
       />
       <button
         className="flex h-4 w-4 items-center justify-center"
         type="submit"
-        aria-label="Open search results"
+        aria-label="Submit search for travel guides and open search results"
       >
-        <SearchIcon />
+        <SearchIcon aria-hidden="true" />
       </button>
     </form>
   );
