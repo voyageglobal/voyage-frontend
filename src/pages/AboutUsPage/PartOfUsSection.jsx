@@ -1,5 +1,5 @@
 import PartOfUs from '../../assets/img/AboutUsPage/PartOfUs.png';
-import { Link } from 'react-router-dom';
+import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
 
 const PartOfUsSection = () => {
   return (
@@ -18,12 +18,7 @@ const PartOfUsSection = () => {
           place, and you&apos;re done! <br /> Make our database as unique as
           your adventures. <br /> Let&apos;s explore together!
         </p>
-        <Link
-          to="/create-guide"
-          className="inline-block h-8 w-56 rounded-10px bg-orange-color text-center font-fourth text-base/8 text-light-color"
-        >
-          CREATE GUIDE
-        </Link>
+        <CreateGuideButton />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import { useCitySearch } from '../../context/CitySearchContext';
 import { useCitiesData } from '../../context/CitiesDataContext';
 import AllCitiesList from '../../components/features/AllCitiesList';
+import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
 
 const CitiesSection = () => {
   const { searchQuery } = useCitySearch();
@@ -22,14 +22,7 @@ const CitiesSection = () => {
           <h3 className="font-fourth text-xl font-normal">
             Explore city guides for your next adventure
           </h3>
-          {showCreateGuideButton && (
-            <Link
-              to="/create-guide"
-              className="inline-block h-8 w-56 rounded-10px bg-orange-color text-center font-fourth text-base/8 text-light-color"
-            >
-              CREATE GUIDE
-            </Link>
-          )}
+          {showCreateGuideButton && <CreateGuideButton />}
         </div>
         <AllCitiesList initialLimit={10} />
       </div>
