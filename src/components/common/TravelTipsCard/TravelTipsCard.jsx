@@ -12,8 +12,9 @@ const TravelTipsCard = ({ tipHeader, tipText, date, image }) => {
   const handleLikeClick = e => {
     e.preventDefault();
     setIsLiked(prevLiked => {
-      setLikesAmount(prev => (prevLiked ? prev - 1 : prev + 1));
-      return !prevLiked;
+      const nextLikedState = !prevLiked;
+      setLikesAmount(prev => (nextLikedState ? prev + 1 : prev - 1));
+      return nextLikedState;
     });
   };
 

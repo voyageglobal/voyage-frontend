@@ -4,53 +4,46 @@ import TravelTipsCard from '../../components/common/TravelTipsCard/TravelTipsCar
 import tipsData from '../../data/tipsData';
 import { useState, memo } from 'react';
 
+const travelTipsButtons = [
+  { key: 'PACKING', text: 'Packing' },
+  { key: 'TRANSPORTATION', text: 'Transportation' },
+  { key: 'ACCOMMODATION', text: 'Accommodation' },
+  { key: 'LOCAL_CUISINE', text: 'Local Cuisine' },
+  { key: 'CHEAP_TRIP', text: 'Cheap Trip' },
+  { key: 'ALL', text: 'All Tips' },
+];
+
 const TravelTipsAllCards = () => {
   const [activeButtons, setActiveButtons] = useState([]);
 
-  const travelTipsButtons = [
-    { text: 'Packing' },
-    { text: 'Transportation' },
-    { text: 'Accommodation' },
-    { text: 'Local Cuisine' },
-    { text: 'Cheap Trip' },
-    { text: 'All Tips' },
-  ];
-
-  const handleButtonClick = buttonName => {
+  const handleButtonClick = buttonKey => {
     setActiveButtons(prevActiveButtons => {
-      if (buttonName === 'All Tips') {
-        return prevActiveButtons.includes(buttonName)
-          ? []
-          : travelTipsButtons.map(button => button.text);
+      const isActive = prevActiveButtons.includes(buttonKey);
+      if (buttonKey === 'ALL') {
+        return isActive ? [] : travelTipsButtons.map(button => button.key);
       }
 
-      const isActive = prevActiveButtons.includes(buttonName);
-      if (isActive) {
-        const updatedButtons = prevActiveButtons.filter(
-          name => name !== buttonName,
-        );
-        return updatedButtons.length === 0 ? [] : updatedButtons;
-      } else {
-        return [...prevActiveButtons, buttonName];
-      }
+      return isActive
+        ? prevActiveButtons.filter(key => key !== buttonKey)
+        : [...prevActiveButtons, buttonKey];
     });
   };
 
   const filteredTips =
-    activeButtons.length === 0
+    activeButtons.length === 0 || activeButtons.includes('ALL')
       ? tipsData
-      : tipsData.filter(tip => activeButtons.includes(tip.category));
+      : tipsData.filter(tip => activeButtons.includes(tip.category.key));
 
   return (
     <section className="min-h-96 pt-16">
       <div className="container mx-auto flex justify-between">
         <div className="flex w-[47rem] justify-between">
-          {travelTipsButtons.map(({ text }) => (
+          {travelTipsButtons.map(({ key, text }) => (
             <TravelTipsBtn
-              key={text}
+              key={key}
               text={text}
-              isActive={activeButtons.includes(text)}
-              onClick={() => handleButtonClick(text)}
+              isActive={activeButtons.includes(key)}
+              onClick={() => handleButtonClick(key)}
             />
           ))}
         </div>
