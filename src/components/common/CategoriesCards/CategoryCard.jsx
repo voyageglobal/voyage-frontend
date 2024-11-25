@@ -8,7 +8,12 @@ const CategoryCard = ({
   backgroundImage,
   icon,
   onClick,
+  withAriaPressed = true,
 }) => {
+  const ariaLabel =
+    title === 'Without Category'
+      ? 'A button that removes the selection from all category filters'
+      : `A button that sorts city guides by parameter ${title}`;
   return (
     <button
       className={cn(
@@ -20,7 +25,8 @@ const CategoryCard = ({
         className,
       )}
       onClick={onClick}
-      aria-label={`A button that sorts city guides by parameter ${title}`}
+      aria-label={ariaLabel}
+      aria-pressed={withAriaPressed ? isActive : undefined}
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
