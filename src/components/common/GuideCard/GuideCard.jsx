@@ -20,7 +20,7 @@ const GuideCard = ({ guideTitle, backgroundImage, icons }) => {
         </div>
 
         <div className="mt-auto flex h-16 w-full items-center justify-between rounded-b-lg bg-light-color/80 px-2.5">
-          <p className="mx-1.5 mt-2.5 line-clamp-1 break-words text-base">
+          <p className="mx-1.5 mt-2.5 line-clamp-2 break-words text-base">
             {guideTitle}
           </p>
           <div className="fill-current">{icons}</div>
