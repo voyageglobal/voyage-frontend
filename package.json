@@ -14,12 +14,14 @@
     "@tanstack/react-query": "^5.50.1",
     "@tanstack/react-query-devtools": "^5.50.1",
     "axios": "^1.7.2",
+    "clsx": "^2.1.1",
     "normalize-scss": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.23.1",
-    "sass": "^1.77.2"
+    "sass": "^1.77.2",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.50.1",
