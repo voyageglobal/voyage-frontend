@@ -9,22 +9,21 @@ import CategoriesButtonsData, { Icons } from '../../data/categoriesData';
 import Stub from '../../assets/img/cities/Stub.png';
 
 const CityPageGuides = () => {
-  const [activeButtons, setActiveButtons] = useState([]);
+  const [activeKeys, setActiveKeys] = useState([]);
 
   const handleButtonClick = buttonKey => {
-    const isActive = activeButtons.includes(buttonKey);
-
-    setActiveButtons(prevActiveButtons => {
+    setActiveKeys(prevActiveKeys => {
       if (buttonKey === 'NO_CATEGORY') {
-        return isActive ? [] : CategoriesButtonsData.map(button => button.key);
+        return [];
       }
+      const isActive = prevActiveKeys.includes(buttonKey);
       return isActive
-        ? prevActiveButtons.filter(key => key !== buttonKey)
-        : [...prevActiveButtons, buttonKey];
+        ? prevActiveKeys.filter(key => key !== buttonKey)
+        : [...prevActiveKeys, buttonKey];
     });
   };
 
-  const titleStub =
+  let titleStub =
     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet vel dolorum dicta ducimus accusamus ex, sint deleniti quos earum ad quibusdam totam, obcaecati velit impedit, quam odio quaerat deserunt debitis?';
 
   return (
@@ -38,7 +37,7 @@ const CityPageGuides = () => {
                 <CategoryCard
                   key={key}
                   title={categoryName}
-                  isActive={activeButtons.includes(key)}
+                  isActive={activeKeys.includes(key)}
                   onClick={() => handleButtonClick(key)}
                   icon={icon}
                   backgroundImage={backgroundImage}
@@ -49,7 +48,6 @@ const CityPageGuides = () => {
           </div>
         </div>
       </section>
-
       <section className="min-h-96 pt-12">
         <div className="container mx-auto">
           <div className="flex justify-between">
@@ -72,6 +70,8 @@ const CityPageGuides = () => {
             <GuideCard
               key={titleStub}
               guideTitle={titleStub}
+              isActive={activeKeys.includes('HISTORICAL')}
+              onClick={() => handleButtonClick('HISTORICAL')}
               icons={Icons.Culture}
               backgroundImage={Stub}
             />
