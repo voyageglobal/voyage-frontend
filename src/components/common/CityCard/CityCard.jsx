@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CityCard = ({ cityName, countryName, image }) => {
   return (
-    <Link className="flex h-full" to="/cities/id">
+    <Link className="flex h-full" to="/cities/guides">
       <div className="flex min-h-80 w-44 flex-1 flex-col rounded-10px bg-white/30 font-primary shadow-md">
         <img
           className="h-64 w-full rounded-10px object-cover"
