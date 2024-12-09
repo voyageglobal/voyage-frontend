@@ -19,6 +19,7 @@ const GuidesList = ({ data: guides = [], error, isLoading }) => {
           <GuideCard
             guideId={guide.id}
             guideTitle={guide.name}
+            guideText={guide.description}
             backgroundImage={guide.imageUrl}
             categories={guide.categories}
           />
