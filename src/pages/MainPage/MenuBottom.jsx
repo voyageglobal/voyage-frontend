@@ -17,19 +17,19 @@ const MenuBottom = () => {
             </h3>
             <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/id">Paris</MenuBottomLink>
+                <MenuBottomLink to="/cities/guides">Paris</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/id">Prague</MenuBottomLink>
+                <MenuBottomLink to="/cities/guides">Prague</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/id">New York</MenuBottomLink>
+                <MenuBottomLink to="/cities/guides">New York</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/id">Rome</MenuBottomLink>
+                <MenuBottomLink to="/cities/guides">Rome</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/id">Tel Aviv</MenuBottomLink>
+                <MenuBottomLink to="/cities/guides">Tel Aviv</MenuBottomLink>
               </li>
             </ul>
           </div>
