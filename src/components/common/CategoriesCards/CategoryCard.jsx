@@ -1,11 +1,10 @@
 import { memo } from 'react';
 import { cn } from '../../../utilities/cn';
-import { ErrorBoundary } from 'react-error-boundary';
-import FallbackIcon from '../../../utilities/FallbackIcon';
 
 import Stub from '../../../assets/img/Stub.png';
 
 const CategoryCard = ({
+  key,
   title,
   className,
   isActive,
@@ -15,7 +14,7 @@ const CategoryCard = ({
   withAriaPressed = true,
 }) => {
   const ariaLabel =
-    title === 'Without Category'
+    key === 'NO_CATEGORY'
       ? 'A button that removes the selection from all category filters'
       : `A button that sorts city guides by parameter ${title}`;
 
@@ -24,7 +23,7 @@ const CategoryCard = ({
       className={cn(
         'flex h-48 w-[8.625rem] transform rounded-lg transition duration-300 ease-in-out hover:text-orange-color hover:shadow-xl',
         isActive
-          ? 'scale-105 rounded-lg stroke-current text-orange-color shadow-[0_0_15px_rgba(255,125,0,0.6)] ring-1 ring-inset ring-orange-color'
+          ? 'scale-105 stroke-current text-orange-color shadow-[0_0_15px_rgba(255,125,0,0.6)] ring-1 ring-inset ring-orange-color'
           : 'text-dark-color',
 
         className,
@@ -40,9 +39,7 @@ const CategoryCard = ({
     >
       <div className="flex h-16 w-full items-center justify-between self-end rounded-b-lg bg-light-color/80 px-2.5">
         <div className="mt-2 text-start font-fourth text-sm">{title}</div>
-        <div className="stroke-current">
-          <ErrorBoundary FallbackComponent={FallbackIcon}>{icon}</ErrorBoundary>
-        </div>
+        <div className="stroke-current">{icon}</div>
       </div>
     </button>
   );

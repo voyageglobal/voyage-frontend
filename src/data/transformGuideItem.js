@@ -8,8 +8,12 @@ const transformGuideItem = guide => {
     startDate: guide.visitedDateStart,
     endDate: guide.visitedDateEnd,
     categories: guide.categories,
-    cities: guide.cities.map(city => city.name),
-    country: guide.countries[0]?.name || 'Unknown Country',
+    cities: guide.cities.map(city => ({ id: city.id, name: city.name })),
+    country: {
+      id: guide.countries[0]?.id || 'Unknown Country ID',
+      name: guide.countries[0]?.name || 'Unknown Country',
+      flag: guide.countries[0]?.flag || '',
+    },
     flag: guide.countries[0]?.flag || '',
     imageUrl: guide.primaryImages[0]?.url || Stub,
   };

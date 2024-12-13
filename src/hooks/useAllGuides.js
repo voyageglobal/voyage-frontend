@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import fetchGuides from '../services/GuidesService';
 import transformGuideItem from '../data/transformGuideItem';
@@ -38,9 +38,9 @@ const useAllGuides = ({ pageSize, sortOrder, searchQuery }) => {
     return { transformedData: items, total };
   }, [data]);
 
-  const handleSearchQueryChange = () => {
+  const handleSearchQueryChange = useCallback(() => {
     refetch();
-  };
+  }, [refetch]);
 
   useEffect(handleSearchQueryChange, [searchQuery, refetch]);
   return {

@@ -1,50 +1,24 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
 
 import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
 import GuidesList from '../../components/common/GuidesList/GuidesList';
-import Icon from '../../components/common/Icon/Icon';
-import CategoriesSkeleton from '../../components/common/CategoriesCards/CategoriesSkeleton';
+import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
 
 import useAllGuides from '../../hooks/useAllGuides';
-import { fetchCategories } from '../../services/CategoriesService';
-
-import FallbackIcon from '../../utilities/FallbackIcon';
-import NoCategory from '../../assets/img/CategoriesCards/NoCategory.png';
+import useAllCategories from '../../hooks/useAllCategories';
+import LoadingCategories from './LoadingCategories';
+import ErrorCategories from './ErrorCategories';
 
 const CityPageGuides = () => {
   const [activeKeys, setActiveKeys] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [loadingCategories, setLoadingCategories] = useState(true);
-  const [errorCategories, setErrorCategories] = useState(null);
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const categoriesData = await fetchCategories();
-
-        const updatedCategories = [
-          ...categoriesData,
-          {
-            key: 'NO_CATEGORY',
-            name: 'Clear Categories',
-            imageUrl: NoCategory,
-            iconName: 'circle-off',
-          },
-        ];
-
-        setCategories(updatedCategories);
-      } catch (error) {
-        setErrorCategories(error);
-      } finally {
-        setLoadingCategories(false);
-      }
-    };
-
-    getCategories();
-  }, []);
+  const {
+    data: categories = [],
+    isLoading: loadingCategories,
+    error: errorCategories,
+  } = useAllCategories();
 
   const handleButtonClick = buttonKey => {
     setActiveKeys(prevActiveKeys => {
@@ -69,47 +43,34 @@ const CityPageGuides = () => {
     searchQuery: '',
   });
 
-  const filteredGuides = guides.filter(guide => {
-    if (activeKeys.length === 0) {
-      return true;
-    }
+  const filteredGuides = useMemo(() => {
+    return guides.filter(guide => {
+      if (activeKeys.length === 0) {
+        return true;
+      }
 
-    if (activeKeys.includes('NO_CATEGORY')) {
-      return !guide.categories || guide.categories.length === 0;
-    }
+      if (activeKeys.includes('NO_CATEGORY')) {
+        return !guide.categories || guide.categories.length === 0;
+      }
 
-    return guide.categories?.some(category =>
-      activeKeys.includes(category.key),
-    );
-  });
+      return guide.categories?.some(category =>
+        activeKeys.includes(category.key),
+      );
+    });
+  }, [guides, activeKeys]);
 
   if (loadingCategories) {
-    return (
-      <section className="min-h-96 pt-12">
-        <div className="container mx-auto">
-          <h3 className="font-fourth text-xl">Select a guide category</h3>
-          <CategoriesSkeleton />
-        </div>
-      </section>
-    );
+    return <LoadingCategories />;
   }
 
   if (errorCategories) {
     return (
-      <section className="min-h-96 pt-12">
-        <div className="container mx-auto">
-          <h3 className="font-fourth text-xl">Select a guide category</h3>
-          <CategoriesSkeleton />
-          <div className="mt-5 font-fourth text-xl text-red-500">
-            <p>Error loading categories: {errorCategories.message}</p>
-          </div>
-          <GuidesList
-            data={filteredGuides}
-            error={error}
-            isLoading={isLoading}
-          />
-        </div>
-      </section>
+      <ErrorCategories
+        errorMessage={errorCategories.message}
+        filteredGuides={filteredGuides}
+        error={error}
+        isLoading={isLoading}
+      />
     );
   }
   return (
@@ -126,11 +87,7 @@ const CityPageGuides = () => {
                   isActive={activeKeys.includes(key)}
                   onClick={() => handleButtonClick(key)}
                   backgroundImage={imageUrl}
-                  icon={
-                    <ErrorBoundary FallbackComponent={FallbackIcon}>
-                      <Icon name={iconName} size="20px" />
-                    </ErrorBoundary>
-                  }
+                  icon={<DynamicIcon name={iconName} size="20px" />}
                   withAriaPressed={key !== 'NO_CATEGORY'}
                 />
               );

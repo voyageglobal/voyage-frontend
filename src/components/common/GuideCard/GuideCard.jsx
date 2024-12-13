@@ -1,11 +1,9 @@
 import { useMemo, useState, useCallback, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '../../../utilities/cn';
-import Icon from '../Icon/Icon';
-import { ErrorBoundary } from 'react-error-boundary';
-import FallbackIcon from '../../../utilities/FallbackIcon';
+import DynamicIcon from '../DynamicIcon/DynamicIcon';
 
 const GuideCard = ({
   guideId,
@@ -13,6 +11,7 @@ const GuideCard = ({
   guideText,
   backgroundImage,
   categories,
+  cityId,
 }) => {
   const [likesAmount, setLikesAmount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -31,7 +30,8 @@ const GuideCard = ({
 
   const handleShareClick = async e => {
     e.preventDefault();
-    const guideUrl = `${window.location.origin}/cities/guides/${guideId}`;
+    const guideUrl = `${window.location.origin}${generatePath('/cities/guides/:id', { id: guideId })}`;
+
     try {
       await navigator.clipboard.writeText(guideUrl);
       toast.success(`Copied to clipboard: ${guideUrl}`, {
@@ -57,7 +57,7 @@ const GuideCard = ({
   const categoryIcons = useMemo(
     () =>
       categories.map(category => (
-        <Icon
+        <DynamicIcon
           key={category.key}
           name={category.iconName}
           className="text-dark-color/80"
@@ -71,14 +71,14 @@ const GuideCard = ({
     <>
       <Link
         className="flex h-full"
-        to={`/cities/guides/${guideId}`}
+        to={`/cities/${cityId}/${guideId}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div
           className="flex h-64 w-64 flex-col justify-between rounded-10px bg-white/30 font-primary shadow-md"
           style={{
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundImage: `url('${backgroundImage}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -99,7 +99,7 @@ const GuideCard = ({
                     : 'Add like to this guide'
                 }
               >
-                <Icon
+                <DynamicIcon
                   name="heart"
                   size="24px"
                   className={cn(
@@ -127,7 +127,7 @@ const GuideCard = ({
                 onClick={handleShareClick}
                 aria-label="Share this guide"
               >
-                <Icon
+                <DynamicIcon
                   name="link"
                   size="21px"
                   strokeWidth={3}
@@ -150,19 +150,18 @@ const GuideCard = ({
                 </p>
               </div>
               <Link
-                to={`/cities/guides/${guideId}`}
+                to={`/cities/:id/${guideId}`}
                 className="mx-3.5 underline hover:text-orange-color"
               >
                 <p className="inline-block font-fourth text-lg font-medium">
                   Read More
                 </p>
-                <ErrorBoundary FallbackComponent={FallbackIcon}>
-                  <Icon
-                    name="arrow-right-to-line"
-                    className="ml-0.5 inline-block"
-                    size="20px"
-                  />
-                </ErrorBoundary>
+
+                <DynamicIcon
+                  name="arrow-right-to-line"
+                  className="ml-0.5 inline-block"
+                  size="20px"
+                />
               </Link>
             </div>
           ) : (
