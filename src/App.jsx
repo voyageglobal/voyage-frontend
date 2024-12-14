@@ -10,20 +10,32 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
 import CreateGuidePage from './pages/CreateGuidePage/CreateGuidePage';
 
+const ROUTES = {
+  main: '/',
+  aboutUs: '/about-us',
+  cities: '/cities',
+  city: '/cities/:id',
+  contacts: '/contacts',
+  signIn: '/sign-in',
+  travelTips: '/travel-tips',
+  createGuide: '/create-guide',
+  notFound: '*',
+};
+
 function App() {
   return (
     <>
       <ScrollToTopOrHash />
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/cities" element={<CitiesPage />} />
-        <Route path="/cities/:id" element={<CityPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/travel-tips" element={<TravelTipsPage />} />
-        <Route path="/create-guide" element={<CreateGuidePage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={ROUTES.main} element={<MainPage />} />
+        <Route path={ROUTES.aboutUs} element={<AboutUsPage />} />
+        <Route path={ROUTES.cities} element={<CitiesPage />} />
+        <Route path={ROUTES.city} element={<CityPage />} />
+        <Route path={ROUTES.contacts} element={<ContactsPage />} />
+        <Route path={ROUTES.signIn} element={<SignInPage />} />
+        <Route path={ROUTES.travelTips} element={<TravelTipsPage />} />
+        <Route path={ROUTES.createGuide} element={<CreateGuidePage />} />
+        <Route path={ROUTES.notFound} element={<NotFoundPage />} />
       </Routes>
     </>
   );

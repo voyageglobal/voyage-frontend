@@ -8,7 +8,7 @@ const CitiesList = ({ data: cities = [], error, isLoading }) => {
     return <CitiesListSkeleton />;
   }
 
-  if (error || (cities.length == 0 && !isLoading)) {
+  if (error || (cities.length === 0 && !isLoading)) {
     return <NotFoundSection />;
   }
 

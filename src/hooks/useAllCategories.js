@@ -4,19 +4,18 @@ import NoCategory from '../assets/img/CategoriesCards/NoCategory.png';
 
 const ALL_CATEGORIES_QUERY_KEY = 'categories';
 
+export const noCategoryButton = {
+  key: 'NO_CATEGORY',
+  name: 'Clear Categories',
+  imageUrl: NoCategory,
+  iconName: 'circle-off',
+};
+
 const useAllCategories = () => {
   return useQuery({
-    queryKey: ALL_CATEGORIES_QUERY_KEY,
+    queryKey: [ALL_CATEGORIES_QUERY_KEY],
     queryFn: fetchCategories,
-    select: categoriesData => [
-      ...categoriesData,
-      {
-        key: 'NO_CATEGORY',
-        name: 'Clear Categories',
-        imageUrl: NoCategory,
-        iconName: 'circle-off',
-      },
-    ],
+    select: categoriesData => [...categoriesData, noCategoryButton],
   });
 };
 

@@ -4,6 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '../../../utilities/cn';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
+import { Link as LinkIcon, Heart, ArrowRightToLine } from 'lucide-react';
 
 const GuideCard = ({
   guideId,
@@ -30,6 +31,7 @@ const GuideCard = ({
 
   const handleShareClick = async e => {
     e.preventDefault();
+
     const guideUrl = `${window.location.origin}${generatePath('/cities/guides/:id', { id: guideId })}`;
 
     try {
@@ -99,8 +101,7 @@ const GuideCard = ({
                     : 'Add like to this guide'
                 }
               >
-                <DynamicIcon
-                  name="heart"
+                <Heart
                   size="24px"
                   className={cn(
                     'fill-current stroke-none hover:text-orange-color',
@@ -117,7 +118,7 @@ const GuideCard = ({
               </button>
             </div>
             {isHovered ? (
-              <div className="my-auto ml-2 w-9/12 text-left font-fourth text-lg font-light italic">
+              <div className="my-auto ml-2 w-8/12 font-fourth text-lg font-light italic">
                 <p>Voyager</p>
               </div>
             ) : null}
@@ -127,8 +128,7 @@ const GuideCard = ({
                 onClick={handleShareClick}
                 aria-label="Share this guide"
               >
-                <DynamicIcon
-                  name="link"
+                <LinkIcon
                   size="21px"
                   strokeWidth={3}
                   className="text-dark-color/80 hover:text-orange-color"
@@ -141,13 +141,11 @@ const GuideCard = ({
               <div className="mx-3.5 mt-2.5">
                 <p
                   title={guideTitle}
-                  className="line-clamp-3 break-words font-fourth text-lg font-medium"
+                  className="line-clamp-3 break-words font-fourth text-lg/4 font-medium"
                 >
                   {guideTitle}
                 </p>
-                <p title={guideText} className="line-clamp-6 font-light">
-                  {guideText}
-                </p>
+                <p className="mt-2 line-clamp-5 font-light">{guideText}</p>
               </div>
               <Link
                 to={`/cities/:id/${guideId}`}
@@ -156,19 +154,14 @@ const GuideCard = ({
                 <p className="inline-block font-fourth text-lg font-medium">
                   Read More
                 </p>
-
-                <DynamicIcon
-                  name="arrow-right-to-line"
-                  className="ml-0.5 inline-block"
-                  size="20px"
-                />
+                <ArrowRightToLine className="ml-0.5 inline-block" size="20px" />
               </Link>
             </div>
           ) : (
             <div className="mt-auto flex h-16 w-full items-center justify-between rounded-b-lg bg-light-color/90 px-2.5">
               <p
                 title={guideTitle}
-                className="mx-1.5 mt-2.5 line-clamp-2 break-words font-fourth text-lg font-medium"
+                className="mx-1.5 mt-2.5 line-clamp-2 w-8/12 break-words font-fourth text-lg/4 font-medium"
               >
                 {guideTitle}
               </p>

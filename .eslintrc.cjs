@@ -30,5 +30,6 @@ module.exports = {
       },
     ],
     'react/jsx-no-target-blank': 'off',
+    eqeqeq: 'warn',
   },
 };
