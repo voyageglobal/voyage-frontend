@@ -10,7 +10,10 @@ const CityCard = ({ cityId, cityName, countryName, image }) => {
           src={image}
           alt={`The picture of ${cityName}`}
         />
-        <p className="mx-1.5 mt-2.5 break-words text-xl uppercase">
+        <p
+          title={cityName}
+          className="mx-1.5 mt-2.5 line-clamp-2 break-words text-xl uppercase"
+        >
           {cityName}
         </p>
         <p className="mx-1.5 mt-2.5 break-words text-base">{countryName}</p>

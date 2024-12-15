@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { cn } from '../../../utilities/cn';
-import { noCategoryButton } from '../../../hooks/useAllCategories';
+import { NO_CATEGORY_BUTTON } from '../../../hooks/useAllCategories';
 
 import Stub from '../../../assets/img/Stub.png';
 
@@ -15,7 +15,7 @@ const CategoryCard = ({
   withAriaPressed = true,
 }) => {
   const ariaLabel =
-    categoryKey === noCategoryButton.key
+    categoryKey === NO_CATEGORY_BUTTON.key
       ? 'A button that removes the selection from all category filters'
       : `A button that sorts city guides by parameter ${title}`;
 

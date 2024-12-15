@@ -1,12 +1,7 @@
+import { memo } from 'react';
 import CategoriesSkeleton from '../../components/common/CategoriesCards/CategoriesSkeleton';
-import GuidesList from '../../components/common/GuidesList/GuidesList';
 
-const ErrorCategories = ({
-  errorMessage,
-  filteredGuides,
-  error,
-  isLoading,
-}) => {
+const ErrorCategories = ({ errorMessage }) => {
   return (
     <section className="min-h-96 pt-12">
       <div className="container mx-auto">
@@ -15,10 +10,9 @@ const ErrorCategories = ({
         <div className="mt-5 font-fourth text-xl text-red-500">
           <p>Error loading categories: {errorMessage}</p>
         </div>
-        <GuidesList data={filteredGuides} error={error} isLoading={isLoading} />
       </div>
     </section>
   );
 };
 
-export default ErrorCategories;
+export default memo(ErrorCategories);

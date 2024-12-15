@@ -5,7 +5,7 @@ import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
 import GuidesList from '../../components/common/GuidesList/GuidesList';
 import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
-import { noCategoryButton } from '../../hooks/useAllCategories';
+import { NO_CATEGORY_BUTTON } from '../../hooks/useAllCategories';
 
 import useAllGuides from '../../hooks/useAllGuides';
 import useAllCategories from '../../hooks/useAllCategories';
@@ -23,14 +23,14 @@ const CityPageGuides = () => {
 
   const handleButtonClick = buttonKey => {
     setActiveKeys(prevActiveKeys => {
-      if (buttonKey === noCategoryButton.key) return [];
+      if (buttonKey === NO_CATEGORY_BUTTON.key) return [];
 
       const isActive = prevActiveKeys.includes(buttonKey);
       const updatedKeys = isActive
         ? prevActiveKeys.filter(key => key !== buttonKey)
         : [...prevActiveKeys, buttonKey];
 
-      return updatedKeys.filter(key => key !== noCategoryButton.key);
+      return updatedKeys.filter(key => key !== NO_CATEGORY_BUTTON.key);
     });
   };
 
@@ -50,7 +50,7 @@ const CityPageGuides = () => {
         return true;
       }
 
-      if (activeKeys.includes(noCategoryButton.key)) {
+      if (activeKeys.includes(NO_CATEGORY_BUTTON.key)) {
         return !guide.categories || guide.categories.length === 0;
       }
 
@@ -90,7 +90,7 @@ const CityPageGuides = () => {
                   onClick={() => handleButtonClick(key)}
                   backgroundImage={imageUrl}
                   icon={<DynamicIcon name={iconName} size="20px" />}
-                  withAriaPressed={key !== noCategoryButton.key}
+                  withAriaPressed={key !== NO_CATEGORY_BUTTON.key}
                 />
               );
             })}

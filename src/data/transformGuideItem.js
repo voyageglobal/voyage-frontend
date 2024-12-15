@@ -10,7 +10,7 @@ const transformGuideItem = guide => {
     categories: guide.categories,
     cities: guide.cities.map(city => ({ id: city.id, name: city.name })),
     country: {
-      id: guide.countries[0]?.id || 'Unknown Country ID',
+      id: guide.countries[0]?.id || null,
       name: guide.countries[0]?.name || 'Unknown Country',
       flag: guide.countries[0]?.flag || '',
     },
