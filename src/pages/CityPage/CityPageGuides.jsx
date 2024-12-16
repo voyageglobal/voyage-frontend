@@ -1,53 +1,103 @@
-import { useState, memo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import GuideCard from '../../components/common/GuideCard/GuideCard';
 import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
+import GuidesList from '../../components/common/GuidesList/GuidesList';
+import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
+import { NO_CATEGORY_BUTTON } from '../../hooks/useAllCategories';
 
-import CategoriesButtonsData, { Icons } from '../../data/categoriesData';
-import Stub from '../../assets/img/cities/Stub.png';
+import useAllGuides from '../../hooks/useAllGuides';
+import useAllCategories from '../../hooks/useAllCategories';
+import LoadingCategories from './LoadingCategories';
+import ErrorCategories from './ErrorCategories';
 
 const CityPageGuides = () => {
   const [activeKeys, setActiveKeys] = useState([]);
 
+  const {
+    data: categories = [],
+    isLoading: loadingCategories,
+    error: errorCategories,
+  } = useAllCategories();
+
   const handleButtonClick = buttonKey => {
     setActiveKeys(prevActiveKeys => {
-      if (buttonKey === 'NO_CATEGORY') {
-        return [];
-      }
+      if (buttonKey === NO_CATEGORY_BUTTON.key) return [];
+
       const isActive = prevActiveKeys.includes(buttonKey);
-      return isActive
+      const updatedKeys = isActive
         ? prevActiveKeys.filter(key => key !== buttonKey)
         : [...prevActiveKeys, buttonKey];
+
+      return updatedKeys.filter(key => key !== NO_CATEGORY_BUTTON.key);
     });
   };
 
-  let titleStub =
-    'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet vel dolorum dicta ducimus accusamus ex, sint deleniti quos earum ad quibusdam totam, obcaecati velit impedit, quam odio quaerat deserunt debitis?';
+  const {
+    data: guides,
+    error,
+    isLoading,
+  } = useAllGuides({
+    pageSize: 10,
+    sortOrder: 'popular',
+    searchQuery: '',
+  });
 
+  const filteredGuides = useMemo(() => {
+    return guides.filter(guide => {
+      if (activeKeys.length === 0) {
+        return true;
+      }
+
+      if (activeKeys.includes(NO_CATEGORY_BUTTON.key)) {
+        return !guide.categories || guide.categories.length === 0;
+      }
+
+      return guide.categories?.some(category =>
+        activeKeys.includes(category.key),
+      );
+    });
+  }, [guides, activeKeys]);
+
+  if (loadingCategories) {
+    return <LoadingCategories />;
+  }
+
+  if (errorCategories) {
+    return (
+      <ErrorCategories
+        errorMessage={errorCategories.message}
+        filteredGuides={filteredGuides}
+        error={error}
+        isLoading={isLoading}
+      />
+    );
+  }
   return (
     <>
       <section className="min-h-96 pt-12">
         <div className="container mx-auto">
           <h3 className="font-fourth text-xl">Select a guide category</h3>
           <div className="mt-10 flex justify-between">
-            {CategoriesButtonsData.map(
-              ({ key, categoryName, icon, backgroundImage }) => (
+            {categories.map(({ key, name, imageUrl, iconName }) => {
+              return (
                 <CategoryCard
                   key={key}
-                  title={categoryName}
+                  categoryKey={key}
+                  title={name}
                   isActive={activeKeys.includes(key)}
                   onClick={() => handleButtonClick(key)}
-                  icon={icon}
-                  backgroundImage={backgroundImage}
-                  withAriaPressed={key !== 'NO_CATEGORY'}
+                  backgroundImage={imageUrl}
+                  icon={<DynamicIcon name={iconName} size="20px" />}
+                  withAriaPressed={key !== NO_CATEGORY_BUTTON.key}
                 />
-              ),
-            )}
+              );
+            })}
           </div>
         </div>
       </section>
+
       <section className="min-h-96 pt-12">
         <div className="container mx-auto">
           <div className="flex justify-between">
@@ -55,7 +105,6 @@ const CityPageGuides = () => {
               <h3 className="inline-block pr-2.5 text-xl">
                 Guides to the city of
               </h3>
-
               <Link
                 className="inline-block text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
                 to="/cities"
@@ -66,14 +115,11 @@ const CityPageGuides = () => {
             <CreateGuideButton />
           </div>
 
-          <div className="mt-10 flex justify-between">
-            <GuideCard
-              key={titleStub}
-              guideTitle={titleStub}
-              isActive={activeKeys.includes('HISTORICAL')}
-              onClick={() => handleButtonClick('HISTORICAL')}
-              icons={Icons.Culture}
-              backgroundImage={Stub}
+          <div className="mt-10">
+            <GuidesList
+              data={filteredGuides}
+              error={error}
+              isLoading={isLoading}
             />
           </div>
         </div>

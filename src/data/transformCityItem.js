@@ -1,4 +1,4 @@
-import Stub from '../assets/img/cities/Stub.png';
+import Stub from '../assets/img/Stub.png';
 
 const transformCityItem = city => {
   return {

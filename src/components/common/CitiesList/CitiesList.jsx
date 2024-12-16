@@ -8,7 +8,7 @@ const CitiesList = ({ data: cities = [], error, isLoading }) => {
     return <CitiesListSkeleton />;
   }
 
-  if (error || (cities.length == 0 && !isLoading)) {
+  if (error || (cities.length === 0 && !isLoading)) {
     return <NotFoundSection />;
   }
 
@@ -18,6 +18,7 @@ const CitiesList = ({ data: cities = [], error, isLoading }) => {
         {cities.map(city => (
           <li key={city.id}>
             <CityCard
+              cityId={city.id}
               cityName={city.name}
               countryName={city.country}
               image={city.imageUrl}
