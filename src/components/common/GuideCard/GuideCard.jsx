@@ -85,7 +85,12 @@ const GuideCard = ({
             backgroundPosition: 'center',
           }}
         >
-          <div className="flex justify-between">
+          <div
+            className={cn(
+              'flex justify-between',
+              isHovered && 'bg-light-color/90',
+            )}
+          >
             <div
               className={cn(
                 'flex size-8 justify-center rounded-br-lg rounded-tl-lg bg-gray-300/60',
