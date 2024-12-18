@@ -1,4 +1,4 @@
-import Stub from '../assets/img/Stub.png';
+import GuideCardStub from '../assets/img/cityPage/GuideCardStub.jpg';
 
 const transformGuideItem = guide => {
   return {
@@ -15,7 +15,7 @@ const transformGuideItem = guide => {
       flag: guide.countries[0]?.flag || '',
     },
     flag: guide.countries[0]?.flag || '',
-    imageUrl: guide.primaryImages[0]?.url || Stub,
+    imageUrl: guide.primaryImages[0]?.url || GuideCardStub,
   };
 };
 
