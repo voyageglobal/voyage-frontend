@@ -4,7 +4,12 @@ const transformCityItem = city => {
   return {
     id: city.id,
     name: city.name,
-    country: city.country?.name,
+    description: city.description || 'No description available',
+    country: {
+      id: city.country?.id || null,
+      name: city.country?.name || 'Unknown Country',
+      flag: city.country?.flag || '',
+    },
     imageUrl: city.images[0]?.url || Stub,
   };
 };

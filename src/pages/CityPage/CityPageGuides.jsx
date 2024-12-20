@@ -1,5 +1,5 @@
 import { useState, useMemo, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
@@ -9,11 +9,20 @@ import { NO_CATEGORY_BUTTON } from '../../hooks/useAllCategories';
 
 import useAllGuides from '../../hooks/useAllGuides';
 import useAllCategories from '../../hooks/useAllCategories';
+import useCityById from '../../hooks/useCityById';
+
 import LoadingCategories from './LoadingCategories';
 import ErrorCategories from './ErrorCategories';
 
 const CityPageGuides = () => {
+  const { id: cityId } = useParams();
   const [activeKeys, setActiveKeys] = useState([]);
+
+  const {
+    city,
+    isLoading: isCityLoading,
+    error: cityError,
+  } = useCityById(cityId);
 
   const {
     data: categories = [],
@@ -42,6 +51,7 @@ const CityPageGuides = () => {
     pageSize: 10,
     sortOrder: 'popular',
     searchQuery: '',
+    cityId,
   });
 
   const filteredGuides = useMemo(() => {
@@ -74,6 +84,9 @@ const CityPageGuides = () => {
       />
     );
   }
+
+  const cityName = city?.name || 'Unknown City';
+
   return (
     <>
       <section className="min-h-96 pt-12">
@@ -109,7 +122,7 @@ const CityPageGuides = () => {
                 className="inline-block text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
                 to="/cities"
               >
-                <h2>ROME</h2>
+                <h2>{cityName}</h2>
               </Link>
             </div>
             <CreateGuideButton />

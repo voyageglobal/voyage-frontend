@@ -5,7 +5,7 @@ import transformGuideItem from '../data/transformGuideItem';
 
 const ALL_GUIDES_QUERY_KEY = 'allGuides';
 
-const useAllGuides = ({ pageSize, sortOrder, searchQuery }) => {
+const useAllGuides = ({ pageSize, sortOrder, searchQuery, cityId }) => {
   const {
     data,
     error,
@@ -15,13 +15,14 @@ const useAllGuides = ({ pageSize, sortOrder, searchQuery }) => {
     isFetchingNextPage,
     refetch,
   } = useInfiniteQuery({
-    queryKey: [ALL_GUIDES_QUERY_KEY, searchQuery],
+    queryKey: [ALL_GUIDES_QUERY_KEY, searchQuery, cityId],
     queryFn: ({ pageParam = 1 }) =>
       fetchGuides({
         page: pageParam,
-        pageSize: pageSize,
-        sortOrder: sortOrder,
+        pageSize,
+        sortOrder,
         searchString: searchQuery,
+        city: cityId,
       }),
     initialPageParam: 1,
 
@@ -42,7 +43,13 @@ const useAllGuides = ({ pageSize, sortOrder, searchQuery }) => {
     refetch();
   }, [refetch]);
 
-  useEffect(handleSearchQueryChange, [searchQuery, refetch]);
+  useEffect(handleSearchQueryChange, [
+    searchQuery,
+    cityId,
+    refetch,
+    handleSearchQueryChange,
+  ]);
+
   return {
     data: transformedData,
     error,
