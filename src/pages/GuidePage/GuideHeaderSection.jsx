@@ -13,8 +13,8 @@ const GuideHeaderSection = () => {
 
   const cityName = guide?.cities?.[0]?.name || 'Unknown City';
   const countryName = guide?.country?.name || 'Unknown Country';
-  const guideName = guide.name || 'Untitled Guide';
-  const startDate = useFormattedDate(guide.startDate, 'MMMM d, yyyy');
+  const guideName = guide?.name || 'Untitled Guide';
+  const startDate = useFormattedDate(guide?.startDate, 'MMMM d, yyyy');
 
   if (isGuideLoading) {
     return <p>Loading guide...</p>;
