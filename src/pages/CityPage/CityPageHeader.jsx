@@ -1,17 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import useCityById from '../../hooks/useCityById';
 
 const CityPageHeader = () => {
+  const { id: cityId } = useParams();
+  const {
+    city,
+    isLoading: isCityLoading,
+    error: cityError,
+  } = useCityById(cityId);
+
+  const cityName = city?.name || 'Unknown City';
+  const countryName = city?.country?.name || 'Unknown Country';
+
   return (
     <section className="min-h-48">
       <div className="container mx-auto pt-14">
         <div className="text-dark-color">
-          <h2 className="inline-block pr-4 font-third text-4xl">Rome</h2>
+          <h2 className="inline-block pr-4 font-third text-4xl">{cityName}</h2>
 
           <Link
             className="inline-block font-primary text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
             to="/cities"
           >
-            <h3>Italy</h3>
+            <h3>{countryName}</h3>
           </Link>
 
           <p className="mt-10 font-fourth text-lg/6">

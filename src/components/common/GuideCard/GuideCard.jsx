@@ -12,7 +12,6 @@ const GuideCard = ({
   guideText,
   backgroundImage,
   categories,
-  cityId,
 }) => {
   const [likesAmount, setLikesAmount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -32,7 +31,7 @@ const GuideCard = ({
   const handleShareClick = async e => {
     e.preventDefault();
 
-    const guideUrl = `${window.location.origin}${generatePath('/cities/guides/:id', { id: guideId })}`;
+    const guideUrl = `${window.location.origin}${generatePath('/guides/:id', { id: guideId })}`;
 
     try {
       await navigator.clipboard.writeText(guideUrl);
@@ -73,7 +72,7 @@ const GuideCard = ({
     <>
       <Link
         className="flex h-full"
-        to={`/cities/${cityId}/${guideId}`}
+        to={`/guides/${guideId}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -85,7 +84,12 @@ const GuideCard = ({
             backgroundPosition: 'center',
           }}
         >
-          <div className="flex justify-between">
+          <div
+            className={cn(
+              'flex justify-between',
+              isHovered && 'bg-light-color/90',
+            )}
+          >
             <div
               className={cn(
                 'flex size-8 justify-center rounded-br-lg rounded-tl-lg bg-gray-300/60',

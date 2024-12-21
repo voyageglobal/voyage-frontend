@@ -9,6 +9,7 @@ import TravelTipsPage from './pages/TravelTipsPage/TravelTipsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
 import CreateGuidePage from './pages/CreateGuidePage/CreateGuidePage';
+import GuidePage from './pages/GuidePage/GuidePage';
 
 const ROUTES = {
   main: '/',
@@ -19,6 +20,7 @@ const ROUTES = {
   signIn: '/sign-in',
   travelTips: '/travel-tips',
   createGuide: '/create-guide',
+  guidePage: '/guides/:id',
   notFound: '*',
 };
 
@@ -31,6 +33,7 @@ function App() {
         <Route path={ROUTES.aboutUs} element={<AboutUsPage />} />
         <Route path={ROUTES.cities} element={<CitiesPage />} />
         <Route path={ROUTES.city} element={<CityPage />} />
+        <Route path={ROUTES.guidePage} element={<GuidePage />} />
         <Route path={ROUTES.contacts} element={<ContactsPage />} />
         <Route path={ROUTES.signIn} element={<SignInPage />} />
         <Route path={ROUTES.travelTips} element={<TravelTipsPage />} />
