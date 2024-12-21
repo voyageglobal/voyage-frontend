@@ -1,18 +1,33 @@
 import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
+import useFormattedDate from '../../hooks/useFormattedDate';
 
 const GuideHeaderSection = () => {
-  const { id: cityId } = useParams();
+  const { id: guideId } = useParams();
+
   const {
     guide,
     isLoading: isGuideLoading,
     error: guideError,
-  } = useGuideById(cityId);
+  } = useGuideById(guideId);
 
   const cityName = guide?.cities?.[0]?.name || 'Unknown City';
   const countryName = guide?.country?.name || 'Unknown Country';
-  const guideName = guide.name;
-  const startDate = guide.startDate;
+  const guideName = guide.name || 'Untitled Guide';
+  const startDate = useFormattedDate(guide.startDate, 'MMMM d, yyyy');
+
+  if (isGuideLoading) {
+    return <p>Loading guide...</p>;
+  }
+
+  if (guideError) {
+    return <p>Error loading guide: {guideError.message}</p>;
+  }
+
+  if (!guide) {
+    return <p>No guide found.</p>;
+  }
+
   return (
     <section className="min-h-64 pt-10">
       <div className="container mx-auto">
