@@ -1,4 +1,4 @@
-import { useState, useMemo, memo } from 'react';
+import { useState, useMemo, useCallback, memo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
@@ -30,7 +30,7 @@ const CityPageGuides = () => {
     error: errorCategories,
   } = useAllCategories();
 
-  const handleButtonClick = buttonKey => {
+  const handleButtonClick = useCallback(buttonKey => {
     setActiveKeys(prevActiveKeys => {
       if (buttonKey === NO_CATEGORY_BUTTON.key) return [];
 
@@ -41,10 +41,12 @@ const CityPageGuides = () => {
 
       return updatedKeys.filter(key => key !== NO_CATEGORY_BUTTON.key);
     });
-  };
+  }, []);
+
+  const guideCategories = useMemo(() => activeKeys.join(','), [activeKeys]);
 
   const {
-    data: guides,
+    data: guides = [],
     error,
     isLoading,
   } = useAllGuides({
@@ -52,23 +54,8 @@ const CityPageGuides = () => {
     sortOrder: 'popular',
     searchQuery: '',
     cityId,
+    guideCategories,
   });
-
-  const filteredGuides = useMemo(() => {
-    return guides.filter(guide => {
-      if (activeKeys.length === 0) {
-        return true;
-      }
-
-      if (activeKeys.includes(NO_CATEGORY_BUTTON.key)) {
-        return !guide.categories || guide.categories.length === 0;
-      }
-
-      return guide.categories?.some(category =>
-        activeKeys.includes(category.key),
-      );
-    });
-  }, [guides, activeKeys]);
 
   if (loadingCategories) {
     return <LoadingCategories />;
@@ -78,7 +65,7 @@ const CityPageGuides = () => {
     return (
       <ErrorCategories
         errorMessage={errorCategories.message}
-        filteredGuides={filteredGuides}
+        filteredGuides={guides}
         error={error}
         isLoading={isLoading}
       />
@@ -93,20 +80,18 @@ const CityPageGuides = () => {
         <div className="container mx-auto">
           <h3 className="font-fourth text-xl">Select a guide category</h3>
           <div className="mt-10 flex justify-between">
-            {categories.map(({ key, name, imageUrl, iconName }) => {
-              return (
-                <CategoryCard
-                  key={key}
-                  categoryKey={key}
-                  title={name}
-                  isActive={activeKeys.includes(key)}
-                  onClick={() => handleButtonClick(key)}
-                  backgroundImage={imageUrl}
-                  icon={<DynamicIcon name={iconName} size="20px" />}
-                  withAriaPressed={key !== NO_CATEGORY_BUTTON.key}
-                />
-              );
-            })}
+            {categories.map(({ key, name, imageUrl, iconName }) => (
+              <CategoryCard
+                key={key}
+                categoryKey={key}
+                title={name}
+                isActive={activeKeys.includes(key)}
+                onClick={() => handleButtonClick(key)}
+                backgroundImage={imageUrl}
+                icon={<DynamicIcon name={iconName} size="20px" />}
+                withAriaPressed={key !== NO_CATEGORY_BUTTON.key}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -129,11 +114,7 @@ const CityPageGuides = () => {
           </div>
 
           <div className="mt-10">
-            <GuidesList
-              data={filteredGuides}
-              error={error}
-              isLoading={isLoading}
-            />
+            <GuidesList data={guides} error={error} isLoading={isLoading} />
           </div>
         </div>
       </section>

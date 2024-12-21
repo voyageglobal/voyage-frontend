@@ -11,6 +11,14 @@ export const GUIDE_FETCH_SETTINGS = {
     ASC: 'asc',
     DESC: 'desc',
   },
+  CATEGORIES: [
+    'cultural',
+    'food',
+    'history',
+    'market',
+    'nature',
+    'photography',
+  ],
 };
 
 async function fetchGuides({
@@ -20,6 +28,8 @@ async function fetchGuides({
   orderDirection = GUIDE_FETCH_SETTINGS.ORDER_DIRECTION.ASC,
   searchString = '',
   city,
+  country,
+  guideCategories,
 } = {}) {
   const params = {
     page,
@@ -28,6 +38,8 @@ async function fetchGuides({
     orderDirection,
     ...(searchString && { searchString }),
     ...(city && { city }),
+    ...(country && { country }),
+    ...(guideCategories && { guideCategories }),
   };
 
   try {
