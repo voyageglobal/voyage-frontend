@@ -13,6 +13,7 @@ import useCityById from '../../hooks/useCityById';
 
 import LoadingCategories from './LoadingCategories';
 import ErrorCategories from './ErrorCategories';
+import { ROUTES } from '../../App';
 
 const CityPageGuides = () => {
   const { id: cityId } = useParams();
@@ -65,7 +66,6 @@ const CityPageGuides = () => {
     return (
       <ErrorCategories
         errorMessage={errorCategories.message}
-        filteredGuides={guides}
         error={error}
         isLoading={isLoading}
       />
@@ -105,7 +105,7 @@ const CityPageGuides = () => {
               </h3>
               <Link
                 className="inline-block text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
-                to="/cities"
+                to={ROUTES.cities}
               >
                 <h2>{cityName}</h2>
               </Link>

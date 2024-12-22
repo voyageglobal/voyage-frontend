@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PopularCitiesList from '../../components/features/PopularCitiesList';
+import { ROUTES } from '../../App';
 
 const CitiesSection = () => {
   return (
@@ -11,7 +12,7 @@ const CitiesSection = () => {
             Explore city guides for your next adventure
           </h3>
           <Link
-            to="/cities"
+            to={ROUTES.cities}
             className="inline-block h-8 w-20 rounded-10px border border-dark-color text-center font-fourth text-lg/8 font-normal text-dark-color"
           >
             View all

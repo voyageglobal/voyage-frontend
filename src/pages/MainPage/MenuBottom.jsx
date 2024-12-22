@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../../App';
 
 export function MenuBottomLink(props) {
   return (
@@ -13,91 +14,101 @@ const MenuBottom = () => {
         <div className="mx-auto flex justify-between border-b border-t border-dark-color px-10 py-8">
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <MenuBottomLink to="/cities">Popular Guides</MenuBottomLink>
+              <MenuBottomLink to={ROUTES.cities}>Popular Guides</MenuBottomLink>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/:id">Paris</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.city}>Paris</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/:id">Prague</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.city}>Prague</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/:id">New York</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.city}>New York</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/:id">Rome</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.city}>Rome</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/cities/:id">Tel Aviv</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.city}>Tel Aviv</MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <MenuBottomLink to="/travel-tips">Travel Tips</MenuBottomLink>
+              <MenuBottomLink to={ROUTES.travelTips}>
+                Travel Tips
+              </MenuBottomLink>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <MenuBottomLink to="/travel-tips">Packing</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.travelTips}>Packing</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/travel-tips">
+                <MenuBottomLink to={ROUTES.travelTips}>
                   Transportation
                 </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/travel-tips">Accommodation</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.travelTips}>
+                  Accommodation
+                </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/travel-tips">Local Cuisine</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.travelTips}>
+                  Local Cuisine
+                </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/travel-tips">Cheap Trip</MenuBottomLink>
-              </li>
-            </ul>
-          </div>
-          <div className="font-fourth">
-            <h3 className="text-xl/3 font-semibold">
-              <MenuBottomLink to="/about-us">About Us</MenuBottomLink>
-            </h3>
-            <ul className="mt-4 inline-block text-xl font-light">
-              <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">Contact</MenuBottomLink>
-              </li>
-              <li className="mt-3.5">
-                <MenuBottomLink to="/about-us">Terms</MenuBottomLink>
-              </li>
-              <li className="mt-3.5">
-                <MenuBottomLink to="/about-us">Privacy Policy</MenuBottomLink>
-              </li>
-              <li className="mt-3.5">
-                <MenuBottomLink to="/about-us">FAQ</MenuBottomLink>
-              </li>
-              <li className="mt-3.5">
-                <MenuBottomLink to="/about-us">Blog</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.travelTips}>
+                  Cheap Trip
+                </MenuBottomLink>
               </li>
             </ul>
           </div>
           <div className="font-fourth">
             <h3 className="text-xl/3 font-semibold">
-              <MenuBottomLink to="/contacts">Follow Us</MenuBottomLink>
+              <MenuBottomLink to={ROUTES.aboutUs}>About Us</MenuBottomLink>
             </h3>
             <ul className="mt-4 inline-block text-xl font-light">
               <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">Facebook</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.contacts}>Contact</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">Instagram</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.aboutUs}>Terms</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">Twitter</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.aboutUs}>
+                  Privacy Policy
+                </MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">Pinterest</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.aboutUs}>FAQ</MenuBottomLink>
               </li>
               <li className="mt-3.5">
-                <MenuBottomLink to="/contacts">YouTube</MenuBottomLink>
+                <MenuBottomLink to={ROUTES.aboutUs}>Blog</MenuBottomLink>
+              </li>
+            </ul>
+          </div>
+          <div className="font-fourth">
+            <h3 className="text-xl/3 font-semibold">
+              <MenuBottomLink to={ROUTES.contacts}>Follow Us</MenuBottomLink>
+            </h3>
+            <ul className="mt-4 inline-block text-xl font-light">
+              <li className="mt-3.5">
+                <MenuBottomLink to={ROUTES.contacts}>Facebook</MenuBottomLink>
+              </li>
+              <li className="mt-3.5">
+                <MenuBottomLink to={ROUTES.contacts}>Instagram</MenuBottomLink>
+              </li>
+              <li className="mt-3.5">
+                <MenuBottomLink to={ROUTES.contacts}>Twitter</MenuBottomLink>
+              </li>
+              <li className="mt-3.5">
+                <MenuBottomLink to={ROUTES.contacts}>Pinterest</MenuBottomLink>
+              </li>
+              <li className="mt-3.5">
+                <MenuBottomLink to={ROUTES.contacts}>YouTube</MenuBottomLink>
               </li>
             </ul>
           </div>

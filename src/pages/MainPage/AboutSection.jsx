@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import about from '../../assets/img/mainPage/about.png';
+import { ROUTES } from '../../App';
 
 const AboutSection = () => {
   return (
@@ -26,7 +27,7 @@ const AboutSection = () => {
           </p>
           <Link
             className="mt-10 font-fourth text-base font-medium text-dark-color underline"
-            to="/about-us"
+            to={ROUTES.aboutUs}
           >
             LEARN MORE
           </Link>

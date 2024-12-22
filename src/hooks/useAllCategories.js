@@ -15,6 +15,7 @@ const useAllCategories = () => {
   return useQuery({
     queryKey: [ALL_CATEGORIES_QUERY_KEY],
     queryFn: fetchCategories,
+    staleTime: 1000 * 60 * 5,
     select: categoriesData => [...categoriesData, NO_CATEGORY_BUTTON],
   });
 };

@@ -7,7 +7,7 @@ const useGuideById = id => {
     queryKey: ['guide', id],
     queryFn: () => fetchGuideById(id).then(transformGuideItem),
     enabled: !!id,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 1,
   });
 
   return {

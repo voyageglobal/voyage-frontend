@@ -4,7 +4,7 @@ import transformCityItem from '../data/transformCityItem';
 
 const useCityById = id => {
   const { data, error, isLoading, refetch } = useQuery({
-    queryKey: ['guide', id],
+    queryKey: ['city', id],
     queryFn: () => fetchCityById(id).then(transformCityItem),
     enabled: !!id,
     staleTime: 1000 * 60 * 5,

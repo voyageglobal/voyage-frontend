@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useFormattedDate from '../../hooks/useFormattedDate';
+import { ROUTES } from '../../App';
 
 const GuideHeaderSection = () => {
   const { id: guideId } = useParams();
@@ -35,7 +36,7 @@ const GuideHeaderSection = () => {
           <h2 className="inline-block pr-4 font-third text-4xl">{cityName}</h2>
           <Link
             className="inline-block font-primary text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
-            to="/cities"
+            to={ROUTES.cities}
           >
             <h3>{countryName}</h3>
           </Link>

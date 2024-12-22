@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TravelTipsStub from '../../../assets/img/TravelTips/TravelTipsStub.png';
 import Heart from './../../../assets/img/TravelTips/heart.svg';
 import ReadMore from './../../../assets/img/TravelTips/read_more.svg';
+import { ROUTES } from '../../../App';
 
 const TravelTipsCard = ({ tipHeader, tipText, date, image }) => {
   const [likesAmount, setLikesAmount] = useState(0);
@@ -19,7 +20,7 @@ const TravelTipsCard = ({ tipHeader, tipText, date, image }) => {
   };
 
   return (
-    <Link className="inline-block" to="/travel-tips/id">
+    <Link className="inline-block" to={`${ROUTES.travelTips}/tipId`}>
       <div className="flex min-h-[36rem] w-[17rem] flex-1 flex-col bg-white font-fourth shadow-md">
         <img
           className="h-64 w-full object-cover"

@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import useCityById from '../../hooks/useCityById';
+import { ROUTES } from '../../App';
 
 const CityPageHeader = () => {
   const { id: cityId } = useParams();
@@ -20,7 +21,7 @@ const CityPageHeader = () => {
 
           <Link
             className="inline-block font-primary text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
-            to="/cities"
+            to={ROUTES.cities}
           >
             <h3>{countryName}</h3>
           </Link>

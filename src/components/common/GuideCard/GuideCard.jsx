@@ -6,6 +6,8 @@ import { cn } from '../../../utilities/cn';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
 import { Link as LinkIcon, Heart, ArrowRightToLine } from 'lucide-react';
 
+import { ROUTES } from '../../../App';
+
 const GuideCard = ({
   guideId,
   guideTitle,
@@ -31,7 +33,7 @@ const GuideCard = ({
   const handleShareClick = async e => {
     e.preventDefault();
 
-    const guideUrl = `${window.location.origin}${generatePath('/guides/:id', { id: guideId })}`;
+    const guideUrl = `${window.location.origin}${generatePath(ROUTES.guidePage, { id: guideId })}`;
 
     try {
       await navigator.clipboard.writeText(guideUrl);
@@ -72,7 +74,7 @@ const GuideCard = ({
     <>
       <Link
         className="flex h-full"
-        to={`/guides/${guideId}`}
+        to={generatePath(ROUTES.guidePage, { id: guideId })}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -152,7 +154,7 @@ const GuideCard = ({
                 <p className="mt-2 line-clamp-5 font-light">{guideText}</p>
               </div>
               <Link
-                to={`/cities/:id/${guideId}`}
+                to={generatePath(ROUTES.city, { id: guideId })}
                 className="mx-3.5 underline hover:text-orange-color"
               >
                 <p className="inline-block font-fourth text-lg font-medium">
