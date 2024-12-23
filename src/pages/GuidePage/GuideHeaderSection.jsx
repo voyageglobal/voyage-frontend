@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useFormattedDate from '../../hooks/useFormattedDate';
 import { ROUTES } from '../../App';
+import { userName } from '../../data/userName';
+import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
 
 const GuideHeaderSection = () => {
   const { id: guideId } = useParams();
@@ -15,7 +17,16 @@ const GuideHeaderSection = () => {
   const cityName = guide?.cities?.[0]?.name || 'Unknown City';
   const countryName = guide?.country?.name || 'Unknown Country';
   const guideName = guide?.name || 'Untitled Guide';
-  const startDate = useFormattedDate(guide?.startDate, 'MMMM d, yyyy');
+  const startDate = useFormattedDate(guide?.startDate);
+  const categoryIcons =
+    guide?.categories?.map(category => (
+      <DynamicIcon
+        key={category.key}
+        name={category.iconName}
+        className="text-dark-color/80"
+        size="20px"
+      />
+    )) || [];
 
   if (isGuideLoading) {
     return <p>Loading guide...</p>;
@@ -43,20 +54,22 @@ const GuideHeaderSection = () => {
         </div>
         <div className="flex justify-between pt-10 font-fourth text-2xl font-light">
           <div className="flex">
-            <p>Elon Musk</p>
-            <p className="pl-10">{startDate}</p>
+            <p>{userName}</p>
+            <p className="pl-10">{startDate || 'Unknown Date'}</p>
           </div>
           <div>
             <p>
-              <b>Guide Type</b>: Historical landmarks
+              <b>Guide Type</b>:
             </p>
+            <div className="flex max-w-36 flex-wrap justify-start gap-1.5">
+              {categoryIcons}
+            </div>
           </div>
         </div>
         <div className="flex justify-between pt-5 font-fourth text-2xl font-light">
           <p title={guideName} className="line-clamp-4 w-2/4 font-medium">
             {guideName}
           </p>
-          <p className="">Add to favorites</p>
         </div>
       </div>
     </section>

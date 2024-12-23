@@ -7,6 +7,7 @@ import DynamicIcon from '../DynamicIcon/DynamicIcon';
 import { Link as LinkIcon, Heart, ArrowRightToLine } from 'lucide-react';
 
 import { ROUTES } from '../../../App';
+import { userName } from '../../../data/userName';
 
 const GuideCard = ({
   guideId,
@@ -125,7 +126,7 @@ const GuideCard = ({
             </div>
             {isHovered ? (
               <div className="my-auto ml-2 w-8/12 font-fourth text-lg font-light italic">
-                <p>Voyager</p>
+                <p>{userName}</p>
               </div>
             ) : null}
             <div className="flex size-8 justify-center rounded-bl-lg rounded-tr-lg bg-gray-300/60">

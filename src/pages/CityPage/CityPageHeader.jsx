@@ -10,8 +10,8 @@ const CityPageHeader = () => {
     error: cityError,
   } = useCityById(cityId);
 
-  const cityName = city?.name || 'Unknown City';
-  const countryName = city?.country?.name || 'Unknown Country';
+  const cityName = city?.name || cityId;
+  const countryName = city?.country?.name || '';
 
   return (
     <section className="min-h-48">

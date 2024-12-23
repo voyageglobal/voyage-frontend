@@ -72,7 +72,7 @@ const CityPageGuides = () => {
     );
   }
 
-  const cityName = city?.name || 'Unknown City';
+  const cityName = city?.name || cityId;
 
   return (
     <>
