@@ -1,1 +1,1 @@
-export const userName = 'Voyager';
+export const DEFAULT_USERNAME = 'Voyager';

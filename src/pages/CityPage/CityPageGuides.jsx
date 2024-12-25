@@ -64,11 +64,7 @@ const CityPageGuides = () => {
 
   if (errorCategories) {
     return (
-      <ErrorCategories
-        errorMessage={errorCategories.message}
-        error={error}
-        isLoading={isLoading}
-      />
+      <ErrorCategories errorMessage={errorCategories.message} error={error} />
     );
   }
 

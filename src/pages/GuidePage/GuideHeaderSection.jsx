@@ -1,8 +1,9 @@
+import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useFormattedDate from '../../hooks/useFormattedDate';
 import { ROUTES } from '../../App';
-import { userName } from '../../data/userName';
+import { DEFAULT_USERNAME } from '../../data/userName';
 import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
 
 const GuideHeaderSection = () => {
@@ -18,15 +19,17 @@ const GuideHeaderSection = () => {
   const countryName = guide?.country?.name || 'Unknown Country';
   const guideName = guide?.name || 'Untitled Guide';
   const startDate = useFormattedDate(guide?.startDate);
-  const categoryIcons =
-    guide?.categories?.map(category => (
+  const categoryIcons = useMemo(() => {
+    if (!guide?.categories) return [];
+    return guide.categories.map(category => (
       <DynamicIcon
         key={category.key}
         name={category.iconName}
         className="text-dark-color/80"
         size="20px"
       />
-    )) || [];
+    ));
+  }, [guide]);
 
   if (isGuideLoading) {
     return <p>Loading guide...</p>;
@@ -54,7 +57,7 @@ const GuideHeaderSection = () => {
         </div>
         <div className="flex justify-between pt-10 font-fourth text-2xl font-light">
           <div className="flex">
-            <p>{userName}</p>
+            <p>{DEFAULT_USERNAME}</p>
             <p className="pl-10">{startDate || 'Unknown Date'}</p>
           </div>
           <div>
