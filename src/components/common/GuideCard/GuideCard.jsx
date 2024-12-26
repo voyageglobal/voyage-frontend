@@ -155,7 +155,7 @@ const GuideCard = ({
                 <p className="mt-2 line-clamp-5 font-light">{guideText}</p>
               </div>
               <Link
-                to={generatePath(ROUTES.city, { id: guideId })}
+                to={generatePath(ROUTES.guidePage, { id: guideId })}
                 className="mx-3.5 underline hover:text-orange-color"
               >
                 <p className="inline-block font-fourth text-lg font-medium">
