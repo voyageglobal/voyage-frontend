@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../../App';
 import NotFoundIMG from '../../assets/img/citiesPage/NotFoundIMG.svg';
 const NotFoundSection = () => {
   return (
@@ -18,7 +19,7 @@ const NotFoundSection = () => {
           the first!
         </p>
         <Link
-          to="/create-guide"
+          to={ROUTES.createGuide}
           className="inline-block h-8 w-56 rounded-10px bg-orange-color text-center font-fourth text-base/8 text-light-color"
         >
           CREATE GUIDE

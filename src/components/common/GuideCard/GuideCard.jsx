@@ -1,10 +1,13 @@
 import { useMemo, useState, useCallback, memo } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '../../../utilities/cn';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
 import { Link as LinkIcon, Heart, ArrowRightToLine } from 'lucide-react';
+
+import { ROUTES } from '../../../App';
+import { DEFAULT_USERNAME } from '../../../data/userName';
 
 const GuideCard = ({
   guideId,
@@ -12,7 +15,6 @@ const GuideCard = ({
   guideText,
   backgroundImage,
   categories,
-  cityId,
 }) => {
   const [likesAmount, setLikesAmount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -32,13 +34,14 @@ const GuideCard = ({
   const handleShareClick = async e => {
     e.preventDefault();
 
-    const guideUrl = `${window.location.origin}${generatePath('/cities/guides/:id', { id: guideId })}`;
+    const guideUrl = `${window.location.origin}${generatePath(ROUTES.guidePage, { id: guideId })}`;
 
     try {
       await navigator.clipboard.writeText(guideUrl);
       toast.success(`Copied to clipboard: ${guideUrl}`, {
+        toastId: `success-${guideId}`,
         position: 'top-center',
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -46,8 +49,9 @@ const GuideCard = ({
       });
     } catch (err) {
       toast.error('Failed to copy the link. Please try again.', {
+        toastId: 'error',
         position: 'top-center',
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -73,7 +77,7 @@ const GuideCard = ({
     <>
       <Link
         className="flex h-full"
-        to={`/cities/${cityId}/${guideId}`}
+        to={generatePath(ROUTES.guidePage, { id: guideId })}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -85,7 +89,12 @@ const GuideCard = ({
             backgroundPosition: 'center',
           }}
         >
-          <div className="flex justify-between">
+          <div
+            className={cn(
+              'flex justify-between',
+              isHovered && 'bg-light-color/90',
+            )}
+          >
             <div
               className={cn(
                 'flex size-8 justify-center rounded-br-lg rounded-tl-lg bg-gray-300/60',
@@ -119,7 +128,7 @@ const GuideCard = ({
             </div>
             {isHovered ? (
               <div className="my-auto ml-2 w-8/12 font-fourth text-lg font-light italic">
-                <p>Voyager</p>
+                <p>{DEFAULT_USERNAME}</p>
               </div>
             ) : null}
             <div className="flex size-8 justify-center rounded-bl-lg rounded-tr-lg bg-gray-300/60">
@@ -148,7 +157,7 @@ const GuideCard = ({
                 <p className="mt-2 line-clamp-5 font-light">{guideText}</p>
               </div>
               <Link
-                to={`/cities/:id/${guideId}`}
+                to={generatePath(ROUTES.guidePage, { id: guideId })}
                 className="mx-3.5 underline hover:text-orange-color"
               >
                 <p className="inline-block font-fourth text-lg font-medium">
@@ -172,7 +181,6 @@ const GuideCard = ({
           )}
         </div>
       </Link>
-      <ToastContainer />
     </>
   );
 };

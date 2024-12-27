@@ -20,7 +20,7 @@ const CitiesList = ({ data: cities = [], error, isLoading }) => {
             <CityCard
               cityId={city.id}
               cityName={city.name}
-              countryName={city.country}
+              countryName={city.country.name}
               image={city.imageUrl}
             />
           </li>

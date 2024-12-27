@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../../App';
 
 import BackgroundBecomeGuide from '../../assets/img/mainPage/BecomeGuideBackground2560.png';
 
@@ -25,7 +26,7 @@ const BecomeGuide = () => {
           </p>
         </div>
         <Link
-          to="/sign-in"
+          to={ROUTES.signIn}
           className="mx-auto mt-8 block h-12 w-60 rounded-10px bg-orange-color pt-3 text-center font-fourth text-base text-light-color"
         >
           SIGN IN AND CREATE

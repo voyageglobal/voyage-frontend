@@ -1,9 +1,13 @@
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
+import { ROUTES } from '../../../App';
 
 const CityCard = ({ cityId, cityName, countryName, image }) => {
   return (
-    <Link className="flex h-full" to={`/cities/${cityId}`}>
+    <Link
+      className="flex h-full"
+      to={generatePath(ROUTES.city, { id: cityId })}
+    >
       <div className="flex min-h-80 w-44 flex-1 flex-col rounded-10px bg-white/30 font-primary shadow-md">
         <img
           className="h-64 w-full rounded-10px object-cover"

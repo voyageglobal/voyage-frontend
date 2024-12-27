@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import BackgroundOurGuides from '../../assets/img/mainPage/map.png';
+import { ROUTES } from '../../App';
 
 const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
   return (
@@ -17,7 +18,7 @@ const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
             new cities and countries, or share your guide right now!
           </p>
           <Link
-            to="/cities"
+            to={ROUTES.cities}
             className="h-12 w-52 rounded-10px bg-orange-color pt-3 text-center font-fourth text-lg text-white"
             aria-label="A button leading to a page with all the guides."
           >
