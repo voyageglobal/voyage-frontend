@@ -1,16 +1,14 @@
-import { useCitySearch } from '../../context/CitySearchContext';
-import { useCitiesData } from '../../context/CitiesDataContext';
+import { useSearchParams } from 'react-router-dom';
 import AllCitiesList from '../../components/features/AllCitiesList';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
 
 const CitiesSection = () => {
-  const { searchQuery } = useCitySearch();
-  const { citiesData, isDataLoaded } = useCitiesData();
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') || '';
 
   const displayText = searchQuery
     ? `City Guides: ${searchQuery}`
     : 'City Guides';
-  const showCreateGuideButton = isDataLoaded && citiesData.length > 0;
 
   return (
     <section className="min-h-[48.13rem] pb-14 pt-28">
@@ -22,7 +20,7 @@ const CitiesSection = () => {
           <h3 className="font-fourth text-xl font-normal">
             Explore city guides for your next adventure
           </h3>
-          {showCreateGuideButton && <CreateGuideButton />}
+          <CreateGuideButton />
         </div>
         <AllCitiesList initialLimit={10} />
       </div>

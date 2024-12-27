@@ -1,13 +1,21 @@
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchIcon from '../../../assets/img/searchIcon.svg';
-import { useCitySearch } from '../../../context/CitySearchContext';
 
 const SearchPanelSecondary = () => {
-  const { setSearchQuery } = useCitySearch();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const handleSearch = event => {
     event.preventDefault();
-    const query = event.target.query.value;
-    setSearchQuery(query);
+    const query = event.target.query.value.trim();
+
+    if (query) {
+      searchParams.set('query', query);
+    } else {
+      searchParams.delete('query');
+    }
+
+    navigate(`?${searchParams.toString()}`);
   };
 
   return (
@@ -16,10 +24,10 @@ const SearchPanelSecondary = () => {
       onSubmit={handleSearch}
     >
       <input
-        className="flex-grow bg-transparent font-fourth text-xl/5 italic text-dark-color placeholder-dark-color outline-none"
+        className="flex-grow bg-transparent font-fourth text-xl/5 italic text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
         name="query"
-        placeholder="India | Deli"
+        placeholder="India | Delhi"
         aria-label="Search for guides by city or country name"
       />
       <button
