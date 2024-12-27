@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback, memo } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '../../../utilities/cn';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
@@ -39,8 +39,9 @@ const GuideCard = ({
     try {
       await navigator.clipboard.writeText(guideUrl);
       toast.success(`Copied to clipboard: ${guideUrl}`, {
+        toastId: `success-${guideId}`,
         position: 'top-center',
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -48,8 +49,9 @@ const GuideCard = ({
       });
     } catch (err) {
       toast.error('Failed to copy the link. Please try again.', {
+        toastId: 'error',
         position: 'top-center',
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -179,7 +181,6 @@ const GuideCard = ({
           )}
         </div>
       </Link>
-      <ToastContainer />
     </>
   );
 };

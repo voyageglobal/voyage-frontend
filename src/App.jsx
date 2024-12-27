@@ -1,5 +1,6 @@
 import ScrollToTopOrHash from './hooks/ScrollToTopOrHash';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import CitiesPage from './pages/CitiesPage/CitiesPage';
 import CityPage from './pages/CityPage/CityPage';
@@ -38,6 +39,7 @@ function App() {
         <Route path={ROUTES.createGuide} element={<CreateGuidePage />} />
         <Route path={ROUTES.notFound} element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }
