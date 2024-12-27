@@ -1,16 +1,25 @@
+import { memo } from 'react';
+import { useSearchQuery } from '../../../hooks/useSearchQuery';
 import SearchIcon from '../../../assets/img/searchIcon.svg';
 
 const SearchPanelPrimary = () => {
+  const { query, setQuery, updateQuery } = useSearchQuery();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    updateQuery(query, '/cities');
+  };
+
   return (
     <form
+      onSubmit={handleSubmit}
       className="flex w-96 items-center rounded-10px bg-light-color p-4"
-      action="/search"
-      method="GET"
     >
       <input
-        className="flex-grow bg-transparent font-primary text-lg/3 text-dark-color placeholder-dark-color outline-none"
+        className="flex-grow bg-transparent font-primary text-lg/3 text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
-        name="query"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
         placeholder="Where are we going today?"
         aria-label="Search for guides by city or country name"
       />
@@ -25,4 +34,4 @@ const SearchPanelPrimary = () => {
   );
 };
 
-export default SearchPanelPrimary;
+export default memo(SearchPanelPrimary);

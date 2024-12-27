@@ -1,21 +1,13 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { memo } from 'react';
+import { useSearchQuery } from '../../../hooks/useSearchQuery';
 import SearchIcon from '../../../assets/img/searchIcon.svg';
 
 const SearchPanelSecondary = () => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const { query, setQuery, updateQuery } = useSearchQuery();
 
   const handleSearch = event => {
     event.preventDefault();
-    const query = event.target.query.value.trim();
-
-    if (query) {
-      searchParams.set('query', query);
-    } else {
-      searchParams.delete('query');
-    }
-
-    navigate(`?${searchParams.toString()}`);
+    updateQuery(query);
   };
 
   return (
@@ -29,6 +21,8 @@ const SearchPanelSecondary = () => {
         name="query"
         placeholder="India | Delhi"
         aria-label="Search for guides by city or country name"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
       />
       <button
         className="flex h-full w-28 items-center justify-center rounded-r-10px bg-dark-color/30 pl-4 pr-5"
@@ -42,4 +36,4 @@ const SearchPanelSecondary = () => {
   );
 };
 
-export default SearchPanelSecondary;
+export default memo(SearchPanelSecondary);
