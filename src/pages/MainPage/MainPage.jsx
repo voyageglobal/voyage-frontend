@@ -7,8 +7,21 @@ import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
 import TravelTips from './TravelTips';
 import MenuBottom from './MenuBottom';
+import { useStatistics } from '../../hooks/useStatistics';
 
 const MainPage = () => {
+  const { statistics, error, isLoading } = useStatistics();
+  const totalGuides = isLoading
+    ? '...'
+    : error
+      ? 'N/A'
+      : statistics?.totalGuides;
+  const totalCountries = isLoading
+    ? '...'
+    : error
+      ? 'N/A'
+      : statistics?.totalCountries;
+
   return (
     <Page
       title="Voyage"
@@ -19,7 +32,10 @@ const MainPage = () => {
       <CitiesSection />
       <BecomeGuide />
       <ContactsSection />
-      <OurGuidesSection />
+      <OurGuidesSection
+        totalGuides={totalGuides}
+        totalCountries={totalCountries}
+      />
       <TravelTips />
       <MenuBottom />
     </Page>

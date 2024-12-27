@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import BackgroundOurGuides from '../../assets/img/mainPage/map.png';
 import { ROUTES } from '../../App';
 
-const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
+const OurGuidesSection = ({ totalGuides, totalCountries }) => {
   return (
     <section className="min-h-[35.19rem] pt-24">
       <div
@@ -13,9 +13,9 @@ const OurGuidesSection = ({ guidesCount = 53, countriesCount = 21 }) => {
         <div className="flex h-[29.88rem] w-96 flex-col justify-between pl-24 pt-40">
           <h2 className="font-third text-5xl text-shadow-header">OUR GUIDES</h2>
           <p className="font-fourth text-xl/6">
-            Today there are <b>{guidesCount}</b> guides in <br />
-            <b>{countriesCount}</b> countries in our community! <br /> Discover
-            new cities and countries, or share your guide right now!
+            Today there are <b>{totalGuides || '...'}</b> guides in <br />
+            <b>{totalCountries || '...'}</b> countries in our community! <br />{' '}
+            Discover new cities and countries, or share your guide right now!
           </p>
           <Link
             to={ROUTES.cities}
