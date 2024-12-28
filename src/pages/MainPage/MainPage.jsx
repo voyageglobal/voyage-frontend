@@ -7,20 +7,10 @@ import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
 import TravelTips from './TravelTips';
 import MenuBottom from './MenuBottom';
-import { useStatistics } from '../../hooks/useStatistics';
+import { useTransformedStatistics } from '../../hooks/useTransformedStatistics';
 
 const MainPage = () => {
-  const { statistics, error, isLoading } = useStatistics();
-  const totalGuides = isLoading
-    ? '...'
-    : error
-      ? 'N/A'
-      : statistics?.totalGuides;
-  const totalCountries = isLoading
-    ? '...'
-    : error
-      ? 'N/A'
-      : statistics?.totalCountries;
+  const { totalGuides, totalCountries } = useTransformedStatistics();
 
   return (
     <Page

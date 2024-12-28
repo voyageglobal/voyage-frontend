@@ -1,6 +1,6 @@
 import instance from '../utilities/axios/axios';
 
-export async function getStatistics() {
+export async function fetchStatistics() {
   try {
     const response = await instance.get('/stats/total');
 
