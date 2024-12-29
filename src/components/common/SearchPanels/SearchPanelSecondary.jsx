@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { useSearchQuery } from '../../../hooks/useSearchQuery';
+import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
 import SearchIcon from '../../../assets/img/searchIcon.svg';
 
 const SearchPanelSecondary = () => {
-  const { query, setQuery, updateQuery } = useSearchQuery();
+  const { query, setQuery, updateQuery } = useCitySearchQuery();
 
   const handleSearch = event => {
     event.preventDefault();
