@@ -2,8 +2,11 @@ import { memo } from 'react';
 import useAllCities from '../../hooks/useAllCities';
 import CitiesList from '../common/CitiesList/CitiesList';
 import { FETCH_SETTINGS } from '../../services/CitiesService';
+import { useCitySearchQuery } from '../../hooks/useCitySearchQuery';
 
 const AllCitiesList = ({ initialLimit }) => {
+  const { citySearchQuery } = useCitySearchQuery();
+
   const {
     data,
     error,
@@ -14,6 +17,7 @@ const AllCitiesList = ({ initialLimit }) => {
   } = useAllCities({
     pageSize: initialLimit,
     sortOrder: FETCH_SETTINGS.SORT.NAME_ASC,
+    searchQuery: citySearchQuery,
   });
 
   return (

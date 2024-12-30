@@ -1,15 +1,11 @@
 import { useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'react-router-dom';
 import fetchCities from '../services/CitiesService';
 import transformCityItem from '../data/transformCityItem';
 
 const ALL_CITIES_QUERY_KEY = 'allCities';
 
-const useAllCities = ({ pageSize, sortOrder }) => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query') || '';
-
+const useAllCities = ({ pageSize, sortOrder, searchQuery }) => {
   const {
     data,
     error,

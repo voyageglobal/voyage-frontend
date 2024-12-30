@@ -1,29 +1,30 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-export const useSearchQuery = () => {
-  const [query, setQuery] = useState('');
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+const CITY_SEARCH_QUERY = 'query';
 
-  useEffect(() => {
-    const queryParam = searchParams.get('query') || '';
-    setQuery(queryParam);
-  }, [searchParams]);
+export const useCitySearchQuery = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const updateQuery = useCallback(
-    (newQuery, route = '') => {
-      const trimmedQuery = newQuery.trim();
-      if (trimmedQuery) {
-        searchParams.set('query', trimmedQuery);
-        navigate(`${route}?${searchParams.toString()}`);
-      } else {
-        searchParams.delete('query');
-        navigate(route || '?');
-      }
-    },
-    [navigate, searchParams],
+  const citySearchQuery = useMemo(
+    () => searchParams.get(CITY_SEARCH_QUERY) || '',
+    [searchParams],
   );
 
-  return { query, setQuery, updateQuery };
+  const updateCitySearchQuery = useCallback(
+    newCitySearchQuery => {
+      const trimmedCitySearchQuery = newCitySearchQuery.trim();
+
+      if (trimmedCitySearchQuery) {
+        searchParams.set(CITY_SEARCH_QUERY, trimmedCitySearchQuery);
+      } else {
+        searchParams.delete(CITY_SEARCH_QUERY);
+      }
+
+      setSearchParams(searchParams);
+    },
+    [searchParams, setSearchParams],
+  );
+
+  return { citySearchQuery, updateCitySearchQuery };
 };

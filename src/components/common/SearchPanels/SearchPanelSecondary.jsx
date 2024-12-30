@@ -1,13 +1,24 @@
-import { memo } from 'react';
+import { useState, useEffect } from 'react';
 import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
-import SearchIcon from '../../../assets/img/searchIcon.svg';
+import { Search } from 'lucide-react';
 
 const SearchPanelSecondary = () => {
-  const { query, setQuery, updateQuery } = useCitySearchQuery();
+  const { citySearchQuery, updateCitySearchQuery } = useCitySearchQuery();
+  const [queryInput, setQueryInput] = useState(citySearchQuery || '');
 
-  const handleSearch = event => {
-    event.preventDefault();
-    updateQuery(query);
+  useEffect(() => {
+    if (citySearchQuery !== undefined) {
+      setQueryInput(citySearchQuery);
+    }
+  }, [citySearchQuery]);
+
+  const handleSearch = e => {
+    e.preventDefault();
+    updateCitySearchQuery(queryInput);
+  };
+
+  const handleInputChange = e => {
+    setQueryInput(e.target.value);
   };
 
   return (
@@ -21,19 +32,24 @@ const SearchPanelSecondary = () => {
         name="query"
         placeholder="India | Delhi"
         aria-label="Search for guides by city or country name"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
+        value={queryInput}
+        onChange={handleInputChange}
       />
       <button
-        className="flex h-full w-28 items-center justify-center rounded-r-10px bg-dark-color/30 pl-4 pr-5"
+        className="flex h-full w-28 items-center justify-center rounded-r-10px bg-dark-color/30 pl-3 pr-4 text-dark-color/80 hover:text-light-color"
         type="submit"
         aria-label="Submit search for travel guides and open search results"
       >
-        <SearchIcon className="mr-3" aria-hidden="true" />
+        <Search
+          size="28px"
+          className="mr-3"
+          aria-hidden="true"
+          strokeWidth={2}
+        />
         <span className="font-primary text-xl">Search</span>
       </button>
     </form>
   );
 };
 
-export default memo(SearchPanelSecondary);
+export default SearchPanelSecondary;

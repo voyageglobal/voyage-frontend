@@ -1,13 +1,25 @@
-import { memo } from 'react';
+import { useState, useEffect } from 'react';
 import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
-import SearchIcon from '../../../assets/img/searchIcon.svg';
+import { useNavigateToRoute } from '../../../hooks/useNavigateToRoute';
+import { Search } from 'lucide-react';
 
 const SearchPanelPrimary = () => {
-  const { query, setQuery, updateQuery } = useCitySearchQuery();
+  const { citySearchQuery, updateCitySearchQuery } = useCitySearchQuery();
+  const { navigateToRoute } = useNavigateToRoute();
+  const [queryInput, setQueryInput] = useState(citySearchQuery || '');
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    updateQuery(query, '/cities');
+  useEffect(() => {
+    if (citySearchQuery !== undefined) {
+      setQueryInput(citySearchQuery);
+    }
+  }, [citySearchQuery]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    updateCitySearchQuery(queryInput);
+
+    navigateToRoute('/cities', queryInput);
   };
 
   return (
@@ -18,20 +30,24 @@ const SearchPanelPrimary = () => {
       <input
         className="flex-grow bg-transparent font-primary text-lg/3 text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
+        value={queryInput}
+        onChange={e => setQueryInput(e.target.value)}
         placeholder="Where are we going today?"
         aria-label="Search for guides by city or country name"
       />
       <button
-        className="flex h-4 w-4 items-center justify-center"
+        className="flex h-5 w-5 items-center justify-center"
         type="submit"
         aria-label="Submit search for travel guides and open search results"
       >
-        <SearchIcon aria-hidden="true" />
+        <Search
+          strokeWidth={2}
+          className="text-dark-color/80 hover:text-orange-color"
+          aria-hidden="true"
+        />
       </button>
     </form>
   );
 };
 
-export default memo(SearchPanelPrimary);
+export default SearchPanelPrimary;

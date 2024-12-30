@@ -1,13 +1,12 @@
-import { useSearchParams } from 'react-router-dom';
 import AllCitiesList from '../../components/features/AllCitiesList';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
+import { useCitySearchQuery } from '../../hooks/useCitySearchQuery';
 
 const CitiesSection = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query') || '';
+  const { citySearchQuery } = useCitySearchQuery();
 
-  const displayText = searchQuery
-    ? `City Guides: ${searchQuery}`
+  const displayText = citySearchQuery
+    ? `City Guides: ${citySearchQuery}`
     : 'City Guides';
 
   return (
@@ -22,7 +21,7 @@ const CitiesSection = () => {
           </h3>
           <CreateGuideButton />
         </div>
-        <AllCitiesList initialLimit={10} />
+        <AllCitiesList initialLimit={10} searchQuery={citySearchQuery} />{' '}
       </div>
     </section>
   );
