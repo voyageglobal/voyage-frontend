@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, memo } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, generatePath } from 'react-router-dom';
 
 import CategoryCard from '../../components/common/CategoriesCards/CategoryCard';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
@@ -101,7 +101,7 @@ const CityPageGuides = () => {
               </h3>
               <Link
                 className="inline-block text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
-                to={ROUTES.cities}
+                to={generatePath(ROUTES.city, { id: cityId })}
               >
                 <h2>{cityName}</h2>
               </Link>
