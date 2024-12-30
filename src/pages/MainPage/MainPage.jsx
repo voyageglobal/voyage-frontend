@@ -7,8 +7,11 @@ import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
 import TravelTips from './TravelTips';
 import MenuBottom from './MenuBottom';
+import { useTransformedStatistics } from '../../hooks/useTransformedStatistics';
 
 const MainPage = () => {
+  const { totalGuides, totalCountries } = useTransformedStatistics();
+
   return (
     <Page
       title="Voyage"
@@ -19,7 +22,10 @@ const MainPage = () => {
       <CitiesSection />
       <BecomeGuide />
       <ContactsSection />
-      <OurGuidesSection />
+      <OurGuidesSection
+        totalGuides={totalGuides}
+        totalCountries={totalCountries}
+      />
       <TravelTips />
       <MenuBottom />
     </Page>
