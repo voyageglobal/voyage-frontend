@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const CITY_SEARCH_QUERY = 'query';
+export const DESTINATION_SEARCH_QUERY = 'query';
 
 export const useCitySearchQuery = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const citySearchQuery = useMemo(
-    () => searchParams.get(CITY_SEARCH_QUERY) || '',
+    () => searchParams.get(DESTINATION_SEARCH_QUERY) || '',
     [searchParams],
   );
 
@@ -16,9 +16,9 @@ export const useCitySearchQuery = () => {
       const trimmedCitySearchQuery = newCitySearchQuery.trim();
 
       if (trimmedCitySearchQuery) {
-        searchParams.set(CITY_SEARCH_QUERY, trimmedCitySearchQuery);
+        searchParams.set(DESTINATION_SEARCH_QUERY, trimmedCitySearchQuery);
       } else {
-        searchParams.delete(CITY_SEARCH_QUERY);
+        searchParams.delete(DESTINATION_SEARCH_QUERY);
       }
 
       setSearchParams(searchParams);

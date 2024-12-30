@@ -29,7 +29,6 @@ const SearchPanelSecondary = () => {
       <input
         className="flex-grow bg-transparent font-fourth text-xl/5 italic text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
-        name="query"
         placeholder="India | Delhi"
         aria-label="Search for guides by city or country name"
         value={queryInput}

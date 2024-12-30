@@ -14,7 +14,6 @@ const SearchPanelTravelTips = () => {
       <input
         className="flex-grow bg-transparent font-fourth text-lg/5 italic text-dark-color placeholder-dark-color outline-none"
         type="search"
-        name="query"
         placeholder="Search by keywords"
         aria-label="Search for travel tips by keywords"
       />

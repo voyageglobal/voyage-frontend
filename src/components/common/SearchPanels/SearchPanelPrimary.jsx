@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
-import { useNavigateToRoute } from '../../../hooks/useNavigateToRoute';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
+import { ROUTES } from '../../../App';
+import { DESTINATION_SEARCH_QUERY } from '../../../hooks/useCitySearchQuery';
 
 const SearchPanelPrimary = () => {
   const { citySearchQuery, updateCitySearchQuery } = useCitySearchQuery();
-  const { navigateToRoute } = useNavigateToRoute();
+  const navigate = useNavigate();
   const [queryInput, setQueryInput] = useState(citySearchQuery || '');
 
   useEffect(() => {
@@ -19,7 +21,12 @@ const SearchPanelPrimary = () => {
 
     updateCitySearchQuery(queryInput);
 
-    navigateToRoute('/cities', queryInput);
+    navigate({
+      pathname: ROUTES.cities,
+      search: createSearchParams({
+        [DESTINATION_SEARCH_QUERY]: queryInput,
+      }).toString(),
+    });
   };
 
   return (
