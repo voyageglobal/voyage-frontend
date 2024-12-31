@@ -1,5 +1,5 @@
 import BackgroundHero from '../../assets/img/citiesPage/hero.png';
-import SearchPanelSecondary from '../../components/common/SearchPanels/SearcPanelSecondary';
+import SearchPanelSecondary from '../../components/common/SearchPanels/SearchPanelSecondary';
 
 const HeroSection = () => {
   return (

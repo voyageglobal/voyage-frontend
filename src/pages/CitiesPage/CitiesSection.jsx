@@ -1,16 +1,13 @@
-import { useCitySearch } from '../../context/CitySearchContext';
-import { useCitiesData } from '../../context/CitiesDataContext';
 import AllCitiesList from '../../components/features/AllCitiesList';
 import CreateGuideButton from '../../components/common/CreateGuideButton/CreateGuideButton';
+import { useCitySearchQuery } from '../../hooks/useCitySearchQuery';
 
 const CitiesSection = () => {
-  const { searchQuery } = useCitySearch();
-  const { citiesData, isDataLoaded } = useCitiesData();
+  const { citySearchQuery } = useCitySearchQuery();
 
-  const displayText = searchQuery
-    ? `City Guides: ${searchQuery}`
+  const displayText = citySearchQuery
+    ? `City Guides: ${citySearchQuery}`
     : 'City Guides';
-  const showCreateGuideButton = isDataLoaded && citiesData.length > 0;
 
   return (
     <section className="min-h-[48.13rem] pb-14 pt-28">
@@ -22,9 +19,9 @@ const CitiesSection = () => {
           <h3 className="font-fourth text-xl font-normal">
             Explore city guides for your next adventure
           </h3>
-          {showCreateGuideButton && <CreateGuideButton />}
+          <CreateGuideButton />
         </div>
-        <AllCitiesList initialLimit={10} />
+        <AllCitiesList initialLimit={10} searchQuery={citySearchQuery} />{' '}
       </div>
     </section>
   );

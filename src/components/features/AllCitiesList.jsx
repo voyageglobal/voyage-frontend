@@ -1,13 +1,11 @@
-import { useEffect } from 'react';
 import { memo } from 'react';
 import useAllCities from '../../hooks/useAllCities';
 import CitiesList from '../common/CitiesList/CitiesList';
 import { FETCH_SETTINGS } from '../../services/CitiesService';
-import { useCitiesData } from '../../context/CitiesDataContext';
-import { useCitySearch } from '../../context/CitySearchContext';
+import { useCitySearchQuery } from '../../hooks/useCitySearchQuery';
 
 const AllCitiesList = ({ initialLimit }) => {
-  const { searchQuery } = useCitySearch();
+  const { citySearchQuery } = useCitySearchQuery();
 
   const {
     data,
@@ -19,17 +17,8 @@ const AllCitiesList = ({ initialLimit }) => {
   } = useAllCities({
     pageSize: initialLimit,
     sortOrder: FETCH_SETTINGS.SORT.NAME_ASC,
-    searchQuery,
+    searchQuery: citySearchQuery,
   });
-  const { updateCitiesData } = useCitiesData();
-
-  const handleCitiesDataUpdate = () => {
-    if (data) {
-      updateCitiesData(data);
-    }
-  };
-
-  useEffect(handleCitiesDataUpdate, [data, updateCitiesData]);
 
   return (
     <div>

@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import SearchIcon from '../../../assets/img/searchIcon.svg';
+import { Search } from 'lucide-react';
 
 const SearchPanelTravelTips = () => {
-  const handleSearch = event => {
-    event.preventDefault();
+  const handleSearch = e => {
+    e.preventDefault();
   };
 
   return (
@@ -14,7 +14,6 @@ const SearchPanelTravelTips = () => {
       <input
         className="flex-grow bg-transparent font-fourth text-lg/5 italic text-dark-color placeholder-dark-color outline-none"
         type="search"
-        name="query"
         placeholder="Search by keywords"
         aria-label="Search for travel tips by keywords"
       />
@@ -23,7 +22,11 @@ const SearchPanelTravelTips = () => {
         type="submit"
         aria-label="Submit search for travel tips and open search results"
       >
-        <SearchIcon aria-hidden="true" />
+        <Search
+          strokeWidth={2}
+          className="text-dark-color/80 hover:text-light-color"
+          aria-hidden="true"
+        />
       </button>
     </form>
   );
