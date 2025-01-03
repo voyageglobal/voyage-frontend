@@ -1,21 +1,24 @@
 import { memo } from 'react';
+import ContentLoader from 'react-content-loader';
 
 const CategoriesSkeleton = () => {
-  const skeletons = Array.from({ length: 7 });
-
   return (
     <div className="mt-10 flex justify-between">
-      {skeletons.map((_, index) => (
-        <div
+      {Array.from({ length: 7 }).map((_, index) => (
+        <ContentLoader
           key={index}
-          className="flex h-48 w-[8.625rem] animate-pulse flex-col rounded-lg bg-gray-200 shadow-md"
+          speed={3}
+          width={138}
+          height={192}
+          viewBox="0 0 138 192"
+          backgroundColor="#e5e7eb"
+          foregroundColor="#d1d5db"
+          className="rounded-lg shadow-md"
         >
-          <div className="h-36 w-full rounded-t-lg bg-gray-300"></div>
-          <div className="flex h-12 w-full items-center justify-between rounded-b-lg bg-gray-200 px-2.5">
-            <div className="h-4 w-20 rounded bg-gray-300"></div>
-            <div className="h-6 w-6 rounded-full bg-gray-300"></div>
-          </div>
-        </div>
+          <rect x="0" y="0" rx="8" ry="8" width="138" height="144" />
+          <rect x="10" y="160" rx="4" ry="4" width="80" height="16" />
+          <circle cx="115" cy="168" r="18" />
+        </ContentLoader>
       ))}
     </div>
   );
