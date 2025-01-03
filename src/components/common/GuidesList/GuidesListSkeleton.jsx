@@ -1,17 +1,25 @@
 import { memo } from 'react';
+import ContentLoader from 'react-content-loader';
 
 const GuidesListSkeleton = () => {
-  const skeletons = Array.from({ length: 10 });
-
   return (
     <ul className="mt-8 flex list-none flex-wrap justify-between gap-x-12 gap-y-8">
-      {skeletons.map((_, index) => (
+      {Array.from({ length: 4 }).map((_, index) => (
         <li key={index}>
-          <div className="flex h-80 w-44 animate-pulse flex-col rounded-10px bg-gray-200 shadow-md">
-            <div className="h-64 w-44 rounded-10px bg-gray-300"></div>
-            <div className="ml-1.5 mt-2.5 h-6 w-32 rounded bg-gray-300"></div>
-            <div className="ml-1.5 mt-2.5 h-4 w-24 rounded bg-gray-300"></div>
-          </div>
+          <ContentLoader
+            speed={3}
+            width={244}
+            height={256}
+            viewBox="0 0 244 256"
+            backgroundColor="#e5e7eb"
+            foregroundColor="#d1d5db"
+            className="rounded-[10px] shadow-md"
+          >
+            <rect x="0" y="0" rx="10" ry="10" width="244" height="192" />
+
+            <rect x="12" y="206" rx="4" ry="4" width="160" height="30" />
+            <circle cx="212" cy="222" r="22" />
+          </ContentLoader>
         </li>
       ))}
     </ul>
