@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import BackgroundOurGuides from '../../assets/img/mainPage/map.png';
 import { ROUTES } from '../../App';
-import { StatsSkeleton } from './StatsSkeleton';
+import { ThreeDotsSkeleton } from './ThreeDotsSkeleton';
 
 const OurGuidesSection = ({ totalGuides, totalCountries, isLoading }) => {
   return (
@@ -14,11 +14,12 @@ const OurGuidesSection = ({ totalGuides, totalCountries, isLoading }) => {
         <div className="flex h-[29.88rem] w-96 flex-col justify-between pl-20 pt-40">
           <h2 className="font-third text-5xl text-shadow-header">OUR GUIDES</h2>
           <p className="font-fourth text-xl/6">
-            Today there are <b>{isLoading ? <StatsSkeleton /> : totalGuides}</b>{' '}
-            guides in <br />
-            <b>{isLoading ? <StatsSkeleton /> : totalCountries}</b> countries in
-            our community! <br /> Discover new cities and countries, or share
-            your guide right now!
+            Today there are{' '}
+            <b>{isLoading ? <ThreeDotsSkeleton /> : totalGuides}</b> guides in{' '}
+            <br />
+            <b>{isLoading ? <ThreeDotsSkeleton /> : totalCountries}</b>{' '}
+            countries in our community! <br /> Discover new cities and
+            countries, or share your guide right now!
           </p>
           <Link
             to={ROUTES.cities}

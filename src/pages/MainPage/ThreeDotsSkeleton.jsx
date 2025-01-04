@@ -1,15 +1,17 @@
 import ContentLoader from 'react-content-loader';
 
-export const StatsSkeleton = () => (
+export const ThreeDotsSkeleton = () => (
   <ContentLoader
-    speed={3}
+    speed={2}
     width={30}
     height={20}
     viewBox="0 0 30 20"
-    backgroundColor="#e5e7eb"
+    backgroundColor="transparent"
     foregroundColor="#dbd3d1"
     className="inline-block"
   >
-    <rect x="0" y="0" rx="4" ry="4" width="30" height="20" />
+    <circle cx="6" cy="10" r="2" />
+    <circle cx="15" cy="10" r="2" />
+    <circle cx="24" cy="10" r="2" />
   </ContentLoader>
 );
