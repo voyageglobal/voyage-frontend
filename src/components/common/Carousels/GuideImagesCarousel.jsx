@@ -4,8 +4,9 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
+import '../../../../css/guideCarouselSwiper.css';
 const GuideImagesCarousel = ({ images }) => {
+  if (!images.length) return null;
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -20,23 +21,10 @@ const GuideImagesCarousel = ({ images }) => {
           <img
             src={src}
             alt={`Guide image ${index + 1}`}
-            className="h-auto w-full"
+            className="h-auto w-full object-contain"
           />
         </SwiperSlide>
       ))}
-
-      <style>
-        {`
-          .swiper-pagination-bullet {
-            background-color: orange !important;
-            width: 20px !important;
-            height: 20px !important;
-          }
-          .swiper-button-next, .swiper-button-prev {
-            color: orange !important;
-           }
-        `}
-      </style>
     </Swiper>
   );
 };

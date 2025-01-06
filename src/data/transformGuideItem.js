@@ -4,7 +4,7 @@ const transformGuideItem = guide => {
   return {
     id: guide.id,
     name: guide.name,
-    description: guide.text,
+    article: guide.text,
     startDate: guide.visitedDateStart,
     endDate: guide.visitedDateEnd,
     categories: guide.categories,

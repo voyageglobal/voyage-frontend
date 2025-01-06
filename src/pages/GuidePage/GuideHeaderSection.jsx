@@ -27,7 +27,10 @@ const GuideHeaderSection = () => {
         name={category.iconName}
         className="text-dark-color/80"
         size="20px"
-      />
+        aria-label={category.name}
+      >
+        <title>{category.name}</title>
+      </DynamicIcon>
     ));
   }, [guide]);
 
@@ -57,20 +60,25 @@ const GuideHeaderSection = () => {
         </div>
         <div className="flex justify-between pt-10 font-fourth text-2xl font-light">
           <div className="flex">
-            <p>{DEFAULT_USERNAME}</p>
+            <p>
+              <i>Author:</i> {DEFAULT_USERNAME}
+            </p>
             <p className="pl-10">{startDate || 'Unknown Date'}</p>
           </div>
-          <div>
+          <div className="max-w-36">
             <p>
               <b>Guide Type</b>:
             </p>
-            <div className="flex max-w-36 flex-wrap justify-start gap-1.5">
+            <div className="flex flex-wrap justify-start gap-1.5 gap-x-4 pt-2">
               {categoryIcons}
             </div>
           </div>
         </div>
         <div className="flex justify-between pt-5 font-fourth text-2xl font-light">
-          <p title={guideName} className="line-clamp-4 w-2/4 font-medium">
+          <p
+            title={guideName}
+            className="line-clamp-4 text-justify font-medium"
+          >
             {guideName}
           </p>
         </div>
