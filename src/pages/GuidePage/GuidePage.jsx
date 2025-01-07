@@ -4,6 +4,7 @@ import GuidePageHeroSection from './GuidePageHeroSection';
 import GuideHeaderSection from './GuideHeaderSection';
 import GuideCarouselSection from './GuideCarouselSection';
 import GuideArticleSection from './GuideArticleSection';
+import GuideMoreGuidesSection from './GuideMoreGuidesSection';
 
 const GuidePage = () => {
   return (
@@ -15,6 +16,7 @@ const GuidePage = () => {
       <GuideHeaderSection />
       <GuideCarouselSection />
       <GuideArticleSection />
+      <GuideMoreGuidesSection />
     </Page>
   );
 };

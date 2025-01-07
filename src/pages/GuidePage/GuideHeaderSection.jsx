@@ -66,10 +66,10 @@ const GuideHeaderSection = () => {
             <p className="pl-10">{startDate || 'Unknown Date'}</p>
           </div>
           <div className="max-w-36">
-            <p>
+            <p className="text-end">
               <b>Guide Type</b>:
             </p>
-            <div className="flex flex-wrap justify-start gap-1.5 gap-x-4 pt-2">
+            <div className="flex flex-wrap justify-end gap-1.5 gap-x-4 pt-2">
               {categoryIcons}
             </div>
           </div>

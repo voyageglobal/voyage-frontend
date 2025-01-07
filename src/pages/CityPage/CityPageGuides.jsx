@@ -103,7 +103,7 @@ const CityPageGuides = () => {
                 className="inline-block text-2xl underline transition duration-300 ease-in-out hover:text-orange-color"
                 to={generatePath(ROUTES.city, { id: cityId })}
               >
-                <h2>{cityName}</h2>
+                {cityName}
               </Link>
             </div>
             <CreateGuideButton />
