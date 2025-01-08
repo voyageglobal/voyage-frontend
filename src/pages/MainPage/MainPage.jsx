@@ -1,7 +1,7 @@
 import Page from '../../components/common/Page/Page';
 import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
-import CitiesSection from './CitiesSection';
+import PopularCitiesSection from './PopularCitiesSection';
 import BecomeGuide from './BecomeGuide';
 import OurGuidesSection from './OurGuidesSection';
 import ContactsSection from './ContactsSection';
@@ -19,7 +19,7 @@ const MainPage = () => {
     >
       <HeroSection />
       <AboutSection />
-      <CitiesSection />
+      <PopularCitiesSection />
       <BecomeGuide />
       <ContactsSection />
       <OurGuidesSection

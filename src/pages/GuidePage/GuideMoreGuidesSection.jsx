@@ -41,11 +41,11 @@ const GuideMoreGuidesSection = () => {
   }
 
   return (
-    <section>
+    <section className="min-h-96 pt-24">
       <div className="container mx-auto">
-        <h4 className="mt-24 font-fourth text-2xl">
-          More tours in {guide?.cities?.[0]?.name || 'Unknown City'},
-          {guide?.country?.name || 'Unknown Country'}
+        <h4 className="font-fourth text-2xl">
+          More guides in{' '}
+          {`${guide?.cities?.[0]?.name || 'Unknown City'}, ${guide?.country?.name || 'Unknown Country'}:`}
         </h4>
         <div className="mt-8">
           <GuidesList
@@ -60,8 +60,7 @@ const GuideMoreGuidesSection = () => {
               className="w-96 rounded-lg px-6 py-3 text-center text-lg font-semibold shadow-md transition hover:bg-orange-color hover:text-white"
               to={generatePath(ROUTES.city, { id: cityId })}
             >
-              View all tours in {guide?.cities?.[0]?.name || 'Unknown City'},
-              {guide?.country?.name || 'Unknown Country'}
+              {`View all tours in ${guide?.cities?.[0]?.name || 'Unknown City'}, ${guide?.country?.name || 'Unknown Country'}`}
             </Link>
           )}
         </div>

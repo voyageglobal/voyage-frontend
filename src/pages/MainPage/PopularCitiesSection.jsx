@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import PopularCitiesList from '../../components/features/PopularCitiesList';
 import { ROUTES } from '../../App';
 
-const CitiesSection = () => {
+const PopularCitiesSection = () => {
   return (
-    <section className="min-h-[35rem] pt-24">
+    <section id="popularCities" className="min-h-[35rem] pt-24">
       <div className="container mx-auto">
         <h2 className="font-fourth text-2rem font-normal">Popular Cities</h2>
         <div className="mt-6 flex items-center justify-between">
@@ -24,4 +24,4 @@ const CitiesSection = () => {
   );
 };
 
-export default CitiesSection;
+export default PopularCitiesSection;

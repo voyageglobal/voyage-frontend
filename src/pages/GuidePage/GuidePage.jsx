@@ -5,6 +5,7 @@ import GuideHeaderSection from './GuideHeaderSection';
 import GuideCarouselSection from './GuideCarouselSection';
 import GuideArticleSection from './GuideArticleSection';
 import GuideMoreGuidesSection from './GuideMoreGuidesSection';
+import GuideMostPopularCitiesSection from './GuideMostPopularCitiesSection';
 
 const GuidePage = () => {
   return (
@@ -17,6 +18,7 @@ const GuidePage = () => {
       <GuideCarouselSection />
       <GuideArticleSection />
       <GuideMoreGuidesSection />
+      <GuideMostPopularCitiesSection />
     </Page>
   );
 };
