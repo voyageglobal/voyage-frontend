@@ -12,7 +12,7 @@ const GuideArticleSection = () => {
   if (isGuideLoading) {
     return (
       <div className="container mx-auto">
-        <SkeletonString width="100%" height={20} lines={5} />
+        <SkeletonString width={1170} height={20} lines={5} />
       </div>
     );
   }

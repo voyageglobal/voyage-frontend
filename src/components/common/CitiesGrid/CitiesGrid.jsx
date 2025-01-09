@@ -1,7 +1,18 @@
 import { Link, generatePath } from 'react-router-dom';
 import { ROUTES } from '../../../App';
+import SkeletonString from '../../common/Skeletons/SkeletonString';
 
-const CitiesGrid = ({ cities }) => {
+const CitiesGrid = ({ cities = [], isLoading }) => {
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-7 gap-x-12 font-fourth font-light">
+        {Array.from({ length: 7 }).map((_, index) => (
+          <SkeletonString key={index} width={120} height={20} lines={7} />
+        ))}
+      </div>
+    );
+  }
+
   if (!cities.length) return null;
 
   return (

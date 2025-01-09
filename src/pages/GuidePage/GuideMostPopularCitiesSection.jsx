@@ -19,9 +19,15 @@ const GuideMostPopularCitiesSection = () => {
         </Link>
 
         <div className="mt-6 border-b border-t border-dark-color p-4">
-          {isLoading && <p>Loading...</p>}
-          {error && <p>Error loading cities</p>}
-          {!isLoading && !error && <CitiesGrid cities={cities} />}
+          {isLoading ? (
+            <CitiesGrid isLoading={true} />
+          ) : error ? (
+            <p className="font-fourth text-xl text-dark-color">
+              Error loading cities
+            </p>
+          ) : (
+            <CitiesGrid cities={cities} />
+          )}
         </div>
       </div>
     </section>

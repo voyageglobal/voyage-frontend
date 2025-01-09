@@ -5,9 +5,9 @@ const GuideLoadingSkeleton = () => (
     <div className="container mx-auto">
       <ContentLoader
         speed={2}
-        width="100%"
-        height="210"
-        viewBox="0 0 100% 100%"
+        width={1170}
+        height={210}
+        viewBox="0 0 1170 210"
         backgroundColor="#e5e7eb"
         foregroundColor="#d1d5db"
       >

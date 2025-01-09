@@ -19,11 +19,7 @@ const CityPageGuides = () => {
   const { id: cityId } = useParams();
   const [activeKeys, setActiveKeys] = useState([]);
 
-  const {
-    city,
-    isLoading: isCityLoading,
-    error: cityError,
-  } = useCityById(cityId);
+  const { city } = useCityById(cityId);
 
   const {
     data: categories = [],

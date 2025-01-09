@@ -58,7 +58,7 @@ const CityPageHeader = () => {
 
           <p className="mt-10 font-fourth text-lg/6">
             {isCityLoading ? (
-              <SkeletonString lines={2} width="100%" height={20} />
+              <SkeletonString lines={2} width={1170} height={20} />
             ) : (
               cityDescription
             )}
