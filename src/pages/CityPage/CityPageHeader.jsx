@@ -19,7 +19,7 @@ const CityPageHeader = () => {
   const cityDescription = city?.description;
 
   if (cityError) {
-    return <CityFetchError />;
+    return <CityFetchError message={cityError.message} />;
   }
 
   if (!city && !isCityLoading) {

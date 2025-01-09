@@ -2,6 +2,7 @@ import { Link, useParams, generatePath } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useAllGuides from '../../hooks/useAllGuides';
 import GuidesList from '../../components/common/GuidesList/GuidesList';
+
 import { ROUTES } from '../../App';
 
 const useMoreGuides = cityId => {
@@ -24,17 +25,13 @@ const useMoreGuides = cityId => {
 const GuideMoreGuidesSection = () => {
   const { id: guideId } = useParams();
 
-  const { guide, isLoading: isGuideLoading } = useGuideById(guideId);
+  const { guide } = useGuideById(guideId);
 
   const cityId = guide?.cities?.[0]?.id;
 
   const { guides, error, isLoading } = useMoreGuides(cityId);
 
   const filteredGuides = guides.filter(guide => guide.id !== guideId);
-
-  if (isGuideLoading) {
-    return;
-  }
 
   if (!cityId || !filteredGuides.length) {
     return null;
