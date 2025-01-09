@@ -19,6 +19,7 @@
     "lucide-react": "^0.468.0",
     "normalize-scss": "^8.0.0",
     "react": "^18.2.0",
+    "react-content-loader": "^7.0.2",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.1.2",
     "react-helmet": "^6.1.0",

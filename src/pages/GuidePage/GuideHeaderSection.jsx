@@ -5,6 +5,9 @@ import useFormattedDate from '../../hooks/useFormattedDate';
 import { ROUTES } from '../../App';
 import { DEFAULT_USERNAME } from '../../data/userName';
 import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
+import GuideLoadingSkeleton from './GuideLoadingSkeleton';
+import GuideFetchError from './GuideFetchError';
+import GuideFetchNotFound from './GuideFetchNotFound';
 
 const GuideHeaderSection = () => {
   const { id: guideId } = useParams();
@@ -35,15 +38,15 @@ const GuideHeaderSection = () => {
   }, [guide]);
 
   if (isGuideLoading) {
-    return <p>Loading guide...</p>;
+    return <GuideLoadingSkeleton />;
   }
 
   if (guideError) {
-    return <p>Error loading guide: {guideError.message}</p>;
+    return <GuideFetchError message={guideError.message} />;
   }
 
   if (!guide) {
-    return <p>No guide found.</p>;
+    return <GuideFetchNotFound />;
   }
 
   return (

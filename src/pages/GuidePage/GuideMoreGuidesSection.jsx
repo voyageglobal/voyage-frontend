@@ -24,11 +24,7 @@ const useMoreGuides = cityId => {
 const GuideMoreGuidesSection = () => {
   const { id: guideId } = useParams();
 
-  const {
-    guide,
-    isLoading: isGuideLoading,
-    error: guideError,
-  } = useGuideById(guideId);
+  const { guide, isLoading: isGuideLoading } = useGuideById(guideId);
 
   const cityId = guide?.cities?.[0]?.id;
 
@@ -36,7 +32,11 @@ const GuideMoreGuidesSection = () => {
 
   const filteredGuides = guides.filter(guide => guide.id !== guideId);
 
-  if (!filteredGuides.length) {
+  if (isGuideLoading) {
+    return;
+  }
+
+  if (!cityId || !filteredGuides.length) {
     return null;
   }
 
@@ -60,7 +60,7 @@ const GuideMoreGuidesSection = () => {
               className="w-96 rounded-lg px-6 py-3 text-center text-lg font-semibold shadow-md transition hover:bg-orange-color hover:text-white"
               to={generatePath(ROUTES.city, { id: cityId })}
             >
-              {`View all tours in ${guide?.cities?.[0]?.name || 'Unknown City'}, ${guide?.country?.name || 'Unknown Country'}`}
+              {`View all guides in ${guide?.cities?.[0]?.name || 'Unknown City'}, ${guide?.country?.name || 'Unknown Country'}`}
             </Link>
           )}
         </div>
