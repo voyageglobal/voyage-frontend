@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useFormattedDate from '../../hooks/useFormattedDate';
@@ -9,7 +9,7 @@ import GuideLoadingSkeleton from './GuideLoadingSkeleton';
 import GuideFetchError from './GuideFetchError';
 import GuideFetchNotFound from './GuideFetchNotFound';
 
-const GuideHeaderSection = () => {
+const GuideHeaderSection = ({ setGuideName }) => {
   const { id: guideId } = useParams();
 
   const {
@@ -21,6 +21,13 @@ const GuideHeaderSection = () => {
   const cityName = guide?.cities?.[0]?.name || 'Unknown City';
   const countryName = guide?.country?.name || 'Unknown Country';
   const guideName = guide?.name || 'Untitled Guide';
+
+  useEffect(() => {
+    if (guide?.name) {
+      setGuideName(guide.name);
+    }
+  }, [guide?.name, setGuideName]);
+
   const startDate = useFormattedDate(guide?.startDate);
   const categoryIcons = useMemo(() => {
     if (!guide?.categories) return [];

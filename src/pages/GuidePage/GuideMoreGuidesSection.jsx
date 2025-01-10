@@ -31,9 +31,9 @@ const GuideMoreGuidesSection = () => {
 
   const { guides, error, isLoading } = useMoreGuides(cityId);
 
-  const filteredGuides = guides.filter(guide => guide.id !== guideId);
+  const restOfGuides = guides.filter(guide => guide.id !== guideId);
 
-  if (!cityId || !filteredGuides.length) {
+  if (!cityId || !restOfGuides.length) {
     return null;
   }
 
@@ -45,11 +45,7 @@ const GuideMoreGuidesSection = () => {
           {`${guide?.cities?.[0]?.name || 'Unknown City'}, ${guide?.country?.name || 'Unknown Country'}:`}
         </h4>
         <div className="mt-8">
-          <GuidesList
-            data={filteredGuides}
-            error={error}
-            isLoading={isLoading}
-          />
+          <GuidesList data={restOfGuides} error={error} isLoading={isLoading} />
         </div>
         <div className="mt-10 flex justify-center">
           {cityId && (

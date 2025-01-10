@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useParams, createSearchParams } from 'react-router-dom';
 import useCityById from '../../hooks/useCityById';
 import { ROUTES } from '../../App';
@@ -6,7 +7,7 @@ import SkeletonString from '../../components/common/Skeletons/SkeletonString';
 import CityFetchError from './CityFetchError';
 import CityFetchNotFound from './CityFetchNotFound';
 
-const CityPageHeader = () => {
+const CityPageHeader = ({ setCityName }) => {
   const { id: cityId } = useParams();
   const {
     city,
@@ -17,6 +18,12 @@ const CityPageHeader = () => {
   const cityName = city?.name || cityId;
   const countryName = city?.country?.name || '';
   const cityDescription = city?.description;
+
+  useEffect(() => {
+    if (city?.name) {
+      setCityName(city.name);
+    }
+  }, [city?.name, setCityName]);
 
   if (cityError) {
     return <CityFetchError message={cityError.message} />;
