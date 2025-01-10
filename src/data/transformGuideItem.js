@@ -4,7 +4,7 @@ const transformGuideItem = guide => {
   return {
     id: guide.id,
     name: guide.name,
-    description: guide.text,
+    article: guide.text,
     startDate: guide.visitedDateStart,
     endDate: guide.visitedDateEnd,
     categories: guide.categories,
@@ -15,7 +15,8 @@ const transformGuideItem = guide => {
       flag: guide.countries[0]?.flag || '',
     },
     flag: guide.countries[0]?.flag || '',
-    imageUrl: guide.primaryImages[0]?.url || GuideCardStub,
+    imagePrimary: guide.primaryImages[0]?.url || GuideCardStub,
+    imagesContent: guide.contentImages?.map(img => img.url) || [],
   };
 };
 

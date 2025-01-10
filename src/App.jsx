@@ -16,6 +16,7 @@ export const ROUTES = {
   aboutUs: '/about-us',
   cities: '/cities',
   city: '/cities/:id',
+  popularCities: '/#popularCities',
   contacts: '/#contacts',
   signIn: '/sign-in',
   travelTips: '/travel-tips',

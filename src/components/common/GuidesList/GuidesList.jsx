@@ -20,7 +20,7 @@ const GuidesList = ({ data: guides = [], error, isLoading }) => {
             guideId={guide.id}
             guideTitle={guide.name}
             guideText={guide.description}
-            backgroundImage={guide.imageUrl}
+            backgroundImage={guide.imagePrimary}
             categories={guide.categories}
             cityId={guide.cities[0]?.id}
           />
