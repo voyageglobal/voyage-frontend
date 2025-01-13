@@ -1,3 +1,5 @@
+import { ImagePlus, ZoomIn, Trash2 } from 'lucide-react';
+
 const CreateGuideFormSection = () => {
   return (
     <section className="min-h-[35rem]">
@@ -51,6 +53,19 @@ const CreateGuideFormSection = () => {
               <option>Guide category 2</option>
               <option>Guide category 3</option>
             </select>
+          </div>
+
+          <div className="relative col-span-3 flex h-60 w-full items-center justify-center bg-dark-color/45">
+            <ImagePlus className="h-20 w-20 text-light-color" />
+            <input type="file" className="absolute cursor-pointer opacity-0" />
+            <div className="absolute bottom-2 right-2 flex gap-2">
+              <button type="button">
+                <ZoomIn className="h-6 w-6 text-light-color transition hover:text-orange-color" />
+              </button>
+              <button type="button">
+                <Trash2 className="h-6 w-6 text-light-color transition hover:text-orange-color" />
+              </button>
+            </div>
           </div>
 
           <button
