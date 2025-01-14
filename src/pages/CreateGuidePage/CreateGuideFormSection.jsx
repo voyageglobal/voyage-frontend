@@ -1,10 +1,30 @@
+import { useState } from 'react';
 import { ImagePlus, ZoomIn, Trash2 } from 'lucide-react';
+import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
 
 const CreateGuideFormSection = () => {
+  const [guideContent, setGuideContent] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    console.log({
+      city: e.target.city.value,
+      country: e.target.country.value,
+      date: e.target.date.value,
+      guideName: e.target.guideName.value,
+      category: e.target.category.value,
+      guideContent,
+    });
+  };
+
   return (
     <section className="min-h-[35rem]">
       <div className="container mx-auto pt-8">
-        <form className="grid grid-cols-[29.75rem_23.375rem_13.25rem] grid-rows-2 gap-5">
+        <form
+          className="grid grid-cols-[29.75rem_23.375rem_13.25rem] grid-rows-2 gap-5"
+          onSubmit={handleSubmit}
+        >
           <div className="flex flex-col gap-1">
             <label htmlFor="city" className="text-sm text-gray-700">
               City
@@ -15,6 +35,7 @@ const CreateGuideFormSection = () => {
               <option>City 3</option>
             </select>
           </div>
+
           <div className="flex flex-col gap-1">
             <label htmlFor="country" className="text-sm text-gray-700">
               Country
@@ -25,6 +46,7 @@ const CreateGuideFormSection = () => {
               <option>Country 3</option>
             </select>
           </div>
+
           <div className="flex flex-col gap-1">
             <label htmlFor="date" className="text-sm text-gray-700">
               Date
@@ -44,6 +66,7 @@ const CreateGuideFormSection = () => {
               className="border p-2"
             />
           </div>
+
           <div className="flex flex-col gap-1">
             <label htmlFor="category" className="text-sm text-gray-700">
               Category
@@ -66,6 +89,11 @@ const CreateGuideFormSection = () => {
                 <Trash2 className="h-6 w-6 text-light-color transition hover:text-orange-color" />
               </button>
             </div>
+          </div>
+
+          <div className="col-span-3">
+            <label className="text-sm text-gray-700">Guide Content</label>
+            <TipTapEditor setContent={setGuideContent} />
           </div>
 
           <button
