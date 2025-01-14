@@ -26,7 +26,7 @@ const CreateGuideFormSection = () => {
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col gap-1">
-            <label htmlFor="city" className="text-sm text-gray-700">
+            <label htmlFor="city" className="text-sm text-dark-color">
               City
             </label>
             <select id="city" name="city" className="border p-2">
@@ -37,7 +37,7 @@ const CreateGuideFormSection = () => {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="country" className="text-sm text-gray-700">
+            <label htmlFor="country" className="text-sm text-dark-color">
               Country
             </label>
             <select id="country" name="country" className="border p-2">
@@ -48,14 +48,14 @@ const CreateGuideFormSection = () => {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="date" className="text-sm text-gray-700">
+            <label htmlFor="date" className="text-sm text-dark-color">
               Date
             </label>
             <input id="date" name="date" type="date" className="border p-2" />
           </div>
 
           <div className="col-span-2 flex flex-col gap-1">
-            <label htmlFor="guideName" className="text-sm text-gray-700">
+            <label htmlFor="guideName" className="text-sm text-dark-color">
               Guide name
             </label>
             <input
@@ -68,7 +68,7 @@ const CreateGuideFormSection = () => {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="category" className="text-sm text-gray-700">
+            <label htmlFor="category" className="text-sm text-dark-color">
               Category
             </label>
             <select id="category" name="category" className="border p-2">
@@ -78,30 +78,64 @@ const CreateGuideFormSection = () => {
             </select>
           </div>
 
-          <div className="relative col-span-3 flex h-60 w-full items-center justify-center bg-dark-color/45">
-            <ImagePlus className="h-20 w-20 text-light-color" />
-            <input type="file" className="absolute cursor-pointer opacity-0" />
-            <div className="absolute bottom-2 right-2 flex gap-2">
-              <button type="button">
-                <ZoomIn className="h-6 w-6 text-light-color transition hover:text-orange-color" />
-              </button>
-              <button type="button">
-                <Trash2 className="h-6 w-6 text-light-color transition hover:text-orange-color" />
-              </button>
+          <section className="col-span-3">
+            <label htmlFor="cover" className="text-sm text-dark-color">
+              Upload the cover for your guide
+            </label>
+            <div className="relative flex h-60 w-full items-center justify-center bg-dark-color/45">
+              <ImagePlus className="h-20 w-20 text-light-color transition hover:text-orange-color" />
+              <input
+                id="cover"
+                type="file"
+                className="absolute h-full w-full cursor-pointer opacity-0"
+              />
+              <div className="absolute bottom-2 right-2 flex gap-2">
+                <button type="button">
+                  <ZoomIn className="h-6 w-6 text-light-color transition hover:text-orange-color" />
+                </button>
+                <button type="button">
+                  <Trash2 className="h-6 w-6 text-light-color transition hover:text-orange-color" />
+                </button>
+              </div>
             </div>
-          </div>
+          </section>
 
           <div className="col-span-3">
-            <label className="text-sm text-gray-700">Guide Content</label>
+            <label className="text-sm text-dark-color">
+              Enter the text of your guide here! It would be cool if you could
+              include prices for admission tickets, lifehacks, annual events, or
+              some ways to save money!
+            </label>
             <TipTapEditor setContent={setGuideContent} />
           </div>
+          <label htmlFor="photo" className="mb-2 block text-dark-color">
+            Upload the photo for your guide
+          </label>
+          <section className="col-span-3 mx-auto w-full rounded py-8 shadow-md">
+            <div className="relative mx-auto flex h-56 w-[61rem] flex-col items-center justify-center border-2 border-dashed border-dark-color bg-dark-color/45 p-4">
+              <ImagePlus className="mb-2 h-20 w-20 text-light-color transition hover:text-orange-color" />
+              <input
+                id="photo"
+                type="file"
+                className="absolute h-full w-full cursor-pointer opacity-0"
+              />
+              <span className="text-light-color">
+                Drop your image here, or browse
+              </span>
+              <span className="text-light-color">
+                Supports: JPG, JPEG2000, PNG
+              </span>
+            </div>
+          </section>
 
-          <button
-            type="submit"
-            className="col-span-3 mt-4 rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
-          >
-            Save and post!
-          </button>
+          <div className="col-span-3 flex justify-center">
+            <button
+              type="submit"
+              className="mt-4 w-80 rounded bg-orange-color px-4 py-2 text-white"
+            >
+              Save and post!
+            </button>
+          </div>
         </form>
       </div>
     </section>
