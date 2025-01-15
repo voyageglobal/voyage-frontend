@@ -122,7 +122,7 @@ const CreateGuideFormSection = () => {
               <span className="text-light-color">
                 Drop your image here, or browse
               </span>
-              <span className="text-light-color">
+              <span className="text-light-color/70">
                 Supports: JPG, JPEG2000, PNG
               </span>
             </div>
