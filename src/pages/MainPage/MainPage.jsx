@@ -10,7 +10,7 @@ import MenuBottom from './MenuBottom';
 import { useTransformedStatistics } from '../../hooks/useTransformedStatistics';
 
 const MainPage = () => {
-  const { totalGuides, totalCountries } = useTransformedStatistics();
+  const { totalGuides, totalCountries, isLoading } = useTransformedStatistics();
 
   return (
     <Page
@@ -25,6 +25,7 @@ const MainPage = () => {
       <OurGuidesSection
         totalGuides={totalGuides}
         totalCountries={totalCountries}
+        isLoading={isLoading}
       />
       <TravelTips />
       <MenuBottom />
