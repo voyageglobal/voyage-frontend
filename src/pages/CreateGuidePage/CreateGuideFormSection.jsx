@@ -1,21 +1,31 @@
 import { useState } from 'react';
 import { ImagePlus, ZoomIn, Trash2 } from 'lucide-react';
 import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
+import DnDFileUploadZone from '../../components/common/Drag-n-drop/DnDFileUploadZone';
+import useSubmitGuide from '../../hooks/useSubmitGuide';
 
 const CreateGuideFormSection = () => {
   const [guideContent, setGuideContent] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const { mutate, isLoading } = useSubmitGuide();
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log({
-      city: e.target.city.value,
-      country: e.target.country.value,
-      date: e.target.date.value,
-      guideName: e.target.guideName.value,
-      category: e.target.category.value,
-      guideContent,
+    const formData = new FormData();
+    formData.append('city', e.target.city.value);
+    formData.append('country', e.target.country.value);
+    formData.append('date', e.target.date.value);
+    formData.append('guideName', e.target.guideName.value);
+    formData.append('category', e.target.category.value);
+    formData.append('guideContent', guideContent);
+
+    uploadedFiles.forEach((file, index) => {
+      formData.append(`photos[${index}]`, file.file);
     });
+
+    mutate(formData);
   };
 
   return (
@@ -112,28 +122,18 @@ const CreateGuideFormSection = () => {
             Upload the photo for your guide
           </label>
           <section className="col-span-3 mx-auto w-full rounded py-8 shadow-md">
-            <div className="relative mx-auto flex h-56 w-[61rem] flex-col items-center justify-center border-2 border-dashed border-dark-color bg-dark-color/45 p-4">
-              <ImagePlus className="mb-2 h-20 w-20 text-light-color transition hover:text-orange-color" />
-              <input
-                id="photo"
-                type="file"
-                className="absolute h-full w-full cursor-pointer opacity-0"
-              />
-              <span className="text-light-color">
-                Drop your image here, or browse
-              </span>
-              <span className="text-light-color/70">
-                Supports: JPG, JPEG2000, PNG
-              </span>
-            </div>
+            <DnDFileUploadZone onUpload={setUploadedFiles} />
           </section>
 
           <div className="col-span-3 flex justify-center">
             <button
               type="submit"
-              className="mt-4 w-80 rounded bg-orange-color px-4 py-2 text-white"
+              className={`mt-4 w-80 rounded bg-orange-color px-4 py-2 text-white ${
+                isLoading ? 'cursor-not-allowed opacity-50' : ''
+              }`}
+              disabled={isLoading}
             >
-              Save and post!
+              {isLoading ? 'Is sending...' : 'Save and post!'}
             </button>
           </div>
         </form>
