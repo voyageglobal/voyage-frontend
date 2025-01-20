@@ -4,7 +4,13 @@ import { ImagePlus } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import DnDFileItem from './DnDFileItem';
 
-const DnDFileUploadZone = ({ onUpload }) => {
+const DnDFileUploadZone = ({
+  onUpload,
+  additionalStyle = '',
+  additionalButtons = null,
+  inputId = null,
+  withItems = true,
+}) => {
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback(
@@ -41,7 +47,7 @@ const DnDFileUploadZone = ({ onUpload }) => {
     return () => {
       files.forEach(file => URL.revokeObjectURL(file.preview));
     };
-  }, [files]);
+  }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -49,30 +55,37 @@ const DnDFileUploadZone = ({ onUpload }) => {
   });
 
   return (
-    <div className="relative w-full">
+    <div>
       <div
         {...getRootProps()}
-        className="relative mx-auto flex h-56 w-full max-w-4xl cursor-pointer flex-col items-center justify-center border-2 border-dashed border-dark-color bg-dark-color/45 p-4"
+        className={`relative mx-auto flex w-full cursor-pointer flex-col items-center justify-center border border-dashed border-dark-color bg-dark-color/45 p-4 ${additionalStyle}`}
       >
-        <input id="photo" {...getInputProps()} />
+        <input id={inputId} {...getInputProps()} />
         <ImagePlus className="mb-2 h-20 w-20 text-light-color transition hover:text-orange-color" />
         <span className="text-light-color">
           Drop your image here, or browse
         </span>
         <span className="text-light-color/70">Supports: JPG, JPEG, PNG</span>
+        {additionalButtons && (
+          <div className="absolute bottom-2 right-2 flex gap-2">
+            {additionalButtons()}
+          </div>
+        )}
       </div>
 
-      <div className="mx-auto mt-4 max-w-4xl">
-        {files.map(file => (
-          <DnDFileItem
-            key={file.id}
-            file={file}
-            status={file.status}
-            onRemove={removeFile}
-            onRename={renameFile}
-          />
-        ))}
-      </div>
+      {withItems && (
+        <div className="mx-auto mt-4 max-w-4xl">
+          {files.map(file => (
+            <DnDFileItem
+              key={file.id}
+              file={file}
+              status={file.status}
+              onRemove={removeFile}
+              onRename={renameFile}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
