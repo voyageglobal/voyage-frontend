@@ -43,11 +43,10 @@ const DnDFileUploadZone = ({
     );
   }, []);
 
-  useEffect(() => {
-    return () => {
-      files.forEach(file => URL.revokeObjectURL(file.preview));
-    };
-  }, []);
+  useEffect(
+    () => () => files.forEach(file => URL.revokeObjectURL(file.preview)),
+    [],
+  );
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
