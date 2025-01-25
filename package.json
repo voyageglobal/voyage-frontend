@@ -43,8 +43,7 @@
     "react-toastify": "^10.0.6",
     "sass": "^1.77.2",
     "swiper": "^11.2.0",
-    "tailwind-merge": "^2.5.4",
-    "zod": "^3.24.1"
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.50.1",
