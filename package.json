@@ -41,8 +41,7 @@
     "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.6",
     "sass": "^1.77.2",
-    "tailwind-merge": "^2.5.4",
-    "zod": "^3.24.1"
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.50.1",
