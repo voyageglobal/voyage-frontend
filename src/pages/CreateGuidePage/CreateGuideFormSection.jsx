@@ -20,12 +20,13 @@ const CreateGuideFormSection = () => {
     },
   });
 
-  const { mutate, isLoading } = useSubmitGuide();
+  const resetForm = () => reset();
+
+  const { mutate, isLoading } = useSubmitGuide({ resetForm });
 
   const onSubmit = data => {
     console.log(data);
     mutate(data);
-    reset();
   };
 
   const renderAdditionalButtons = useCallback(
