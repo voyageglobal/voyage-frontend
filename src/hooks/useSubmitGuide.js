@@ -36,7 +36,6 @@ const useSubmitGuide = ({ resetForm }) => {
         'Failed to submit. You can continue editing and try submit again.',
         toastConfig,
       );
-      if (resetForm) resetForm();
     },
   });
 };

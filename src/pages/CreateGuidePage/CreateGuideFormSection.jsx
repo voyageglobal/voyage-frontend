@@ -1,8 +1,7 @@
-import { useCallback } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { ZoomIn, Trash2 } from 'lucide-react';
 import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
-import DnDFileUploadZone from '../../components/common/Drag-n-drop/DnDFileUploadZone';
+import DnDWithBackground from '../../components/common/Drag-n-drop/DnDWithBackground';
+import DnDWithItemList from '../../components/common/Drag-n-drop/DnDWithItemList';
 import useSubmitGuide from '../../hooks/useSubmitGuide';
 
 const CreateGuideFormSection = () => {
@@ -16,32 +15,21 @@ const CreateGuideFormSection = () => {
     mode: 'onBlur',
     defaultValues: {
       guideContent: '',
-      uploadedFiles: [],
+      coverImage: [],
+      guideImages: [],
     },
   });
 
-  const resetForm = () => reset();
+  const resetForm = () => {
+    reset();
+  };
 
   const { mutate, isLoading } = useSubmitGuide({ resetForm });
 
   const onSubmit = data => {
     console.log(data);
-    mutate(data);
+    mutate({ data });
   };
-
-  const renderAdditionalButtons = useCallback(
-    () => (
-      <>
-        <button aria-label="Zoom in" type="button">
-          <ZoomIn className="h-6 w-6 text-light-color transition hover:text-orange-color" />
-        </button>
-        <button aria-label="Delete photo" type="button">
-          <Trash2 className="h-6 w-6 text-light-color transition hover:text-orange-color" />
-        </button>
-      </>
-    ),
-    [],
-  );
 
   const ErrorMessage = ({ errors, fieldName }) =>
     errors?.[fieldName] ? (
@@ -146,25 +134,18 @@ const CreateGuideFormSection = () => {
           </section>
 
           <section className="col-span-3">
-            <label htmlFor="cover" className="text-sm text-dark-color">
+            <label htmlFor="coverImage" className="text-sm text-dark-color">
               Upload the cover for your guide
             </label>
             <Controller
-              name="uploadedFiles"
+              name="coverImage"
               control={control}
               rules={{
-                validate: files =>
-                  files.length > 0 || 'At least one file is required',
+                required: 'Cover image is required',
               }}
-              render={({ field, fieldState }) => (
+              render={({ field: { onChange, name }, fieldState }) => (
                 <div>
-                  <DnDFileUploadZone
-                    inputId={'cover'}
-                    withItems={false}
-                    additionalStyle="h-64"
-                    additionalButtons={renderAdditionalButtons}
-                    onUpload={field.onChange}
-                  />
+                  <DnDWithBackground id={name} onChange={onChange} />
                   {fieldState.error && (
                     <span className="text-red-500">
                       {fieldState.error.message}
@@ -205,34 +186,26 @@ const CreateGuideFormSection = () => {
           </section>
 
           <section className="col-span-3">
-            <label htmlFor="photo" className="mb-2 block text-dark-color">
+            <label htmlFor="guideImages" className="mb-2 block text-dark-color">
               Upload the photo for your guide
             </label>
-            <div className="mx-auto w-full rounded py-8 shadow-md">
-              <Controller
-                name="uploadedFiles"
-                control={control}
-                rules={{
-                  validate: files =>
-                    files.length > 0 || 'At least one file is required',
-                }}
-                render={({ field, fieldState }) => (
-                  <div>
-                    <DnDFileUploadZone
-                      withItems={true}
-                      inputId={'photo'}
-                      additionalStyle="max-w-4xl h-56"
-                      onUpload={field.onChange}
-                    />
-                    {fieldState.error && (
-                      <span className="text-red-500">
-                        {fieldState.error.message}
-                      </span>
-                    )}
-                  </div>
-                )}
-              />
-            </div>
+            <Controller
+              name="guideImages"
+              control={control}
+              rules={{
+                required: 'At least one file is required',
+              }}
+              render={({ field: { onChange, name }, fieldState }) => (
+                <div>
+                  <DnDWithItemList id={name} onChange={onChange} />
+                  {fieldState.error && (
+                    <span className="text-red-500">
+                      {fieldState.error.message}
+                    </span>
+                  )}
+                </div>
+              )}
+            />
           </section>
 
           <div className="col-span-3 flex justify-center">
