@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '../../../../css/guideCarouselSwiper.css';
+import './guideCarouselSwiper.css';
 const GuideImagesCarousel = ({ images }) => {
   if (!images.length) return null;
   return (
@@ -29,4 +30,4 @@ const GuideImagesCarousel = ({ images }) => {
   );
 };
 
-export default GuideImagesCarousel;
+export default memo(GuideImagesCarousel);
