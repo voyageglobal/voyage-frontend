@@ -51,10 +51,14 @@ const DnDFileItem = ({ file, onRename, onRemove, onPreview }) => {
       </div>
 
       <div className="flex w-12 justify-between">
-        <button type="button" onClick={() => setIsEditing(true)}>
+        <button
+          type="button"
+          title="Click to rename"
+          onClick={() => setIsEditing(true)}
+        >
           <Pencil className="h-5 w-5 text-gray-500 hover:text-orange-500" />
         </button>
-        <button type="button" onClick={handleRemove}>
+        <button type="button" title="Click to delete " onClick={handleRemove}>
           <Trash2 className="h-5 w-5 text-gray-500 hover:text-red-500" />
         </button>
       </div>

@@ -3,6 +3,7 @@ import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
 import DnDWithBackground from '../../components/common/Drag-n-drop/DnDWithBackground';
 import DnDWithItemList from '../../components/common/Drag-n-drop/DnDWithItemList';
 import useSubmitGuide from '../../hooks/useSubmitGuide';
+import DestinationSelect from './DestinationSelect';
 
 const CreateGuideFormSection = () => {
   const {
@@ -45,6 +46,7 @@ const CreateGuideFormSection = () => {
               <label htmlFor="city" className="text-sm text-dark-color">
                 City
               </label>
+              <DestinationSelect />
               <select
                 {...register('city', {
                   required: 'Please select a city',
