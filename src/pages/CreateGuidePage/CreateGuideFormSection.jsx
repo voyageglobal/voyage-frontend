@@ -3,12 +3,19 @@ import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
 import DnDWithBackground from '../../components/common/Drag-n-drop/DnDWithBackground';
 import DnDWithItemList from '../../components/common/Drag-n-drop/DnDWithItemList';
 import useSubmitGuide from '../../hooks/useSubmitGuide';
-import DestinationSelect from './DestinationSelect';
+import CountrySelect from './CountrySelect';
+import CitySelect from './CitySelect';
+
+const ErrorMessage = ({ errors, fieldName }) =>
+  errors?.[fieldName] ? (
+    <p className="text-red-600">{errors[fieldName].message || 'Error!'}</p>
+  ) : null;
 
 const CreateGuideFormSection = () => {
   const {
     register,
     control,
+    watch,
     handleSubmit,
     formState: { errors },
     reset,
@@ -32,53 +39,67 @@ const CreateGuideFormSection = () => {
     mutate({ data });
   };
 
-  const ErrorMessage = ({ errors, fieldName }) =>
-    errors?.[fieldName] ? (
-      <p className="text-red-600">{errors[fieldName].message || 'Error!'}</p>
-    ) : null;
-
   return (
     <section className="min-h-[35rem]">
       <div className="container mx-auto pt-8">
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="grid grid-cols-[29.75rem_23.375rem_13.25rem] grid-rows-2 gap-5">
             <div className="flex flex-col gap-1">
-              <label htmlFor="city" className="text-sm text-dark-color">
-                City
-              </label>
-              <DestinationSelect />
-              <select
-                {...register('city', {
-                  required: 'Please select a city',
-                })}
-                id="city"
-                name="city"
-                className="border p-2"
-              >
-                <option>City 1</option>
-                <option>City 2</option>
-                <option>City 3</option>
-              </select>
-              <ErrorMessage errors={errors} fieldName="city" />
-            </div>
-
-            <div className="flex flex-col gap-1">
               <label htmlFor="country" className="text-sm text-dark-color">
                 Country
               </label>
-              <select
-                {...register('country', {
-                  required: 'Please select a country',
-                })}
-                id="country"
+              <Controller
                 name="country"
-                className="border p-2"
-              >
-                <option>Country 1</option>
-                <option>Country 2</option>
-                <option>Country 3</option>
-              </select>
-              <ErrorMessage errors={errors} fieldName="country" />
+                control={control}
+                rules={{
+                  required: 'Please select a country',
+                }}
+                render={({ field: { onChange }, fieldState }) => (
+                  <div>
+                    <CountrySelect
+                      id="country"
+                      onChange={selectedOption => {
+                        onChange(selectedOption?.value);
+                      }}
+                    />
+                    {fieldState.error && (
+                      <span className="text-red-500">
+                        {fieldState.error.message}
+                      </span>
+                    )}
+                  </div>
+                )}
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label htmlFor="city" className="text-sm text-dark-color">
+                City
+              </label>
+              <Controller
+                name="city"
+                control={control}
+                rules={{
+                  required: 'Please select a city',
+                }}
+                render={({ field: { onChange }, fieldState }) => (
+                  <div>
+                    <CitySelect
+                      id="city"
+                      searchQuery={watch('country')}
+                      onChange={selectedOption => {
+                        onChange(selectedOption?.value);
+                      }}
+                      isDisabled={!watch('country')}
+                    />
+                    {fieldState.error && (
+                      <span className="text-red-500">
+                        {fieldState.error.message}
+                      </span>
+                    )}
+                  </div>
+                )}
+              />
             </div>
 
             <div className="flex flex-col gap-1">
