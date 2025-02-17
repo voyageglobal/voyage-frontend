@@ -1,5 +1,6 @@
 import { memo, useState, useCallback } from 'react';
-import { Trash2, Pencil } from 'lucide-react';
+import Trash2 from 'lucide-react/icons/trash-2';
+import Pencil from 'lucide-react/icons/pencil';
 
 const DnDFileItem = ({ file, onRename, onRemove, onPreview }) => {
   const [newName, setNewName] = useState(file.name);

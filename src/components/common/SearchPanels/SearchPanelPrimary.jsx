@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import Search from 'lucide-react/icons/search';
 import { ROUTES } from '../../../App';
 import { DESTINATION_SEARCH_QUERY } from '../../../hooks/useCitySearchQuery';
 
