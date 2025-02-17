@@ -5,10 +5,10 @@ import transformCityItem from '../data/transformCityItem';
 
 const POPULAR_CITIES_QUERY_KEY = 'popularCities';
 
-const usePopularCities = () => {
+const usePopularCities = (pageSize = 49) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: [POPULAR_CITIES_QUERY_KEY],
-    queryFn: fetchCities,
+    queryKey: [POPULAR_CITIES_QUERY_KEY, pageSize],
+    queryFn: () => fetchCities({ pageSize }),
     staleTime: 1000 * 60 * 2,
   });
 

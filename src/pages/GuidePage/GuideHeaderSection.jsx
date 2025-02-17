@@ -1,12 +1,15 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useGuideById from '../../hooks/useGuideById';
 import useFormattedDate from '../../hooks/useFormattedDate';
 import { ROUTES } from '../../App';
 import { DEFAULT_USERNAME } from '../../data/userName';
 import DynamicIcon from '../../components/common/DynamicIcon/DynamicIcon';
+import GuideLoadingSkeleton from './GuideLoadingSkeleton';
+import GuideFetchError from './GuideFetchError';
+import GuideFetchNotFound from './GuideFetchNotFound';
 
-const GuideHeaderSection = () => {
+const GuideHeaderSection = ({ setGuideName }) => {
   const { id: guideId } = useParams();
 
   const {
@@ -18,6 +21,13 @@ const GuideHeaderSection = () => {
   const cityName = guide?.cities?.[0]?.name || 'Unknown City';
   const countryName = guide?.country?.name || 'Unknown Country';
   const guideName = guide?.name || 'Untitled Guide';
+
+  useEffect(() => {
+    if (guide?.name) {
+      setGuideName(guide.name);
+    }
+  }, [guide?.name, setGuideName]);
+
   const startDate = useFormattedDate(guide?.startDate);
   const categoryIcons = useMemo(() => {
     if (!guide?.categories) return [];
@@ -27,20 +37,23 @@ const GuideHeaderSection = () => {
         name={category.iconName}
         className="text-dark-color/80"
         size="20px"
-      />
+        aria-label={category.name}
+      >
+        <title>{category.name}</title>
+      </DynamicIcon>
     ));
   }, [guide]);
 
   if (isGuideLoading) {
-    return <p>Loading guide...</p>;
+    return <GuideLoadingSkeleton />;
   }
 
   if (guideError) {
-    return <p>Error loading guide: {guideError.message}</p>;
+    return <GuideFetchError message={guideError.message} />;
   }
 
   if (!guide) {
-    return <p>No guide found.</p>;
+    return <GuideFetchNotFound />;
   }
 
   return (
@@ -57,20 +70,25 @@ const GuideHeaderSection = () => {
         </div>
         <div className="flex justify-between pt-10 font-fourth text-2xl font-light">
           <div className="flex">
-            <p>{DEFAULT_USERNAME}</p>
+            <p>
+              <i>Author:</i> {DEFAULT_USERNAME}
+            </p>
             <p className="pl-10">{startDate || 'Unknown Date'}</p>
           </div>
-          <div>
-            <p>
+          <div className="max-w-36">
+            <p className="text-end">
               <b>Guide Type</b>:
             </p>
-            <div className="flex max-w-36 flex-wrap justify-start gap-1.5">
+            <div className="flex flex-wrap justify-end gap-1.5 gap-x-4 pt-2">
               {categoryIcons}
             </div>
           </div>
         </div>
         <div className="flex justify-between pt-5 font-fourth text-2xl font-light">
-          <p title={guideName} className="line-clamp-4 w-2/4 font-medium">
+          <p
+            title={guideName}
+            className="line-clamp-4 text-justify font-medium"
+          >
             {guideName}
           </p>
         </div>
