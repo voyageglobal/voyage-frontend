@@ -27,8 +27,8 @@ async function fetchCountries({
       items = [],
       hasMore = false,
       total = 0,
-    } = response?.data?.data ?? {}; */ // обратить внимание
-    const items = response?.data ?? [];
+    } = response?.data?.data ?? {}; */
+    const items = response?.data?.data ?? [];
     const hasMore = false;
     const total = items.length;
     return { items, hasMore, total };

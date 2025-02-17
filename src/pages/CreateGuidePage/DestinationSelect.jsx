@@ -3,15 +3,8 @@ import Select from 'react-select';
 import useAllCountries from '../../hooks/useAllCountries';
 
 const DestinationSelect = () => {
-  const {
-    data,
-    error,
-    isLoading,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useAllCountries({
-    pageSize: 20,
+  const { data, error, isLoading } = useAllCountries({
+    pageSize: 200,
   });
 
   const citiesList = useMemo(() => data.map(item => item.name), [data]);

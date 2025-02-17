@@ -1,7 +1,7 @@
 import { useCallback, useState, memo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { nanoid } from 'nanoid';
-import { ImagePlus } from 'lucide-react';
+import ImagePlus from 'lucide-react/icons/image-plus';
 import DnDFileItem from './DnDFileItem';
 
 const DnDWithItemList = ({ id, onChange }) => {

@@ -4,7 +4,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '../../../utilities/cn';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
-import { Link as LinkIcon, Heart, ArrowRightToLine } from 'lucide-react';
+import LinkIcon from 'lucide-react/icons/link';
+import Heart from 'lucide-react/icons/heart';
+import ArrowRightToLine from 'lucide-react/icons/arrow-right-to-line';
 
 import { ROUTES } from '../../../App';
 import { DEFAULT_USERNAME } from '../../../data/userName';

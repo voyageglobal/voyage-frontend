@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { ImagePlus, Trash2, ZoomIn } from 'lucide-react';
+import ImagePlus from 'lucide-react/icons/image-plus';
+import Trash2 from 'lucide-react/icons/trash-2';
+import ZoomIn from 'lucide-react/icons/zoom-in';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
