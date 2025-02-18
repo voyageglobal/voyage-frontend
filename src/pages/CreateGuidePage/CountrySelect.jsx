@@ -2,6 +2,7 @@ import { useMemo, memo } from 'react';
 import Select, { components } from 'react-select';
 import useAllCountries from '../../hooks/useAllCountries';
 import AlertTriangle from 'lucide-react/icons/triangle-alert';
+import selectStyles from './selectStyles';
 
 const CountrySelect = ({ id, onChange }) => {
   const NoOptionsMessage = props => {
@@ -43,6 +44,7 @@ const CountrySelect = ({ id, onChange }) => {
       onChange={onChange}
       components={{ NoOptionsMessage }}
       error={error}
+      styles={selectStyles}
     />
   );
 };

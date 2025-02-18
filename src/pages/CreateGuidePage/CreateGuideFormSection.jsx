@@ -45,8 +45,11 @@ const CreateGuideFormSection = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="grid grid-cols-[29.75rem_23.375rem_13.25rem] grid-rows-2 gap-5">
             <div className="flex flex-col gap-1">
-              <label htmlFor="country" className="text-sm text-dark-color">
-                Country
+              <label
+                htmlFor="country"
+                className="font-fourth text-lg font-bold italic text-dark-color"
+              >
+                Write the name of the county of your guide
               </label>
               <Controller
                 name="country"
@@ -55,7 +58,7 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a country',
                 }}
                 render={({ field: { onChange }, fieldState }) => (
-                  <div>
+                  <div className="pt-1.5">
                     <CountrySelect
                       id="country"
                       onChange={selectedOption => {
@@ -73,8 +76,11 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="city" className="text-sm text-dark-color">
-                City
+              <label
+                htmlFor="city"
+                className="font-fourth text-lg font-bold italic text-dark-color"
+              >
+                Write the name of the city of your guide
               </label>
               <Controller
                 name="city"
@@ -83,7 +89,7 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a city',
                 }}
                 render={({ field: { onChange }, fieldState }) => (
-                  <div>
+                  <div className="pt-1.5">
                     <CitySelect
                       id="city"
                       searchQuery={watch('country')}
@@ -103,8 +109,11 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="date" className="text-sm text-dark-color">
-                Date
+              <label
+                htmlFor="date"
+                className="font-fourth text-lg font-bold italic text-dark-color"
+              >
+                Date of visit
               </label>
               <input
                 {...register('date', {

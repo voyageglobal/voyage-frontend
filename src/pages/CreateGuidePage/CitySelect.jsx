@@ -2,6 +2,7 @@ import { useMemo, memo } from 'react';
 import Select, { components } from 'react-select';
 import useAllCities from '../../hooks/useAllCities';
 import AlertTriangle from 'lucide-react/icons/triangle-alert';
+import selectStyles from './selectStyles';
 
 const CitySelect = ({ id, onChange, searchQuery, isDisabled }) => {
   const NoOptionsMessage = props => {
@@ -43,6 +44,7 @@ const CitySelect = ({ id, onChange, searchQuery, isDisabled }) => {
       components={{ NoOptionsMessage }}
       error={error}
       isDisabled={isDisabled}
+      styles={selectStyles}
     />
   );
 };
