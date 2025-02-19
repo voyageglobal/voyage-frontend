@@ -1,8 +1,8 @@
 const selectStyles = {
   control: (base, state) => ({
     ...base,
-    height: '53px',
-    paddingLeft: '18px',
+    height: '48px',
+    padding: '0 18px 0 18px',
     backgroundColor: state.isDisabled ? '#f0f0f0' : 'rgba(239, 130, 0, 0.15)',
     borderColor: state.isDisabled ? '#d6d6d6' : 'rgb(239, 130, 0)',
     borderRadius: '10px',
@@ -11,7 +11,7 @@ const selectStyles = {
       borderColor: state.isDisabled ? '#d6d6d6' : 'rgb(255, 165, 0, 1)',
     },
     fontFamily: 'Josefin Sans',
-    fontSize: '22px',
+    fontSize: '18px',
     color: state.isDisabled ? '#a0a0a0' : 'rgb(23, 23, 23)',
     cursor: state.isDisabled ? 'not-allowed' : 'default',
   }),
