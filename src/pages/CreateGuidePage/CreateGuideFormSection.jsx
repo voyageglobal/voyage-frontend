@@ -5,6 +5,7 @@ import DnDWithItemList from '../../components/common/Drag-n-drop/DnDWithItemList
 import useSubmitGuide from '../../hooks/useSubmitGuide';
 import CountrySelect from './CountrySelect';
 import CitySelect from './CitySelect';
+import CategorySelect from './CategorySelect';
 
 const ErrorMessage = ({ errors, fieldName }) =>
   errors?.[fieldName] ? (
@@ -16,6 +17,7 @@ const CreateGuideFormSection = () => {
     register,
     control,
     watch,
+
     handleSubmit,
     formState: { errors },
     reset,
@@ -27,6 +29,8 @@ const CreateGuideFormSection = () => {
       guideImages: [],
     },
   });
+
+  const selectedCountry = watch('country');
 
   const resetForm = () => {
     reset();
@@ -58,7 +62,7 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a country',
                 }}
                 render={({ field: { onChange }, fieldState }) => (
-                  <div className="pt-1.5">
+                  <div>
                     <CountrySelect
                       id="country"
                       onChange={selectedOption => {
@@ -89,14 +93,15 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a city',
                 }}
                 render={({ field: { onChange }, fieldState }) => (
-                  <div className="pt-1.5">
+                  <div>
                     <CitySelect
                       id="city"
-                      searchQuery={watch('country')}
+                      key={selectedCountry}
+                      searchQuery={selectedCountry}
                       onChange={selectedOption => {
                         onChange(selectedOption?.value);
                       }}
-                      isDisabled={!watch('country')}
+                      isDisabled={!selectedCountry}
                     />
                     {fieldState.error && (
                       <span className="text-red-500">
@@ -122,8 +127,9 @@ const CreateGuideFormSection = () => {
                 id="date"
                 name="date"
                 type="date"
-                className="border p-2"
+                className="h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color focus:border-2 focus:border-orange-color focus:outline-none"
               />
+
               <ErrorMessage errors={errors} fieldName="date" />
             </div>
 
@@ -146,21 +152,34 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="category" className="text-sm text-dark-color">
-                Category
-              </label>
-              <select
-                {...register('category', {
-                  required: 'Please select a category',
-                })}
-                id="category"
-                name="category"
-                className="border p-2"
+              <label
+                htmlFor="category"
+                className="font-fourth text-lg font-bold italic text-dark-color"
               >
-                <option>Guide category 1</option>
-                <option>Guide category 2</option>
-                <option>Guide category 3</option>
-              </select>
+                Type of guide
+              </label>
+              <Controller
+                name="category"
+                control={control}
+                rules={{
+                  required: 'Please select a category',
+                }}
+                render={({ field: { onChange }, fieldState }) => (
+                  <div className="pt-1.5">
+                    <CategorySelect
+                      id="category"
+                      onChange={selectedOption => {
+                        onChange(selectedOption?.value);
+                      }}
+                    />
+                    {fieldState.error && (
+                      <span className="text-red-500">
+                        {fieldState.error.message}
+                      </span>
+                    )}
+                  </div>
+                )}
+              />
               <ErrorMessage errors={errors} fieldName="category" />
             </div>
           </section>
