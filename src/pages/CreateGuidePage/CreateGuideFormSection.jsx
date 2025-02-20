@@ -47,8 +47,8 @@ const CreateGuideFormSection = () => {
     <section className="min-h-[35rem]">
       <div className="container mx-auto pt-8">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <section className="grid grid-cols-[29.75rem_23.375rem_13.25rem] grid-rows-2 gap-5">
-            <div className="flex flex-col gap-1">
+          <section className="grid grid-cols-3 grid-rows-2 gap-5">
+            <div className="col-span-1 flex flex-col gap-1">
               <label
                 htmlFor="country"
                 className="font-fourth text-lg font-bold italic text-dark-color"
@@ -61,12 +61,13 @@ const CreateGuideFormSection = () => {
                 rules={{
                   required: 'Please select a country',
                 }}
-                render={({ field: { onChange }, fieldState }) => (
+                render={({ field: { onChange, name }, fieldState }) => (
                   <div>
                     <CountrySelect
-                      id="country"
+                      id={name}
+                      title={name}
                       onChange={selectedOption => {
-                        onChange(selectedOption?.value);
+                        onChange(selectedOption?.label);
                       }}
                     />
                     {fieldState.error && (
@@ -79,7 +80,7 @@ const CreateGuideFormSection = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="col-span-1 flex flex-col gap-1">
               <label
                 htmlFor="city"
                 className="font-fourth text-lg font-bold italic text-dark-color"
@@ -92,10 +93,11 @@ const CreateGuideFormSection = () => {
                 rules={{
                   required: 'Please select a city',
                 }}
-                render={({ field: { onChange }, fieldState }) => (
+                render={({ field: { onChange, name }, fieldState }) => (
                   <div>
                     <CitySelect
-                      id="city"
+                      id={name}
+                      title={name}
                       key={selectedCountry}
                       searchQuery={selectedCountry}
                       onChange={selectedOption => {
@@ -113,7 +115,7 @@ const CreateGuideFormSection = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="col-span-1 flex flex-col gap-1">
               <label
                 htmlFor="date"
                 className="font-fourth text-lg font-bold italic text-dark-color"
@@ -151,7 +153,7 @@ const CreateGuideFormSection = () => {
               <ErrorMessage errors={errors} fieldName="guideName" />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="col-span-1 flex flex-col gap-1">
               <label
                 htmlFor="category"
                 className="font-fourth text-lg font-bold italic text-dark-color"

@@ -28,9 +28,13 @@ const CountrySelect = ({ id, onChange }) => {
     pageSize: 200,
   });
 
-  const countriesList = useMemo(() => data.map(item => item.name), [data]);
+  const countriesList = useMemo(
+    () => data.map(item => ({ id: item.id, name: item.name })),
+    [data],
+  );
+
   const countriesOptions = useMemo(
-    () => countriesList.map(name => ({ value: name, label: name })),
+    () => countriesList.map(({ id, name }) => ({ value: id, label: name })),
     [countriesList],
   );
 
