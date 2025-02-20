@@ -27,9 +27,13 @@ const CitySelect = ({ id, onChange, searchQuery, isDisabled }) => {
     searchQuery,
   });
 
-  const citiesList = useMemo(() => data.map(item => item.name), [data]);
+  const citiesList = useMemo(
+    () => data.map(item => ({ id: item.id, name: item.name })),
+    [data],
+  );
+
   const citiesOptions = useMemo(
-    () => citiesList.map(name => ({ value: name, label: name })),
+    () => citiesList.map(({ id, name }) => ({ value: id, label: name })),
     [citiesList],
   );
 
