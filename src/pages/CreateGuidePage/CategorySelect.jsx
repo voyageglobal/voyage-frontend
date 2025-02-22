@@ -54,8 +54,10 @@ const CategorySelect = ({ id, onChange }) => {
 
   const SingleValue = ({ data, ...props }) => (
     <components.SingleValue {...props}>
-      <div className="flex items-center justify-between gap-2 text-dark-color/80">
-        <span className="w-3/4 font-fourth text-base">{data.label}</span>
+      <div className="flex items-center gap-2 text-dark-color/80">
+        <span className="w-4/5 overflow-hidden truncate text-ellipsis whitespace-nowrap font-fourth text-base">
+          {data.label}
+        </span>
         <DynamicIcon name={data.iconName} size="20px" />
       </div>
     </components.SingleValue>

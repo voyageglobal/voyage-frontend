@@ -136,7 +136,10 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="col-span-2 flex flex-col gap-1">
-              <label htmlFor="guideName" className="text-sm text-dark-color">
+              <label
+                htmlFor="guideName"
+                className="font-fourth text-lg font-bold italic text-dark-color"
+              >
                 Guide name
               </label>
               <input
@@ -147,8 +150,8 @@ const CreateGuideFormSection = () => {
                 id="guideName"
                 name="guideName"
                 type="text"
-                placeholder="The most creative guide name"
-                className="border p-2"
+                placeholder="Write here your most creative guide name"
+                className="h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color placeholder-dark-color autofill:bg-orange-color/15 focus:border-2 focus:border-orange-color focus:outline-none"
               />
               <ErrorMessage errors={errors} fieldName="guideName" />
             </div>
@@ -167,7 +170,7 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a category',
                 }}
                 render={({ field: { onChange }, fieldState }) => (
-                  <div className="pt-1.5">
+                  <div>
                     <CategorySelect
                       id="category"
                       onChange={selectedOption => {
@@ -186,8 +189,11 @@ const CreateGuideFormSection = () => {
             </div>
           </section>
 
-          <section className="col-span-3">
-            <label htmlFor="coverImage" className="text-sm text-dark-color">
+          <section className="col-span-3 pt-8">
+            <label
+              htmlFor="coverImage"
+              className="font-fourth text-lg font-bold italic text-dark-color"
+            >
               Upload the cover for your guide
             </label>
             <Controller
@@ -197,7 +203,7 @@ const CreateGuideFormSection = () => {
                 required: 'Cover image is required',
               }}
               render={({ field: { onChange, name }, fieldState }) => (
-                <div>
+                <div className="pt-8">
                   <DnDWithBackground id={name} onChange={onChange} />
                   {fieldState.error && (
                     <span className="text-red-500">
@@ -209,8 +215,8 @@ const CreateGuideFormSection = () => {
             />
           </section>
 
-          <section className="col-span-3">
-            <label className="text-sm text-dark-color">
+          <section className="col-span-3 pt-8">
+            <label className="font-fourth text-lg font-bold italic text-dark-color">
               Enter the text of your guide here! It would be cool if you could
               include prices for admission tickets, lifehacks, annual events, or
               some ways to save money!
@@ -226,7 +232,7 @@ const CreateGuideFormSection = () => {
                 },
               }}
               render={({ field, fieldState }) => (
-                <div>
+                <div className="pt-8">
                   <TipTapEditor setContent={field.onChange} />
                   {fieldState.error && (
                     <span className="text-red-500">
@@ -238,8 +244,11 @@ const CreateGuideFormSection = () => {
             />
           </section>
 
-          <section className="col-span-3">
-            <label htmlFor="guideImages" className="mb-2 block text-dark-color">
+          <section className="col-span-3 pt-8">
+            <label
+              htmlFor="guideImages"
+              className="font-fourth text-lg font-bold italic text-dark-color"
+            >
               Upload the photo for your guide
             </label>
             <Controller
@@ -249,7 +258,7 @@ const CreateGuideFormSection = () => {
                 required: 'At least one file is required',
               }}
               render={({ field: { onChange, name }, fieldState }) => (
-                <div>
+                <div className="pt-8">
                   <DnDWithItemList id={name} onChange={onChange} />
                   {fieldState.error && (
                     <span className="text-red-500">

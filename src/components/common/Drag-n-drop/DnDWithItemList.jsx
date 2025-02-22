@@ -48,11 +48,11 @@ const DnDWithItemList = ({ id, onChange }) => {
     <div>
       <div
         {...getRootProps({ className: 'dropzone' })}
-        className="mx-auto flex h-56 max-w-4xl cursor-pointer flex-col items-center justify-center border-2 border-dashed border-gray-300 bg-dark-color/45 p-4"
+        className="group mx-auto flex h-56 max-w-4xl cursor-pointer flex-col items-center justify-center rounded-10px border border-orange-color bg-dark-color/45 p-4"
       >
         <input {...getInputProps()} id={id} />
         <>
-          <ImagePlus className="mb-2 h-20 w-20 text-light-color transition hover:text-orange-color" />
+          <ImagePlus className="mb-2 h-20 w-20 text-light-color transition group-hover:text-orange-color" />
           <span className="text-light-color">
             Drop your image here, or browse
           </span>
