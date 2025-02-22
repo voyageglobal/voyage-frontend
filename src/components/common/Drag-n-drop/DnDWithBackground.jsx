@@ -74,7 +74,7 @@ const DnDWithBackground = ({ id, onChange }) => {
     <section className="container">
       <div
         {...getRootProps({ className: 'dropzone' })}
-        className="relative mx-auto flex h-64 w-full cursor-pointer flex-col items-center justify-center border-2 border-dashed border-gray-300 bg-dark-color/45 bg-cover bg-center p-4"
+        className="group relative mx-auto flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-10px border border-orange-color bg-dark-color/45 bg-cover bg-center p-4"
         style={{
           backgroundImage: cover ? `url(${cover})` : 'none',
           backgroundSize: 'cover',
@@ -84,11 +84,11 @@ const DnDWithBackground = ({ id, onChange }) => {
         <input {...getInputProps()} id={id} />
         {!cover ? (
           <>
-            <ImagePlus className="mb-2 h-20 w-20 text-light-color transition hover:text-orange-color" />
-            <span className="text-light-color">
+            <ImagePlus className="mb-2 h-20 w-20 text-light-color transition group-hover:text-orange-color" />
+            <span className="text-light-color transition">
               Drop your image here, or browse
             </span>
-            <span className="text-light-color/70">
+            <span className="text-light-color/70 transition">
               Supports: JPG, JPEG, PNG
             </span>
           </>
