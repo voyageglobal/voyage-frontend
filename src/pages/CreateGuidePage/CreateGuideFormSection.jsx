@@ -9,7 +9,9 @@ import CategorySelect from './CategorySelect';
 
 const ErrorMessage = ({ errors, fieldName }) =>
   errors?.[fieldName] ? (
-    <p className="text-red-600">{errors[fieldName].message || 'Error!'}</p>
+    <p className="m-1 font-fourth text-red-600">
+      {errors[fieldName].message || 'Error!'}
+    </p>
   ) : null;
 
 const CreateGuideFormSection = () => {
@@ -61,7 +63,7 @@ const CreateGuideFormSection = () => {
                 rules={{
                   required: 'Please select a country',
                 }}
-                render={({ field: { onChange, name }, fieldState }) => (
+                render={({ field: { onChange, name } }) => (
                   <div>
                     <CountrySelect
                       id={name}
@@ -70,11 +72,7 @@ const CreateGuideFormSection = () => {
                         onChange(selectedOption?.label);
                       }}
                     />
-                    {fieldState.error && (
-                      <span className="text-red-500">
-                        {fieldState.error.message}
-                      </span>
-                    )}
+                    <ErrorMessage errors={errors} fieldName="country" />
                   </div>
                 )}
               />
@@ -93,7 +91,7 @@ const CreateGuideFormSection = () => {
                 rules={{
                   required: 'Please select a city',
                 }}
-                render={({ field: { onChange, name }, fieldState }) => (
+                render={({ field: { onChange, name } }) => (
                   <div>
                     <CitySelect
                       id={name}
@@ -105,11 +103,7 @@ const CreateGuideFormSection = () => {
                       }}
                       isDisabled={!selectedCountry}
                     />
-                    {fieldState.error && (
-                      <span className="text-red-500">
-                        {fieldState.error.message}
-                      </span>
-                    )}
+                    <ErrorMessage errors={errors} fieldName="city" />
                   </div>
                 )}
               />
@@ -131,7 +125,6 @@ const CreateGuideFormSection = () => {
                 type="date"
                 className="h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color focus:border-2 focus:border-orange-color focus:outline-none"
               />
-
               <ErrorMessage errors={errors} fieldName="date" />
             </div>
 
@@ -169,7 +162,7 @@ const CreateGuideFormSection = () => {
                 rules={{
                   required: 'Please select a category',
                 }}
-                render={({ field: { onChange }, fieldState }) => (
+                render={({ field: { onChange } }) => (
                   <div>
                     <CategorySelect
                       id="category"
@@ -177,15 +170,10 @@ const CreateGuideFormSection = () => {
                         onChange(selectedOption?.value);
                       }}
                     />
-                    {fieldState.error && (
-                      <span className="text-red-500">
-                        {fieldState.error.message}
-                      </span>
-                    )}
+                    <ErrorMessage errors={errors} fieldName="category" />
                   </div>
                 )}
               />
-              <ErrorMessage errors={errors} fieldName="category" />
             </div>
           </section>
 
@@ -202,14 +190,10 @@ const CreateGuideFormSection = () => {
               rules={{
                 required: 'Cover image is required',
               }}
-              render={({ field: { onChange, name }, fieldState }) => (
+              render={({ field: { onChange, name } }) => (
                 <div className="pt-8">
                   <DnDWithBackground id={name} onChange={onChange} />
-                  {fieldState.error && (
-                    <span className="text-red-500">
-                      {fieldState.error.message}
-                    </span>
-                  )}
+                  <ErrorMessage errors={errors} fieldName="coverImage" />
                 </div>
               )}
             />
@@ -225,20 +209,17 @@ const CreateGuideFormSection = () => {
               name="guideContent"
               control={control}
               rules={{
-                required: 'Content is required',
+                required:
+                  'Please write your guide and share your adventure with the world!',
                 minLength: {
                   value: 10,
                   message: 'Minimum 10 characters required',
                 },
               }}
-              render={({ field, fieldState }) => (
+              render={({ field }) => (
                 <div className="pt-8">
                   <TipTapEditor setContent={field.onChange} />
-                  {fieldState.error && (
-                    <span className="text-red-500">
-                      {fieldState.error.message}
-                    </span>
-                  )}
+                  <ErrorMessage errors={errors} fieldName="guideContent" />
                 </div>
               )}
             />
@@ -257,14 +238,10 @@ const CreateGuideFormSection = () => {
               rules={{
                 required: 'At least one file is required',
               }}
-              render={({ field: { onChange, name }, fieldState }) => (
+              render={({ field: { onChange, name } }) => (
                 <div className="pt-8">
                   <DnDWithItemList id={name} onChange={onChange} />
-                  {fieldState.error && (
-                    <span className="text-red-500">
-                      {fieldState.error.message}
-                    </span>
-                  )}
+                  <ErrorMessage errors={errors} fieldName="guideImages" />
                 </div>
               )}
             />
