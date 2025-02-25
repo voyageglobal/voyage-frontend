@@ -1,131 +1,144 @@
 import { useEditor, EditorContent } from '@tiptap/react';
-import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
-import Text from '@tiptap/extension-text';
-import Bold from '@tiptap/extension-bold';
-import Italic from '@tiptap/extension-italic';
-import Strike from '@tiptap/extension-strike';
+import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
+import TextStyle from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
-import Link from '@tiptap/extension-link';
-import TextAlign from '@tiptap/extension-text-align';
+import ListItem from '@tiptap/extension-list-item';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
-import ListItem from '@tiptap/extension-list-item';
-import TaskList from '@tiptap/extension-task-list';
-import TaskItem from '@tiptap/extension-task-item';
-import { useEffect } from 'react';
+import Blockquote from '@tiptap/extension-blockquote';
+
 import BoldIcon from 'lucide-react/icons/bold';
 import ItalicIcon from 'lucide-react/icons/italic';
 import UnderlineIcon from 'lucide-react/icons/underline';
-import StrikeIcon from 'lucide-react/icons/strikethrough';
+import StrikethroughIcon from 'lucide-react/icons/strikethrough';
 import BulletListIcon from 'lucide-react/icons/list';
 import OrderedListIcon from 'lucide-react/icons/list-ordered';
-import Heading1 from 'lucide-react/icons/heading-1';
-import Heading2 from 'lucide-react/icons/heading-2';
-import Heading3 from 'lucide-react/icons/heading-3';
-import ParagraphIcon from 'lucide-react/icons/pilcrow';
+import QuoteIcon from 'lucide-react/icons/quote';
+import Heading1Icon from 'lucide-react/icons/heading-1';
+import Heading2Icon from 'lucide-react/icons/heading-2';
+import Heading3Icon from 'lucide-react/icons/heading-3';
+import HighlightIcon from 'lucide-react/icons/brush';
 
-const TipTapEditor = ({ setContent }) => {
+const TextEditor = ({ setContent }) => {
   const editor = useEditor({
     extensions: [
-      Document,
-      Paragraph,
-      Text,
-      Bold,
-      Italic,
-      Strike,
+      StarterKit,
       Underline,
-      Highlight,
-      Link.configure({ openOnClick: false }),
+      TextStyle,
+      Highlight.configure({
+        multicolor: true,
+      }),
+      ListItem,
       BulletList,
       OrderedList,
-      ListItem,
-      TaskList,
-      TaskItem,
-      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+      Blockquote,
     ],
     content: '',
-    onUpdate: ({ editor }) => {
-      setContent(editor.getHTML());
+    editorProps: {
+      attributes: {
+        class:
+          'prose max-w-none prose-p:m-0 prose-ul:m-0 prose-ol:m-0 prose-blockquote:m-0 ' +
+          'prose-h1:m-0 prose-h2:m-0 prose-h3:m-0 ' +
+          'prose-ul:list-disc prose-ol:list-decimal ' +
+          'prose-li:marker:text-orange-500 ' +
+          'prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4' +
+          'focus:outline-orange-500 focus:outline-2 focus:ring-0',
+        style: 'padding: 16px; border-radius: 10px;',
+        onfocus: "this.style.outline='1px solid rgba(239, 130, 0, 0.3)';",
+        onblur: "this.style.outline='none';",
+      },
     },
   });
-
-  useEffect(() => {
-    return () => {
-      editor?.destroy();
-    };
-  }, [editor]);
 
   if (!editor) return null;
 
   const buttons = [
     {
       command: () => editor.chain().focus().toggleBold().run(),
+      isActive: () => editor.isActive('bold'),
       label: <BoldIcon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleItalic().run(),
+      isActive: () => editor.isActive('italic'),
       label: <ItalicIcon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleUnderline().run(),
+      isActive: () => editor.isActive('underline'),
       label: <UnderlineIcon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleStrike().run(),
-      label: <StrikeIcon size={16} />,
+      isActive: () => editor.isActive('strike'),
+      label: <StrikethroughIcon size={16} />,
+    },
+    {
+      command: () =>
+        editor
+          .chain()
+          .focus()
+          .toggleHighlight({ color: 'rgba(239, 130, 0, 0.8)' })
+          .run(),
+      isActive: () => editor.isActive('highlight'),
+      label: <HighlightIcon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-      label: <Heading1 size={16} />,
+      isActive: () => editor.isActive('heading', { level: 1 }),
+      label: <Heading1Icon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-      label: <Heading2 size={16} />,
+      isActive: () => editor.isActive('heading', { level: 2 }),
+      label: <Heading2Icon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
-      label: <Heading3 size={16} />,
-    },
-    {
-      command: () => editor.chain().focus().setParagraph().run(),
-      label: <ParagraphIcon size={16} />,
+      isActive: () => editor.isActive('heading', { level: 3 }),
+      label: <Heading3Icon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleBulletList().run(),
+      isActive: () => editor.isActive('bulletList'),
       label: <BulletListIcon size={16} />,
     },
     {
       command: () => editor.chain().focus().toggleOrderedList().run(),
+      isActive: () => editor.isActive('orderedList'),
       label: <OrderedListIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleTaskList().run(),
-      label: '☑',
+      command: () => editor.chain().focus().toggleBlockquote().run(),
+      isActive: () => editor.isActive('blockquote'),
+      label: <QuoteIcon size={16} />,
     },
   ];
 
+  editor.on('update', () => {
+    setContent(editor.getHTML());
+  });
+
   return (
-    <div className="w-full rounded-lg border bg-white p-4 shadow-md">
-      <div className="mb-3 flex flex-wrap gap-1 border-b pb-2">
-        {buttons.map((btn, index) => (
+    <div className="min-h-40 rounded-10px border border-orange-color p-4">
+      <div className="flex gap-2 border-b border-orange-color/30 pb-2">
+        {buttons.map(btn => (
           <button
-            key={index}
+            key={btn.label}
             type="button"
             onClick={btn.command}
-            className="rounded px-2 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-200"
+            className={`rounded px-2 py-1 text-dark-color hover:bg-orange-color ${
+              btn.isActive() ? 'bg-orange-color text-white' : ''
+            }`}
           >
             {btn.label}
           </button>
         ))}
       </div>
-      <EditorContent
-        editor={editor}
-        className="h-60 overflow-auto rounded-md border bg-gray-50 p-2"
-      />
+      <EditorContent className="mt-3" editor={editor} />
     </div>
   );
 };
 
-export default TipTapEditor;
+export default TextEditor;
