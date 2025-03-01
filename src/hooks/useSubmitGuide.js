@@ -25,8 +25,7 @@ const toastConfig = {
 const useSubmitGuide = ({ resetForm }) => {
   return useMutation({
     mutationFn: submitGuide,
-    onSuccess: data => {
-      console.log('Guide submitted successfully:', data);
+    onSuccess: () => {
       toast.success('Guide submitted successfully!', toastConfig);
       if (resetForm) resetForm();
     },

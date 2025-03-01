@@ -50,7 +50,7 @@ const DnDWithItemList = ({ id, onChange }) => {
         {...getRootProps({ className: 'dropzone' })}
         className="group mx-auto flex h-56 max-w-4xl cursor-pointer flex-col items-center justify-center rounded-10px border border-orange-color bg-dark-color/45 p-4"
       >
-        <input {...getInputProps()} id={id} />
+        <input {...getInputProps()} aria-label="Add or drag a photo" id={id} />
         <>
           <ImagePlus className="mb-2 h-20 w-20 text-light-color transition group-hover:text-orange-color" />
           <span className="text-light-color">

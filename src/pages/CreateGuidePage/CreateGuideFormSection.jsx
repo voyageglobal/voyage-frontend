@@ -1,4 +1,5 @@
 import { useForm, Controller } from 'react-hook-form';
+import clsx from 'clsx';
 import TipTapEditor from '../../components/common/TipTapEditor/TipTapEditor';
 import DnDWithBackground from '../../components/common/Drag-n-drop/DnDWithBackground';
 import DnDWithItemList from '../../components/common/Drag-n-drop/DnDWithItemList';
@@ -14,12 +15,15 @@ const ErrorMessage = ({ errors, fieldName }) =>
     </p>
   ) : null;
 
+const labelStyle = 'font-fourth text-lg font-bold italic text-dark-color';
+const textInputStyle =
+  'h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color focus:border-2 focus:border-orange-color focus:outline-none';
+
 const CreateGuideFormSection = () => {
   const {
     register,
     control,
     watch,
-
     handleSubmit,
     formState: { errors },
     reset,
@@ -51,10 +55,7 @@ const CreateGuideFormSection = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="grid grid-cols-3 grid-rows-2 gap-5">
             <div className="col-span-1 flex flex-col gap-1">
-              <label
-                htmlFor="country"
-                className="font-fourth text-lg font-bold italic text-dark-color"
-              >
+              <label htmlFor="country" className={clsx(labelStyle)}>
                 Write the name of the county of your guide
               </label>
               <Controller
@@ -79,10 +80,7 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="col-span-1 flex flex-col gap-1">
-              <label
-                htmlFor="city"
-                className="font-fourth text-lg font-bold italic text-dark-color"
-              >
+              <label htmlFor="city" className={clsx(labelStyle)}>
                 Write the name of the city of your guide
               </label>
               <Controller
@@ -110,10 +108,7 @@ const CreateGuideFormSection = () => {
             </div>
 
             <div className="col-span-1 flex flex-col gap-1">
-              <label
-                htmlFor="date"
-                className="font-fourth text-lg font-bold italic text-dark-color"
-              >
+              <label htmlFor="date" className={clsx(labelStyle)}>
                 Date of visit
               </label>
               <input
@@ -121,18 +116,14 @@ const CreateGuideFormSection = () => {
                   required: 'Please select a date',
                 })}
                 id="date"
-                name="date"
                 type="date"
-                className="h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color focus:border-2 focus:border-orange-color focus:outline-none"
+                className={clsx(textInputStyle)}
               />
               <ErrorMessage errors={errors} fieldName="date" />
             </div>
 
             <div className="col-span-2 flex flex-col gap-1">
-              <label
-                htmlFor="guideName"
-                className="font-fourth text-lg font-bold italic text-dark-color"
-              >
+              <label htmlFor="guideName" className={clsx(labelStyle)}>
                 Guide name
               </label>
               <input
@@ -141,19 +132,15 @@ const CreateGuideFormSection = () => {
                   minLength: { value: 5, message: 'Minimum 5 characters' },
                 })}
                 id="guideName"
-                name="guideName"
                 type="text"
                 placeholder="Write here your most creative guide name"
-                className="h-12 w-full rounded-10px border border-orange-color bg-orange-color/15 px-4 font-fourth text-lg text-dark-color placeholder-dark-color autofill:bg-orange-color/15 focus:border-2 focus:border-orange-color focus:outline-none"
+                className={clsx(textInputStyle)}
               />
               <ErrorMessage errors={errors} fieldName="guideName" />
             </div>
 
             <div className="col-span-1 flex flex-col gap-1">
-              <label
-                htmlFor="category"
-                className="font-fourth text-lg font-bold italic text-dark-color"
-              >
+              <label htmlFor="category" className={clsx(labelStyle)}>
                 Type of guide
               </label>
               <Controller
@@ -178,10 +165,7 @@ const CreateGuideFormSection = () => {
           </section>
 
           <section className="col-span-3 pt-8">
-            <label
-              htmlFor="coverImage"
-              className="font-fourth text-lg font-bold italic text-dark-color"
-            >
+            <label htmlFor="coverImage" className={clsx(labelStyle)}>
               Upload the cover for your guide
             </label>
             <Controller
@@ -200,7 +184,7 @@ const CreateGuideFormSection = () => {
           </section>
 
           <section className="col-span-3 pt-8">
-            <label className="font-fourth text-lg font-bold italic text-dark-color">
+            <label className={clsx(labelStyle)}>
               Enter the text of your guide here! It would be cool if you could
               include prices for admission tickets, lifehacks, annual events, or
               some ways to save money!
@@ -226,10 +210,7 @@ const CreateGuideFormSection = () => {
           </section>
 
           <section className="col-span-3 pt-8">
-            <label
-              htmlFor="guideImages"
-              className="font-fourth text-lg font-bold italic text-dark-color"
-            >
+            <label htmlFor="guideImages" className={clsx(labelStyle)}>
               Upload the photo for your guide
             </label>
             <Controller
@@ -250,8 +231,11 @@ const CreateGuideFormSection = () => {
           <div className="col-span-3 flex justify-center">
             <button
               type="submit"
-              className={`mt-4 w-80 rounded bg-orange-color px-4 py-2 text-white ${
-                isLoading ? 'cursor-not-allowed opacity-50' : ''
+              aria-label="Save and post the guide"
+              className={`mt-4 w-80 rounded-10px bg-orange-color px-4 py-2 font-fourth uppercase text-white transition ${
+                isLoading
+                  ? 'cursor-not-allowed opacity-50'
+                  : 'hover:bg-dark-color'
               }`}
               disabled={isLoading}
             >
