@@ -1,12 +1,9 @@
 import { useEditor, EditorContent } from '@tiptap/react';
+import { useCallback } from 'react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import TextStyle from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
-import ListItem from '@tiptap/extension-list-item';
-import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
-import Blockquote from '@tiptap/extension-blockquote';
 
 import BoldIcon from 'lucide-react/icons/bold';
 import ItalicIcon from 'lucide-react/icons/italic';
@@ -29,17 +26,13 @@ const TextEditor = ({ setContent }) => {
       Highlight.configure({
         multicolor: true,
       }),
-      ListItem,
-      BulletList,
-      OrderedList,
-      Blockquote,
     ],
     content: '',
     editorProps: {
       attributes: {
         class:
           'prose max-w-none prose-p:m-0 prose-ul:m-0 prose-ol:m-0 prose-blockquote:m-0 ' +
-          'prose-h1:m-0 prose-h2:m-0 prose-h3:m-0 ' +
+          'prose-h1:m-0 prose-h2:m-0 prose-h3:m-0 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg ' +
           'prose-ul:list-disc prose-ol:list-decimal ' +
           'prose-li:marker:text-orange-500 ' +
           'prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4' +
@@ -51,66 +44,82 @@ const TextEditor = ({ setContent }) => {
     },
   });
 
+  const createCommand = useCallback(
+    command => () => {
+      if (editor) {
+        command(editor);
+      }
+    },
+    [editor],
+  );
+
   if (!editor) return null;
 
-  const buttons = [
+  const toolBar = [
     {
-      command: () => editor.chain().focus().toggleBold().run(),
+      command: createCommand(e => e.chain().focus().toggleBold().run()),
       isActive: () => editor.isActive('bold'),
       label: <BoldIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleItalic().run(),
+      command: createCommand(e => e.chain().focus().toggleItalic().run()),
       isActive: () => editor.isActive('italic'),
       label: <ItalicIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleUnderline().run(),
+      command: createCommand(e => e.chain().focus().toggleUnderline().run()),
       isActive: () => editor.isActive('underline'),
       label: <UnderlineIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleStrike().run(),
+      command: createCommand(e => e.chain().focus().toggleStrike().run()),
       isActive: () => editor.isActive('strike'),
       label: <StrikethroughIcon size={16} />,
     },
     {
-      command: () =>
-        editor
+      command: createCommand(e =>
+        e
           .chain()
           .focus()
           .toggleHighlight({ color: 'rgba(239, 130, 0, 0.8)' })
           .run(),
+      ),
       isActive: () => editor.isActive('highlight'),
       label: <HighlightIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
+      command: createCommand(e =>
+        e.chain().focus().toggleHeading({ level: 1 }).run(),
+      ),
       isActive: () => editor.isActive('heading', { level: 1 }),
       label: <Heading1Icon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
+      command: createCommand(e =>
+        e.chain().focus().toggleHeading({ level: 2 }).run(),
+      ),
       isActive: () => editor.isActive('heading', { level: 2 }),
       label: <Heading2Icon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
+      command: createCommand(e =>
+        e.chain().focus().toggleHeading({ level: 3 }).run(),
+      ),
       isActive: () => editor.isActive('heading', { level: 3 }),
       label: <Heading3Icon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleBulletList().run(),
+      command: createCommand(e => e.chain().focus().toggleBulletList().run()),
       isActive: () => editor.isActive('bulletList'),
       label: <BulletListIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleOrderedList().run(),
+      command: createCommand(e => e.chain().focus().toggleOrderedList().run()),
       isActive: () => editor.isActive('orderedList'),
       label: <OrderedListIcon size={16} />,
     },
     {
-      command: () => editor.chain().focus().toggleBlockquote().run(),
+      command: createCommand(e => e.chain().focus().toggleBlockquote().run()),
       isActive: () => editor.isActive('blockquote'),
       label: <QuoteIcon size={16} />,
     },
@@ -123,20 +132,23 @@ const TextEditor = ({ setContent }) => {
   return (
     <div className="min-h-40 rounded-10px border border-orange-color p-4">
       <div className="flex gap-2 border-b border-orange-color/30 pb-2">
-        {buttons.map(btn => (
+        {toolBar.map((btn, index) => (
           <button
-            key={btn.label}
+            key={index}
             type="button"
             onClick={btn.command}
-            className={`rounded px-2 py-1 text-dark-color hover:bg-orange-color ${
-              btn.isActive() ? 'bg-orange-color text-white' : ''
-            }`}
+            aria-label={btn.label.props.name}
+            className={`rounded px-2 py-1 text-dark-color hover:bg-orange-color ${btn.isActive() ? 'bg-orange-color text-white' : ''}`}
           >
             {btn.label}
           </button>
         ))}
       </div>
-      <EditorContent className="mt-3" editor={editor} />
+      <EditorContent
+        aria-label="Input field and text editing"
+        className="mt-3"
+        editor={editor}
+      />
     </div>
   );
 };

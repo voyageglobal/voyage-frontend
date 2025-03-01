@@ -23,14 +23,12 @@ async function fetchCountries({
       );
     }
 
-    /* const {
+    const {
       items = [],
       hasMore = false,
       total = 0,
-    } = response?.data?.data ?? {}; */
-    const items = response?.data?.data ?? [];
-    const hasMore = false;
-    const total = items.length;
+    } = response?.data?.data ?? {};
+
     return { items, hasMore, total };
   } catch (error) {
     console.error('Error fetching countries:', error);

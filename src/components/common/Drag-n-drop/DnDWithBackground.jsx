@@ -81,7 +81,11 @@ const DnDWithBackground = ({ id, onChange }) => {
           backgroundPosition: 'center',
         }}
       >
-        <input {...getInputProps()} id={id} />
+        <input
+          {...getInputProps()}
+          aria-label="Add or drag a cover photo"
+          id={id}
+        />
         {!cover ? (
           <>
             <ImagePlus className="mb-2 h-20 w-20 text-light-color transition group-hover:text-orange-color" />
