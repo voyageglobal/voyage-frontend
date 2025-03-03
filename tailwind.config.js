@@ -32,5 +32,8 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-textshadow')],
+  plugins: [
+    require('tailwindcss-textshadow'),
+    require('@tailwindcss/typography'),
+  ],
 };

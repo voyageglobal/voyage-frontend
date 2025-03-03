@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Search } from 'lucide-react';
+import Search from 'lucide-react/icons/search';
 
 const SearchPanelTravelTips = () => {
   const handleSearch = e => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useCitySearchQuery } from '../../../hooks/useCitySearchQuery';
-import { Search } from 'lucide-react';
+import Search from 'lucide-react/icons/search';
 
 const SearchPanelSecondary = () => {
   const { citySearchQuery, updateCitySearchQuery } = useCitySearchQuery();
