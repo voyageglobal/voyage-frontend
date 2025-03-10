@@ -27,7 +27,7 @@ const SearchPanelSecondary = () => {
       onSubmit={handleSearch}
     >
       <input
-        className="flex-grow bg-transparent font-fourth text-xl/5 italic text-dark-color placeholder-dark-color/40 outline-none"
+        className="flex-grow bg-transparent pr-2 font-fourth text-xl/5 italic text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
         placeholder="India | Delhi"
         aria-label="Search for guides by city or country name"

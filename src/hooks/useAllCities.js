@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import fetchCities from '../services/CitiesService';
+import fetchSearchCities from '../services/CitiesSearchService';
 import transformCityItem from '../data/transformCityItem';
 
 const ALL_CITIES_QUERY_KEY = 'allCities';
@@ -16,7 +16,7 @@ const useAllCities = ({ pageSize, sortOrder, searchQuery }) => {
   } = useInfiniteQuery({
     queryKey: [ALL_CITIES_QUERY_KEY, searchQuery],
     queryFn: ({ pageParam = 1 }) =>
-      fetchCities({
+      fetchSearchCities({
         page: pageParam,
         pageSize,
         sortOrder,

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import useAllCities from '../../hooks/useAllCities';
 import CitiesList from '../common/CitiesList/CitiesList';
-import { FETCH_SETTINGS } from '../../services/CitiesService';
+import { FETCH_SETTINGS } from '../../services/CitiesSearchService';
 import { useCitySearchQuery } from '../../hooks/useCitySearchQuery';
 
 const AllCitiesList = ({ initialLimit }) => {
