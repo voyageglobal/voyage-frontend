@@ -35,7 +35,7 @@ const SearchPanelPrimary = () => {
       className="flex w-96 items-center rounded-10px bg-light-color p-4"
     >
       <input
-        className="flex-grow bg-transparent font-primary text-lg/3 text-dark-color placeholder-dark-color/40 outline-none"
+        className="flex-grow bg-transparent px-2 font-primary text-lg/3 text-dark-color placeholder-dark-color/40 outline-none"
         type="search"
         value={queryInput}
         onChange={e => setQueryInput(e.target.value)}
