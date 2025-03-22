@@ -75,7 +75,7 @@ const SignInPage = () => {
                 </label>
                 <Link
                   title="Click here if you forgot your login details"
-                  to="#"
+                  to={ROUTES.forgotPassword}
                   className={`${linkStyles} underline`}
                 >
                   Forgot password?
