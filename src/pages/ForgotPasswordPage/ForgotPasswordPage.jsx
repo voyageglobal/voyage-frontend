@@ -1,5 +1,6 @@
 import Page from '../../components/common/Page/Page';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../App';
 import AtSign from 'lucide-react/icons/at-sign';
@@ -15,6 +16,12 @@ const iconStyles =
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleRequestReset = () => {
+    navigate(ROUTES.verifyPassword);
+  };
 
   return (
     <Page
@@ -48,6 +55,7 @@ const ForgotPasswordPage = () => {
                 aria-label="Sign in to your account"
                 title="Click here to sign in"
                 className={`${buttonStyles} mt-6 bg-dark-color text-light-color`}
+                onClick={handleRequestReset}
               >
                 Request password reset
               </button>

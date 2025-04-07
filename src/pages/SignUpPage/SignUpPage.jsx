@@ -33,7 +33,7 @@ const SignUpPage = () => {
               <h1 className="font-third text-4xl font-bold">
                 Create an account
               </h1>
-              <p className="mt-8 text-xl text-dark-color/70">
+              <p className="mt-3 text-xl text-dark-color/70">
                 Let’s get started our VOYAGE
               </p>
 
@@ -71,11 +71,11 @@ const SignUpPage = () => {
               </div>
 
               <button
-                aria-label="Sign in to your account"
-                title="Click here to sign in"
+                aria-label="Create an account"
+                title="Click here to create an account"
                 className={`${buttonStyles} mt-6 bg-dark-color text-light-color`}
               >
-                Sign in
+                Create account
               </button>
 
               <button

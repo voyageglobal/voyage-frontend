@@ -30,7 +30,7 @@ const SignInPage = () => {
           <div className="flex gap-20">
             <div className="flex w-1/2 flex-col justify-center font-fourth text-lg text-dark-color">
               <h1 className="font-third text-4xl font-bold">Welcome back</h1>
-              <p className="mt-8 text-xl text-dark-color/70">
+              <p className="mt-3 text-xl text-dark-color/70">
                 Please enter your details
               </p>
 
@@ -57,7 +57,7 @@ const SignInPage = () => {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-8 flex items-center justify-between">
                 <label className="flex items-center">
                   <input
                     type="checkbox"
@@ -85,7 +85,7 @@ const SignInPage = () => {
               <button
                 aria-label="Sign in to your account"
                 title="Click here to sign in"
-                className={`${buttonStyles} mt-6 bg-dark-color text-light-color`}
+                className={`${buttonStyles} mt-7 bg-dark-color text-light-color`}
               >
                 Sign in
               </button>

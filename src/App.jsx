@@ -7,6 +7,7 @@ import CityPage from './pages/CityPage/CityPage';
 import SignInPage from './pages/SignInPage/SignInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
+import VerificationPasswordPage from './pages/ForgotPasswordPage/VerificationPasswordPage';
 import TravelTipsPage from './pages/TravelTipsPage/TravelTipsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MainPage from './pages/MainPage/MainPage';
@@ -23,6 +24,7 @@ export const ROUTES = {
   signIn: '/sign-in',
   signUp: '/sign-up',
   forgotPassword: '/forgot-password',
+  verifyPassword: '/verify-password',
   travelTips: '/travel-tips',
   createGuide: '/create-guide',
   guidePage: '/guides/:id',
@@ -42,6 +44,10 @@ function App() {
         <Route path={ROUTES.signIn} element={<SignInPage />} />
         <Route path={ROUTES.signUp} element={<SignUpPage />} />
         <Route path={ROUTES.forgotPassword} element={<ForgotPasswordPage />} />
+        <Route
+          path={ROUTES.verifyPassword}
+          element={<VerificationPasswordPage />}
+        />
         <Route path={ROUTES.travelTips} element={<TravelTipsPage />} />
         <Route path={ROUTES.createGuide} element={<CreateGuidePage />} />
         <Route path={ROUTES.notFound} element={<NotFoundPage />} />
