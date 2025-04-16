@@ -1,7 +1,9 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import LogoButton from '../LogoButton/LogoButton';
 import { ROUTES } from '../../../App';
 const NavBar = () => {
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
   return (
     <div className="fixed z-10 flex min-h-[4.75rem] w-full items-center justify-center bg-light-color bg-opacity-90">
       <nav className="container mx-auto text-center font-primary text-lg text-dark-color">
@@ -22,7 +24,13 @@ const NavBar = () => {
             <LogoButton />
           </li>
           <li className="ml-auto list-none">
-            <Link to={ROUTES.signIn}>Sign In</Link>
+            {!isAuthenticated ? (
+              <button onClick={() => loginWithRedirect()} className="px-4 py-2">
+                Sign In
+              </button>
+            ) : (
+              <Link to={ROUTES.myAccount}>My Account</Link>
+            )}
           </li>
         </ul>
       </nav>
